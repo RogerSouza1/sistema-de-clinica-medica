@@ -98,6 +98,6 @@
 
 [**Heloysa Arruda**](https://github.com/heloysasa)
 
-[**Nicholas Oliveira**](https://github.com/NicolasNascimento05)
+[**Nicolas Oliveira**](https://github.com/NicolasNascimento05)
 
 [**Roger Souza**](https://github.com/RogerSouza1)
