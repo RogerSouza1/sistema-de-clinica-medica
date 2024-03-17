@@ -83,11 +83,93 @@
 ![tela-calendario](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/6f96144f-a2b4-49aa-883b-0522023d2945)
 
 ## 🎲MER
-![2](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/dbac5f81-08b3-4c33-9644-ef9694d0c1f0)
+![MER](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/c91afa8e-2a1d-45b2-8565-4ef03aaa0632)
 
-![1](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/ace41729-25c6-4cfb-a846-4cdd211ad2a2)
+### Usuário
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Usuario | int | chave primária |
+| Nome | varchar | atributo | 
+| CPF | int | atributo |
+| Email | varchar | atributo |
+| Senha | varchar | atributo |
+| DataNascimento | date | atributo |
+| Telefone | varchar | atributo |
+| fk_Endereco_Id_Endereco | int | chave estrangeira |
 
-![3](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/86dd422f-0ba6-4ecc-ac7f-262dce7438ad)
+### Endereço
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Endereco | int | chave primária |
+| Logradouro | varchar | atributo | 
+| Numero | int | atributo |
+| Bairro | varchar | atributo |
+| Cidade | varchar | atributo |
+| Estado | varchar | atributo |
+| CEP | int | atributo |
+
+### Paciente
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Paciente | int | chave primária |
+| Dependente | int | atributo | 
+| fk_Usuario_Id_Usuario | int | chave estrangeira |
+
+### Médico
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Medico | int | chave primária |
+| Especialidade | varchar | atributo | 
+| CRM | varchar | atributo |
+| Clinica | varchar | atributo |
+| fk_Usuario_Id_Usuario | int | chave estrangeira |
+
+### Agendamento
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Agendamento | int | chave primária |
+| Prontuario | varchar | atributo |
+| fk_Paciente_Id_Paciente | int | chave estrangeira | 
+| fk_Disponibilidade | int | chave estrangeira |
+
+### Disponibilidade
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Disponibilidade | int | chave primária |
+| Data | date | atributo |
+| fk_Horario_Id_Horario | int | chave estrangeira | 
+| fk_Medico_Id_Medico | int | chave estrangeira |
+
+### Horários
+| nomeAtributo | tipo | descrição|
+| --- | --- | --- |
+| Id_Horario | int | chave primária |
+| 06:00-06:30 | boolean | atributo |
+| 06:30-07:00 | boolean | atributo |
+| 07:00-07:30 | boolean | atributo |
+| 07:30-08:00 | boolean | atributo |
+| 08:00-08:30 | boolean | atributo |
+| 08:30-09:00 | boolean | atributo |
+| 09:00-09:30 | boolean | atributo |
+| 09:30-10:00 | boolean | atributo |
+| 10:00-10:30 | boolean | atributo |
+| 10:30-11:00 | boolean | atributo |
+| 11:00-11:30 | boolean | atributo |
+| 11:30-12:00 | boolean | atributo |
+| 12:00-12:30 | boolean | atributo |
+| 12:30-13:00 | boolean | atributo |
+| 13:00-13:30 | boolean | atributo |
+| 13:30-14:00 | boolean | atributo |
+| 14:00-14:30 | boolean | atributo |
+| 14:30-15:00 | boolean | atributo |
+| 15:00-15:30 | boolean | atributo |
+| 15:30-16:00 | boolean | atributo |
+| 16:00-16:30 | boolean | atributo |
+| 16:30-17:00 | boolean | atributo |
+| 17:00-17:30 | boolean | atributo |
+| 17:30-18:00 | boolean | atributo |
+| 18:00-18:30 | boolean | atributo |
+| 18:30-19:00 | boolean | atributo |
 
 ## 👨‍💻Autores do projeto
 [**Carla Brito**](https://github.com/carladfb)
