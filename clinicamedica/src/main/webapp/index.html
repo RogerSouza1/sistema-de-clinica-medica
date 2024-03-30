@@ -1,13 +1,117 @@
-<html>
-<body>
-    <h2>Hello World!</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>MedEasy</title>
+  </head>
+  <body>
+    <!--Navbar-->
+    <header>
+      <nav class="navbar">
+        <div class="navbar-container">
+          <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
+          <ul class="navbar-links ms-auto">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="especialidade.html">Especialidades</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="login.html" id="login">Login</a></li>
+            <li class="dropdown-cadastro">
+              <a href="#" id="cadastre-se"
+                >Cadastre-se <img src="img/setinha.svg" alt="seta"
+              /></a>
+              <ul
+                class="dropdown-content-cadastro"
+                id="dropdown-content-cadastro"
+              >
+                <li>
+                  <a href="cadastroPaciente.html">Beneficiário do Plano</a>
+                </li>
+                <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
-    <form action="/create-paciente" method="post">
+    <main>
+      <!--Banner-->
+      <section id="banner">
+        <div class="banner-container">
+          <h2 class="primeira-frase">
+            Cuide do seu bem-estar com paixão e propósito.
+          </h2>
+          <h2 class="segunda-frase">Seja o protagonista da sua saúde!</h2>
+          <h3 class="terceira-frase">
+            Sua jornada para o bem-estar é única, estamos aqui para fazer parte
+            desse enredo extraordinário da sua vida saudável.
+          </h3>
+          <a class="botao-saiba-mais" href="especialidade.html">Saiba mais!</a>
+        </div>
+      </section>
 
-        <label>Nome do Paciente:</label>
-        <input type="text" name="pacienteNome" id="pacienteNome">
-        <button type="submit">Criar Paciente</button>
+      <!--Especialidades-->
+      <section id="especialidades">
+        <div class="especialidades-container">
+          <h1>Especialidades</h1>
+        </div>
+      </section>
+    </main>
 
-    </form>
-</body>
+    <!--Footer-->
+    <footer>
+      <div class="rodape">
+        <h3 class="footer-logo">MedEasy</h3>
+        <div class="footer-container">
+          <div class="navegacao">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+          </div>
+          <div class="contatos">
+            <ul>
+              <li>
+                <a href="#"
+                  ><img src="img/phone.svg" alt="telefone" />(11) 3881-3637</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><img src="img/whatsapp.svg" alt="whatsapp" />(11)
+                  98066-7105</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><img src="img/email.svg" alt="email" />medeasy@gmail.com</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="redes-sociais">
+            <ul>
+              <li>
+                <a href="#"><img src="img/linkedin.svg" alt="linkedin" /></a>
+              </li>
+              <li>
+                <a href="#"><img src="img/facebook.svg" alt="facebook" /></a>
+              </li>
+              <li>
+                <a href="#"><img src="img/instagram.svg" alt="instagram" /></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="rodape-frase">
+        <h3>MedEasy - Projeto Integrador - 3ª Semestre</h3>
+      </div>
+    </footer>
+
+    <script src="js/dropdown.js"></script>
+  </body>
 </html>
