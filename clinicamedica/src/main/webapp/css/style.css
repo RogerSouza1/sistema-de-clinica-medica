@@ -20,6 +20,8 @@
     Um ponto é equivalente a 1/72 de uma polegada, enquanto uma pica é equivalente a 12 pontos.
     */
 
+    /*Para procurar alguma coisa no código: ctrl+f*/
+
     /*Váriaveis de cores, como usa: var(azul-logo)*/
     :root {
         --azul-logo: #0455BF;
@@ -146,7 +148,7 @@
         background-color: var(--azul-principal);
     }
 
-    /* ------ Index ------*/
+    /* ---------------- Index ----------------*/
 
     /*Banner*/
     #banner {
@@ -196,8 +198,8 @@
         background-color: var(--azul-logo);
     }
 
-    /*Especialidades*/
-    .especialidades-container {
+    /*Especialidades carrossel*/
+    .especialidades-index-container {
         padding: 2% 5%;
         font-weight: 700;
         font-size: 1.5rem;
@@ -264,4 +266,88 @@
         color: var(--cinza-escuro);
         font-size: 1rem;
         padding: 2vh 0;
+    }
+
+    /*---------------- Especialidades ----------------*/
+
+    /*Banner Especialidades*/
+    .banner-especialidades-contatiner {
+        background-image: url(../img/banner-especialidade.png);
+        background-size: cover;
+        background-position: center;
+        height: auto;
+    }
+
+    .banner-especialidades-contatiner {
+        padding: 4.5vw 5vw
+    }
+
+    .banner-especialidades-contatiner h3 {
+        font-size: 2rem;
+        color: var(--branco);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /*Especialidades*/
+    .especialidades-container {
+        font-weight: 700;
+        font-size: 1.5rem;
+        padding: 2% 5%;
+    }
+
+    .especialidades-container h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 4vh;
+    }
+
+    .cards-dropdown {
+        margin-bottom: 2vh;
+    }
+
+    .cards-dropdown h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 2vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-title {
+        cursor: pointer;
+        background-color: var(--azul-principal);
+        color: var(--branco);
+        padding: 10px;
+        border-radius: 10px;
+        transition: background-color 0.2s;
+    }
+
+    .cards-dropdown img {
+        width: 0.7rem;
+        margin-left: auto;
+        margin-right: 2vh;
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-content {
+        background-color: var(--azul-principal);
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--branco);
+        display: none;
+        padding: 20px;
+        border-radius: 0 0 10px 10px;
+        text-align: justify;
+        margin-top: -4vh;
+    }
+
+    .dropdown-title:hover {
+        background-color: var(--azul-logo);
+    }
+
+    .cards-dropdown .dropdown-title.open img {
+        transform: rotate(90deg);
     }
