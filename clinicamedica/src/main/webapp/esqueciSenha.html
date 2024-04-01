@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>MedEasy</title>
   </head>
+
   <body>
     <!--Navbar-->
     <header>
@@ -38,7 +39,25 @@
     </header>
   </body>
 
-  <main></main>
+  <main>
+    <section id="esqueciSenha">
+      <div class="esqueciSenha-container">
+        <h2>Redefinição de Senha</h2>
+        <p>Para redefinir sua senha, informe seus dados para validação!</p>
+        <form>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Email"
+          />
+          <input type="text" id="cpf" name="cpf" required placeholder="CPF" />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <!--Footer-->
   <footer>
