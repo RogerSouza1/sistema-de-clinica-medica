@@ -20,33 +20,33 @@ public class CreateMedicoServlet extends HttpServlet {
 
         Medico medico = new Medico();
 
-        medico.setNome(req.getParameter("medicoNome"));
-        medico.setCPF(Integer.parseInt(req.getParameter("medicoCPF")));
-        medico.setEmail(req.getParameter("medicoEmail"));
-        medico.setSenha(req.getParameter("medicoSenha"));
+        medico.setNome(req.getParameter("medico-nome"));
+        medico.setCPF(Integer.parseInt(req.getParameter("medico-cpf")));
+        medico.setEmail(req.getParameter("medico-email"));
+        medico.setSenha(req.getParameter("medico-senha"));
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            medico.setDataNascimento(dateFormat.parse(req.getParameter("medicoDataNascimento")));
+            medico.setDataNascimento(dateFormat.parse(req.getParameter("medico-dataNascimento")));
         } catch (Exception e) {
             System.err.println("Error parsing date: " + e.getMessage());
         }
 
-        medico.setTelefone(req.getParameter("medicoTelefone"));
+        medico.setTelefone(req.getParameter("medico-telefone"));
 
         Endereco enderecoMedico = new Endereco();
-        enderecoMedico.setLogradouro(req.getParameter("medicoLogradouro"));
-        enderecoMedico.setNumero(Integer.parseInt(req.getParameter("medicoNumero")));
-        enderecoMedico.setComplemento(req.getParameter("medicoComplemento"));
-        enderecoMedico.setBairro(req.getParameter("medicoBairro"));
-        enderecoMedico.setCidade(req.getParameter("medicoCidade"));
-        enderecoMedico.setEstado(req.getParameter("medicoEstado"));
-        enderecoMedico.setCEP(req.getParameter("medicoCEP"));
+        enderecoMedico.setLogradouro(req.getParameter("medico-logradouro"));
+        enderecoMedico.setNumero(Integer.parseInt(req.getParameter("medico-numero")));
+        enderecoMedico.setComplemento(req.getParameter("medico-complemento"));
+        enderecoMedico.setBairro(req.getParameter("medico-bairro"));
+        enderecoMedico.setCidade(req.getParameter("medico-cidade"));
+        enderecoMedico.setEstado(req.getParameter("medico-estado"));
+        enderecoMedico.setCEP(req.getParameter("medico-cep"));
         medico.setEndereco(enderecoMedico);
 
-        medico.setCRM(Integer.parseInt(req.getParameter("medicoCRM")));
-        medico.setEspecialidade(req.getParameter("medicoEspecialidade"));
-        medico.setClinica(req.getParameter("medicoClinica"));
+        medico.setCRM(Integer.parseInt(req.getParameter("medico-crm")));
+        medico.setEspecialidade(req.getParameter("medico-especialidade"));
+        medico.setClinica(req.getParameter("medico-clinica"));
 
         req.getRequestDispatcher("index.html").forward(req, resp);
     }

@@ -20,31 +20,31 @@ public class CreatePacienteServlet extends HttpServlet {
 
         Paciente paciente = new Paciente();
 
-        paciente.setNome(req.getParameter("pacienteNome"));
-        paciente.setCPF(Integer.parseInt(req.getParameter("pacienteCPF")));
-        paciente.setEmail(req.getParameter("pacienteEmail"));
-        paciente.setSenha(req.getParameter("pacienteSenha"));
+        paciente.setNome(req.getParameter("paciente-nome"));
+        paciente.setCPF(Integer.parseInt(req.getParameter("paciente-cpf")));
+        paciente.setEmail(req.getParameter("paciente-email"));
+        paciente.setSenha(req.getParameter("paciente-senha"));
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            paciente.setDataNascimento(dateFormat.parse(req.getParameter("pacienteDataNascimento")));
+            paciente.setDataNascimento(dateFormat.parse(req.getParameter("paciente-dataNascimento")));
         } catch (Exception e) {
             System.err.println("Error parsing date: " + e.getMessage());
         }
 
-        paciente.setTelefone(req.getParameter("pacienteTelefone"));
+        paciente.setTelefone(req.getParameter("paciente-telefone"));
 
         Endereco enderecoPaciente = new Endereco();
-        enderecoPaciente.setLogradouro(req.getParameter("pacienteLogradouro"));
-        enderecoPaciente.setNumero(Integer.parseInt(req.getParameter("pacienteNumero")));
-        enderecoPaciente.setComplemento(req.getParameter("pacienteComplemento"));
-        enderecoPaciente.setBairro(req.getParameter("pacienteBairro"));
-        enderecoPaciente.setCidade(req.getParameter("pacienteCidade"));
-        enderecoPaciente.setEstado(req.getParameter("pacienteEstado"));
-        enderecoPaciente.setCEP(req.getParameter("pacienteCEP"));
+        enderecoPaciente.setLogradouro(req.getParameter("paciente-logradouro"));
+        enderecoPaciente.setNumero(Integer.parseInt(req.getParameter("paciente-numero")));
+        enderecoPaciente.setComplemento(req.getParameter("paciente-complemento"));
+        enderecoPaciente.setBairro(req.getParameter("paciente-bairro"));
+        enderecoPaciente.setCidade(req.getParameter("paciente-cidade"));
+        enderecoPaciente.setEstado(req.getParameter("paciente-estado"));
+        enderecoPaciente.setCEP(req.getParameter("paciente-cep"));
         paciente.setEndereco(enderecoPaciente);
 
-        paciente.setDependentes(Integer.parseInt(req.getParameter("pacienteDependentes")));
+        paciente.setDependentes(Integer.parseInt(req.getParameter("paciente-dependentes")));
 
         req.getRequestDispatcher("index.html").forward(req, resp);
 
