@@ -68,7 +68,7 @@
 ![tela-alterar-dados-paciente](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/65b1d8d2-d874-4620-8dba-a1c1e4cfd221)
 
 *Tela alterar dados médico*
-![tela-cadastro-medico](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/850f83bf-2ee2-4f82-a01b-a7f23c8be31d)
+![tela-alterar-dados-medicos](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/4208d17d-99ca-4665-9d48-aa350b49d2c5)
 
 *Tela marcação de consultas (paciente)*
 ![tela-marcacao-consulta](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/43c48e28-28cb-4b9e-9d8e-330baa60e240)
