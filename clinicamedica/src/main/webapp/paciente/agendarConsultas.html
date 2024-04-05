@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>MedEasy</title>
+</head>
+
+<body>
+<header>
+    <!--Navbar-->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <h1 class="navbar-logo"><a href="../index.html">MedEasy</a></h1>
+            <ul class="navbar-links ms-auto">
+                <li><a href="../paciente/agendarConsultas.html">Agendar Consulta</a></li>
+                <li><a href="../paciente/consultas.html">Minhas Consultas</a></li>
+                <li><a href="../paciente/pacienteDados.html">Alterar Dados</a></li>
+                <li><a href="../index.html" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="agendarConsul-index">
+        <h1>Agendamento de Consulta</h1>
+        <div class="agendarConsul-main">
+            <div class="camposEsquerda-agendaConsul">
+                <div class="campos-agendarConsul">
+                    <h2>Especialidades:</h2>
+                    <select name="especialidade" id="especialidade">
+                        <option value="Cardiologia">Cardiologia</option>
+                        <option value="Dermatologiaseta">Dermatologiaseta</option>
+                        <option value="Endocrinologiaseta">Endocrinologiaseta</option>
+                        <option value="Gastroenterologiaseta">Gastroenterologiaseta</option>
+                        <option value="Geriatriaseta">Geriatriaseta</option>
+                        <option value="Ginecologiaseta">Ginecologiaseta</option>
+                        <option value="Mastologiaseta">Mastologiaseta</option>
+                        <option value="Nefrologiaseta">Nefrologiaseta</option>
+                        <option value="Neurologiaseta">Neurologiaseta</option>
+                        <option value="Oftalmologiaseta">Oftalmologiaseta</option>
+                        <option value="Oncologiaseta">Oncologiaseta</option>
+                        <option value="Ortopediaseta">Ortopediaseta</option>
+                        <option value="Otorrinolaringologiaseta">Otorrinolaringologiaseta</option>
+                        <option value="Pediatriaseta">Pediatriaseta</option>
+                        <option value="Psiquiatriaseta">Psiquiatriaseta</option>
+                        <option value="Urologia">Urologia</option>
+                    </select>
+                </div>
+
+                <div class="campos-agendarConsul">
+                    <h2>Clínica:</h2>
+                    <select name="clinica" id="clinica">
+                    </select>
+                </div>
+
+                <div class="campos-agendarConsul">
+                    <h2>Médico:</h2>
+                    <select name="medico" id="medico">
+                    </select>
+                </div>
+
+                <div class="campos-agendarConsul">
+                    <h2>Horários Disponíveis:</h2>
+                    <select name="horario" id="horario">
+                    </select>
+                </div>
+            </div>
+
+            <div class="camposDireita-agendaConsul">
+                <div class="campos-agendarConsul">
+                    <h2>Data: </h2>
+                    <label for="data"></label>
+                    <input type="date" id="data">
+                </div>
+            </div>
+        </div>
+        <div class="botoes-agendarConsul">
+            <button type="button" id="botão-cancelar">Cancelar</button>
+            <button type="button" id="botão-agendar">Agendar</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="rodape">
+        <h3 class="footer-logo">MedEasy</h3>
+        <div class="footer-container-medico">
+            <div class="contatos-aba-medico">
+                <ul>
+                    <li>
+                        <a href="#"
+                        ><img src="../img/phone.svg" alt="telefone" />(11) 3881-3637</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                        ><img src="../img/whatsapp.svg" alt="whatsapp" />(11)
+                            98066-7105</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                        ><img src="../img/email.svg" alt="email" />medeasy@gmail.com</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rodape-frase">
+        <h3>MedEasy - Projeto Integrador - 3ª Semestre</h3>
+    </div>
+</footer>
+
+<script src="../js/dropdown.js"></script>
+</body>

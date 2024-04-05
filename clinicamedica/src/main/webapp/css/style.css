@@ -554,3 +554,247 @@
         font-size: .9em;
         color: #0455BF;
     }
+
+     /* ---------------- horarios - Medico ----------------*/
+
+        #sair {
+             text-decoration: none;
+             color: var(--branco);
+             font-weight: 500;
+             padding: 1vh 2vw;
+             border-radius: 0.5em;
+             background-color: var(--azul-principal);
+             transition: 0.2s;
+        }
+
+        #sair:hover {
+            background-color: var(--azul-logo);
+        }
+
+        #sair img {
+            width: 0.9em;
+            margin-bottom: 0.1em;
+            vertical-align: middle;
+        }
+
+        .horarios-index h1 {
+             font-size: 2.0vw;
+             color: var(--azul-logo);
+             font-family: 'Baloo Tammudu 2', system-ui;
+             font-weight: 800;
+             text-align: center;
+             margin-top: 30px;
+        }
+
+        .horarios-index h2 {
+             font-size: 18px;
+             color: var(--azul-logo);
+             font-family: 'Baloo Tammudu 2', system-ui;
+             font-weight: 800;
+             margin-left: 285px;
+        }
+
+        .data-campo #data {
+             margin-left: 285px;
+             margin-bottom: 10px;
+             width: 25vw;
+             height: 5px;
+             background-color: var(--cinza);
+             padding: 20px;
+             border-radius: 8px;
+             max-width: 750px;
+             border: 2px solid var(--azul-principal);
+             margin-bottom: 30px;
+        }
+
+        .horarios-campo{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background-color: var(--cinza);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 0 auto;
+            max-width: 750px;
+            border: 2px solid var(--azul-principal);
+        }
+
+        .horario-option{
+            font-size: 16px;
+        }
+
+        #botão-salvar{
+            display: block;
+            margin: 20px auto;
+            width: 10vw;
+            height: 7vh;
+            font-family: 'Baloo Tammudu 2', system-ui;
+            color: var(--branco);
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 0.5em;
+            text-decoration: none;
+            background-color: var(--azul-principal);
+            border: 2px solid transparent;
+        }
+
+        #botão-salvar:hover {
+             background-color: var(--azul-logo);
+             pointer: click;
+        }
+
+        .footer-container-medico {
+            display: block;
+            justify-content: space-between;
+            margin: 2vh 5vw;
+        }
+
+        .contatos-aba-medico ul {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin-left: 50px;
+        }
+
+        .contatos-aba-medico li {
+             margin: 0 auto;
+        }
+
+        .contatos-aba-medico a {
+            text-decoration: none;
+            color: var(--azul-principal);
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+        }
+
+        .contatos-aba-medico img {
+            width: 1.5em;
+            margin-right: 0.5em;
+        }
+
+         /* ---------------- Agendar Consulta - Paciente ----------------*/
+
+        .agendarConsul-main {
+             display: flex;
+             justify-content: center;
+        }
+
+        .agendarConsul-index h1 {
+             font-size: 2.0vw;
+             color: var(--azul-logo);
+             font-family: 'Baloo Tammudu 2', system-ui;
+             font-weight: 800;
+             text-align: center;
+             margin-top: 30px;
+             margin-bottom: 10px;
+        }
+
+        .agendarConsul-index h2 {
+             font-size: 18px;
+             color: var(--azul-logo);
+             font-family: 'Baloo Tammudu 2', system-ui;
+             font-weight: 800;
+             margin-left: 285px;
+        }
+
+        .campos-agendarConsul #especialidade, #clinica,
+        #horario, #medico {
+             margin-left: 285px;
+             margin-bottom: 10px;
+             width: 25vw;
+             height: 5px;
+             background-color: var(--cinza);
+             padding: 20px;
+             border-radius: 8px;
+             max-width: 750px;
+             border: 2px solid var(--azul-principal);
+             margin-bottom: 30px;
+        }
+
+       .campos-agendarConsul select {
+             font-size: 18px;
+             color: var(--azul-logo);
+             font-family: 'Baloo Tammudu 2', system-ui;
+             font-weight: 800;
+             background-color: var(--cinza);
+             border: 2px solid var(--azul-principal);
+             cursor: pointer;
+       }
+
+       .campos-agendarConsul select option {
+        background-color: var(--cinza);
+        color: var(--azul-principal);
+        }
+
+        .camposEsquerda-agendaConsul {
+            flex: 1;
+            text-align: left;
+            margin-right: 20px;
+        }
+
+        .camposDireita-agendaConsul {
+            flex: 1;
+            text-align: left;
+            margin-left: 20px;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+        }
+
+        .camposDireita-agendaConsul h2 {
+             font-size: 18px;
+             color: var(--azul-logo);
+             font-family: 'Baloo Tammudu 2', system-ui;
+             font-weight: 800;
+             margin-left: 0;
+        }
+
+        .campos-agendarConsul #data {
+              margin-bottom: 10px;
+              width: 25vw;
+              height: 5px;
+              background-color: var(--cinza);
+              padding: 20px;
+              border-radius: 8px;
+              max-width: 750px;
+              border: 2px solid var(--azul-principal);
+              margin-bottom: 30px;
+        }
+
+        .botoes-agendarConsul {
+             text-align: center;
+        }
+
+        #botão-cancelar {
+              display: inline-block;
+              margin: 20px 10px;
+              width: 10vw;
+              height: 7vh;
+              font-family: 'Baloo Tammudu 2', system-ui;
+              color: var(--branco);
+              font-weight: 700;
+              font-size: 20px;
+              text-align: center;
+              border-radius: 0.5em;
+              text-decoration: none;
+              background-color: var(--vermelho);
+              border: 2px solid transparent;
+        }
+
+        #botão-agendar {
+              display: inline-block;
+              margin: 20px 10px;
+              width: 10vw;
+              height: 7vh;
+              font-family: 'Baloo Tammudu 2', system-ui;
+              color: var(--branco);
+              font-weight: 700;
+              font-size: 20px;
+              text-align: center;
+              border-radius: 0.5em;
+              text-decoration: none;
+              background-color: var(--verde);
+              border: 2px solid transparent;
+        }
