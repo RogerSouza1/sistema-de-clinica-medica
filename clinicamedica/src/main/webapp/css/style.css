@@ -375,10 +375,11 @@
 
     /*---------------- Formatação de Formulário ----------------*/
 
+
     .forms-container {
         padding: 2rem 5%;
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 2rem;
         align-items: center;
         text-align: center;
         border: 0.15rem solid var(--azul-principal);
@@ -391,7 +392,11 @@
 
     .forms-container h2 {
         font-family: 'Baloo Tammudu 2', system-ui;
-        font-size: 1.75rem;
+        font-size: 1.8vw;
+            
+            font-weight: 800;
+            text-align: center;
+            padding-bottom: 1vh;
     }
 
     .forms-container p {
@@ -414,7 +419,8 @@
         margin: 1vh 0;
         border-radius: 0.8rem;
         border: 0.15rem solid var(--azul-principal);
-        font-size: 1rem;
+        font-size: 1.5rem;
+        font-family: 'Poppins', sans-serif;
     }
 
     .forms-container button {
@@ -798,3 +804,49 @@
               background-color: var(--verde);
               border: 2px solid transparent;
         }
+
+         /* ---------------- Cadastro ----------------*/
+
+        .cadastro-medico {
+            background-color: #E9E9E9;
+            }
+
+        .cadastro-paciente{
+            background-color: #E9E9E9; 
+            
+            }
+
+
+         .areaExclusiva{
+            margin: 3% 0 3% ;
+            padding: 5%;
+            color: var(--azul-logo);
+            text-decoration: none;
+            font-size: 2vw;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            text-align: center;
+            padding-bottom: 1vh;
+         }
+         .caixa {
+            display: flex;
+          }
+          
+          .caixa-dividir {
+            margin-right: 10px;
+          }
+          
+          .caixa-dividir input {
+            width: 100%; /* Para garantir que os inputs ocupem a largura total da caixa-dividir */
+          }
+          
+          .caixa-dividir:nth-child(2) {
+            margin-right: 10px; /* Remover a margem à direita do último elemento caixa-dividir */
+          }
+
+          .caixa-ddd, .caixa-dividir{
+            width: 20%;
+            margin-right: 13%; /* Alterando a largura da caixa de DDD para 60% */
+          }
+          
+           
