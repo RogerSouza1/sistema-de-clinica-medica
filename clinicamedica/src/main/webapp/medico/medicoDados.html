@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>MedEasy</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
+                <ul class="navbar-links ms-auto">
+                    <li><a href="horarios.html">Horários</a></li>
+                    <li><a href="calendario.html">Calendário</a></li>
+                    <li><a href="#">Alterar Dados</a></li>
+                    <li><a href="../sobre.html" id="sair">Sair</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</body>
+
+<main>
+    <section id="alterarDados">
+        <h1>Alterar Dados</h1>
+        <div class="forms-container" id="alterarDados-container">
+            <h2>Dados Cadastrais</h2>
+            <form id="forms-alterar-dados-medico">
+                <input type="nome" id="alterar-nome-medico" name="nome" required placeholder="Nome" />
+                <input type="text" id="alterar-cpf-medico" name="cpf" required placeholder="CPF" />
+                <input list="especialidades" id="alterar-especialidade-medico" name="especialidade" required placeholder="Especialidade" />
+                <datalist>
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                </datalist>
+
+                <input list="clinicas" id="alterar-clinica-medico" name="clinica" required placeholder="Clinica"/>
+                <datalist>
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                    <option value="">
+                </datalist>
+
+                <input type="text" id="alterar-crm-medico" name="crm" required placeholder="CRM/SP"/>
+                <input type="email" id="alterar-email-medico" name="email" required placeholder="Email" />
+                <input type="email" id="alterar-confirmar-email-medico" name="email" required placeholder="Confirmar Email" />
+                <input type="password" id="alterar-senha-medico" name="senha" required placeholder="Senha" />
+                <input type="password" id="alterar-confirmar-senha-medico" name="senha" required placeholder="Confirmar Senha" />
+                <input type="date" id="alterar-data-medico" name="data" required placeholder="Data de Nascimento" />
+                
+                <div class="sub-forms-container">
+                    <input type="number" name="ddd" id="alterar-ddd-medico" required placeholder="DDD">
+                    <input type="text" name="telefone" id="alterar-telefone-medico" required placeholder="Telefone">
+                </div>
+
+                <div class="sub-forms-container">
+                    <input type="text" id="alterar-lougradouro-medico" name="lougradouro" required placeholder="Lougradouro">
+                    <input type="number" id="alterar-numero-medico" name="numero" required placeholder="Nº">
+                </div>
+
+                <input type="text" id="alterar-bairro-medico" name="bairro" required placeholder="Bairro">
+                <input type="text" id="aletar-cidade-medico" name="cidade" required placeholder="Cidade">
+
+                <div class="sub-forms-container">
+                    <input list="estados" id="alterar-estado-medico" name="estado" required placeholder="UF">
+                    <datalist id="estados">
+                        <option value="Acre">
+                        <option value="Alagoas">
+                        <option value="Amapá">
+                        <option value="Amazonas">
+                        <option value="Bahia">
+                        <option value="Ceará">
+                        <option value="Espírito Santo">
+                        <option value="Goiás">
+                        <option value="Maranhão">
+                        <option value="Mato Grosso">
+                        <option value="Mato Grosso do Sul">
+                        <option value="Minas Gerais">
+                        <option value="Pará">
+                        <option value="Paraíba">
+                        <option value="Paraná">
+                        <option value="Pernambuco">
+                        <option value="Piauí">
+                        <option value="Rio de Janeiro">
+                        <option value="Rio Grande do Norte">
+                        <option value="Rio Grande do Sul">
+                        <option value="Rondônia">
+                        <option value="Santa Catarina">
+                        <option value="São Paulo">
+                        <option value="Sergipe">
+                        <option value="Tocantins">
+                        <option value="Distrito Federal">
+                    </datalist>
+                    <input type="text" id="aletar-cep-medico" name="cep" required placeholder="CEP">
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<!--Footer-->
+<footer>
+    <div class="rodape" id="logado">
+        <h3 class="footer-logo">MedEasy</h3>
+        <div class="footer-container">
+            <div class="contatos">
+                <ul>
+                    <li>
+                        <a href="#"><img src="../img/phone.svg" alt="telefone" />(11) 3881-3637</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../img/whatsapp.svg" alt="whatsapp" />(11) 98066-7105</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../img/email.svg" alt="email" />medeasy@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rodape-frase">
+        <h3>MedEasy - Projeto Integrador - 3ª Semestre</h3>
+    </div>
+</footer>
+
+</html>
