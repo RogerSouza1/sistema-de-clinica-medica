@@ -1,9 +1,18 @@
 package br.com.clinicamedica.model;
 
 public class Medico extends Usuario{
+    Long idUsuario;
     String especialidade;
     String crm;
     String clinica;
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public String getEspecialidade() {
         return especialidade;

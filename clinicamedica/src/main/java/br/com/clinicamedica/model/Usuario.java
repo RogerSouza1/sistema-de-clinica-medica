@@ -8,6 +8,7 @@ public abstract class Usuario {
     private String dataNascimento;
     private String telefone;
     private Endereco endereco;
+    private boolean paciente;
 
     public String getNome() {
         return nome;
@@ -63,5 +64,13 @@ public abstract class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public boolean isPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(boolean paciente) {
+        this.paciente = paciente;
     }
 }

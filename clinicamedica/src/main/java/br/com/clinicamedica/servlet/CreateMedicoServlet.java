@@ -1,7 +1,10 @@
 package br.com.clinicamedica.servlet;
 
+import br.com.clinicamedica.dao.MedicoDAO;
+import br.com.clinicamedica.model.Endereco;
+import br.com.clinicamedica.model.Medico;
+
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,31 +12,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/create-medico")
+@WebServlet("/cadastrar-medico")
 public class CreateMedicoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String nome = req.getParameter("medico-nome");
-        int cpf = Integer.parseInt(req.getParameter("medico-cpf"));
-        String email = req.getParameter("medico-email");
-        String senha = req.getParameter("medico-senha");
-        String dataNascimentoStr = req.getParameter("medico-dataNascimento");
-        String telefone = req.getParameter("medico-telefone");
+        Medico medico = new Medico();
+        Endereco endereco = new Endereco();
 
-        String logradouro = req.getParameter("medico-logradouro");
-        int numero = Integer.parseInt(req.getParameter("medico-numero"));
-        String complemento = req.getParameter("medico-complemento");
-        String bairro = req.getParameter("medico-bairro");
-        String cidade = req.getParameter("medico-cidade");
-        String estado = req.getParameter("medico-estado");
-        String cep = req.getParameter("medico-cep");
+        medico.setPaciente(false);
 
-        int crm = Integer.parseInt(req.getParameter("medico-crm"));
-        String especialidade = req.getParameter("medico-especialidade");
-        String clinica = req.getParameter("medico-clinica");
+        endereco.setLogradouro(req.getParameter("logradouro-medico"));
+        endereco.setNumero(Integer.parseInt(req.getParameter("numero-medico")));
+        endereco.setBairro(req.getParameter("bairro-medico"));
+        endereco.setCidade(req.getParameter("cidade-medico"));
+        endereco.setEstado(req.getParameter("estado-medico"));
+        endereco.setCep(req.getParameter("cep-medico"));
 
-        req.getRequestDispatcher("index.html").forward(req, resp);
+        medico.setNome(req.getParameter("nome-medico"));
+        medico.setCpf(req.getParameter("cpf-medico"));
+        medico.setEmail(req.getParameter("email-medico"));
+        medico.setSenha(req.getParameter("senha-medico"));
+        medico.setDataNascimento(req.getParameter("data-nascimento-medico"));
+        medico.setTelefone(req.getParameter("telefone-medico"));
+        medico.setEndereco(endereco);
+
+        medico.setEspecialidade(req.getParameter("especialidade-medico"));
+        medico.setCrm(req.getParameter("crm-medico"));
+        medico.setClinica(req.getParameter("clinica-medico"));
+
+
+        new MedicoDAO().cadastrarMedico(medico);
+
+        req.getRequestDispatcher("login.html").forward(req, resp);
     }
 }
