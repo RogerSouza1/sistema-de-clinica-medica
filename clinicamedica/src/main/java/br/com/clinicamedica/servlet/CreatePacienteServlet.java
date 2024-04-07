@@ -1,11 +1,10 @@
 package br.com.clinicamedica.servlet;
 
-import br.com.clinicamedica.dao.PacienteDAO;
+import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Paciente;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +24,6 @@ public class CreatePacienteServlet extends HttpServlet {
 
 
 
-        new PacienteDAO().cadastrarPaciente(paciente);
-
+        new UsuarioDAO().cadastrarUsuario(paciente);
     }
 }

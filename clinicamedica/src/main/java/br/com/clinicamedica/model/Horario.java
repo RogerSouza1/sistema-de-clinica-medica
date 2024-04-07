@@ -59,7 +59,7 @@ public class Horario {
             sb.append(entry.getKey()).append(": ").append(entry.getValue() ? "Disponível" : "Ocupado").append(", ");
         }
 
-        sb.setLength(sb.length() - 2); // Remove a última vírgula e espaço
+        sb.setLength(sb.length() - 2);
         sb.append("}");
 
         return sb.toString();

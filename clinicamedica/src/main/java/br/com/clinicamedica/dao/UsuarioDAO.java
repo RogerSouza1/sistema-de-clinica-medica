@@ -1,17 +1,34 @@
 package br.com.clinicamedica.dao;
 
-import br.com.clinicamedica.model.Medico;
-import br.com.clinicamedica.model.Paciente;
-
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class MedicoDAO {
+import br.com.clinicamedica.model.Medico;
+import br.com.clinicamedica.model.Paciente;
 
-    public void cadastrarMedico(Medico medico) {
+
+public class UsuarioDAO {
+    
+    private boolean validarUsuario (String email, String cpf){
+        return true;
+    }
+
+    public void redefinicaoSenha (String novaSenha, String email, String cpf){
+
+        if (validarUsuario(email, cpf)){
+
+        } else {
+
+        }
+    }
+
+    public void cadastrarUsuario (Paciente paciente){
+
+    }
+
+    public void cadastrarUsuario (Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
         final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
         final String sqlMedico = "INSERT INTO medico (id_usuario, especialidade, crm, clinica) VALUES (?, ?, ?, ?)";
@@ -85,4 +102,22 @@ public class MedicoDAO {
         }
     }
 
+    public void atualizarUsuario (Paciente paciente){
+
+    }
+
+    public void atualizarUsuario (Medico medico){
+
+    }
+
+    public void deletarUsuario (Paciente paciente){
+
+    }
+
+    public void deletarUsuario (Medico medico){
+
+    }
+
+
 }
+

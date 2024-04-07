@@ -4,8 +4,6 @@ public class Disponibilidade {
     Horario horario;
     Medico medico;
     String data;
-    boolean confirmada;
-    boolean cancelada;
 
     public Horario getHorario() {
         return horario;
@@ -31,19 +29,5 @@ public class Disponibilidade {
         this.data = data;
     }
 
-    public boolean isConfirmada() {
-        return confirmada;
-    }
-
-    public void setConfirmada(boolean confirmada) {
-        this.confirmada = confirmada;
-    }
-
-    public boolean isCancelada() {
-        return cancelada;
-    }
-
-    public void setCancelada(boolean cancelada) {
-        this.cancelada = cancelada;
-    }
+    
 }

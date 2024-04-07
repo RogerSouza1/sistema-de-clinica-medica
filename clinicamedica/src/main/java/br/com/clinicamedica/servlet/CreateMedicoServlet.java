@@ -1,6 +1,6 @@
 package br.com.clinicamedica.servlet;
 
-import br.com.clinicamedica.dao.MedicoDAO;
+import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
 
@@ -43,7 +43,7 @@ public class CreateMedicoServlet extends HttpServlet {
         medico.setClinica(req.getParameter("clinica-medico"));
 
 
-        new MedicoDAO().cadastrarMedico(medico);
+        new UsuarioDAO().cadastrarUsuario(medico);
 
         req.getRequestDispatcher("login.html").forward(req, resp);
     }
