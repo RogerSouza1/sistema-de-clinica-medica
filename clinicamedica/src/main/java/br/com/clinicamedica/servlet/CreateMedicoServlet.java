@@ -4,13 +4,12 @@ import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
 
-import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @WebServlet("/cadastrar-medico")
 public class CreateMedicoServlet extends HttpServlet {
