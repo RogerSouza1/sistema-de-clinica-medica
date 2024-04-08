@@ -71,20 +71,29 @@
                 <input type="password" id="alterar-confirmar-senha-medico" name="senha" required placeholder="Confirmar Senha" />
                 <input type="date" id="alterar-data-medico" name="data" required placeholder="Data de Nascimento" />
                 
-                <div class="sub-forms-container">
+                <div class="dividir-caixa">
+                    <div class="caixa-ddd">
                     <input type="number" name="ddd" id="alterar-ddd-medico" required placeholder="DDD">
+                    </div>
+                    <div class="caixa-telefone">
                     <input type="text" name="telefone" id="alterar-telefone-medico" required placeholder="Telefone">
                 </div>
+                </div>
 
-                <div class="sub-forms-container">
+                <div class="dividir-caixa">
+                    <div class="caixa-lougradouro">
                     <input type="text" id="alterar-lougradouro-medico" name="lougradouro" required placeholder="Lougradouro">
+                    </div>
+                    <div class="caixa-numero">
                     <input type="number" id="alterar-numero-medico" name="numero" required placeholder="Nº">
+                    </div>
                 </div>
 
                 <input type="text" id="alterar-bairro-medico" name="bairro" required placeholder="Bairro">
                 <input type="text" id="aletar-cidade-medico" name="cidade" required placeholder="Cidade">
 
-                <div class="sub-forms-container">
+                <div class="dividir-caixa">
+                    <div class="caixa-estado">
                     <input list="estados" id="alterar-estado-medico" name="estado" required placeholder="UF">
                     <datalist id="estados">
                         <option value="Acre">
@@ -114,7 +123,10 @@
                         <option value="Tocantins">
                         <option value="Distrito Federal">
                     </datalist>
+                </div>
+                <div class="caixa-cep">
                     <input type="text" id="aletar-cep-medico" name="cep" required placeholder="CEP">
+                </div>
                 </div>
 
                 <button type="submit">Enviar</button>
