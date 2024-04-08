@@ -36,15 +36,15 @@
 </body>
 
 <main>
-  <div class="cadastro-medico">
+  <div class="cadastro">
     <h1 class="areaExclusiva">Área Exclusiva</h1>
     <div class="forms-container">
       <h2>Cadastro</h2>
       <form>
-        <input type="nome" id="nome-medico" name="nome" required placeholder="Nome" />
-        <input type="text" id="cpf-medico" name="cpf" required placeholder="CPF" />
+        <input type="nome" id="medico-nome" name="medico-nome" required placeholder="Nome" />
+        <input type="text" id="medico-cpf" name="medico-cpf" required placeholder="CPF" />
 
-        <input list="especialidades" id="especialidade-medico" name="especialidade" required
+        <input list="especialidades" id="medico-especialidade" name="medico-especialidade" required
           placeholder="Especialidade" />
         <datalist id="especialidade">
           <option value="Cardiologia">
@@ -65,7 +65,7 @@
           <option value="Urologia">
         </datalist>
 
-        <input list="clinicas" id="clinica-medico" name="clinica" required placeholder="Clinica" />
+        <input list="clinicas" id="medico-clinica" name="medico-clinica" required placeholder="Clinica" />
         <datalist>
           <option value="">
           <option value="">
@@ -78,38 +78,38 @@
           <option value="">
         </datalist>
 
-        <input type="text" id="crm-medico" name="crm" required placeholder="CRM/SP" />
-        <input type="email" id="email-medico" name="email" required placeholder="Email" />
-        <input type="email" id="confirmar-email-medico" name="email" required placeholder="Confirmar Email" />
-        <input type="password" id="senha-medico" name="senha" required placeholder="Senha" />
-        <input type="password" id="confirmar-senha-medico" name="senha" required placeholder="Confirmar Senha" />
-        <input type="date" id="data-medico" name="data" required />
+        <input type="text" id="medico-crm" name="medico-crm" required placeholder="CRM/SP" />
+        <input type="email" id="medico-email" name="medico-email" required placeholder="Email" />
+        <input type="email" id="medico-confirmar-email" name="medico-email" required placeholder="Confirmar Email" />
+        <input type="password" id="medico-senha" name="medico-senha" required placeholder="Senha" />
+        <input type="password" id="medico-confirmar-senha" name="medico-senha" required placeholder="Confirmar Senha" />
+        <input type="date" id="medico-data" name="medico-data" required />
 
         <div class="dividir-caixa">
           <div class="caixa-ddd">
-            <input type="number" name="ddd" id="ddd-medico" required placeholder="DDD">
+            <input type="number" name="medico-ddd" id="medico-ddd" required placeholder="DDD">
           </div>
           <div class="caixa-telefone">
-            <input type="text" name="telefone" id="telefone-medico" required placeholder="Telefone">
+            <input type="text" name="medico-telefone" id="medico-telefone" required placeholder="Telefone">
           </div>
         </div>
 
 
         <div class="dividir-caixa">
           <div class="caixa-lougradouro">
-            <input type="text" id="lougradouro-medico" name="lougradouro" required placeholder="Lougradouro">
+            <input type="text" id="medico-lougradouro" name="medico-lougradouro" required placeholder="Lougradouro">
           </div>
           <div class="caixa-numero">
-            <input type="number" id="numero-medico" name="numero" required placeholder="Nº">
+            <input type="number" id="medico-numero" name="medico-numero" required placeholder="Nº">
           </div>
         </div>
 
-        <input type="text" id="bairro-medico" name="bairro" required placeholder="Bairro">
-        <input type="text" id="aletar-cidade-medico" name="cidade" required placeholder="Cidade">
+        <input type="text" id="medico-bairro" name="medico-bairro" required placeholder="Bairro">
+        <input type="text" id="medico-cidade" name="medico-cidade" required placeholder="Cidade">
 
         <div class="dividir-caixa">
           <div class="caixa-estado">
-            <input list="estados" id="estado-medico" name="estado" required placeholder="UF">
+            <input list="estados" id="medico-estado" name="medico-estado" required placeholder="UF">
             <datalist id="estados">
               <option value="Acre">
               <option value="Alagoas">
@@ -140,7 +140,7 @@
             </datalist>
           </div>
           <div class="caixa-cep">
-            <input type="text" id="aletar-cep-medico" name="cep" required placeholder="CEP">
+            <input type="text" id="medico-cep" name="medico-cep" required placeholder="CEP">
           </div>
         </div>
 
