@@ -25,7 +25,76 @@ public class UsuarioDAO {
     }
 
     public void cadastrarUsuario (Paciente paciente){
+        final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        final String sqlPaciente = "INSERT INTO paciente (id_usuario, dependente) VALUES (?, ?)";
 
+        final String url = "jdbc:h2:~/test";
+        final String usuario = "sa";
+        final String senha = "sa";
+
+        try {
+            // Cadastrar endereço
+            Connection connection = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Sucesso ao conectar no banco de dados");
+
+            PreparedStatement psEndereco = connection.prepareStatement(sqlEndereco);
+
+            psEndereco.setString(1, paciente.getEndereco().getLogradouro());
+            psEndereco.setInt(2, paciente.getEndereco().getNumero());
+            psEndereco.setString(3, paciente.getEndereco().getBairro());
+            psEndereco.setString(4, paciente.getEndereco().getCidade());
+            psEndereco.setString(5, paciente.getEndereco().getEstado());
+            psEndereco.setString(6, paciente.getEndereco().getCep());
+
+            psEndereco.execute();
+            System.out.println("Endereço cadastrado com sucesso");
+
+            ResultSet rs = psEndereco.getGeneratedKeys();
+            Long idEndereco = null;
+            if(rs.next()){
+                idEndereco = rs.getLong(1);
+            }
+
+            psEndereco.close();
+
+            //Inserir um Usuário
+            PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario);
+
+
+            psUsuario.setString(1, paciente.getNome());
+            psUsuario.setString(2, paciente.getEmail());
+            psUsuario.setString(3, paciente.getSenha());
+            psUsuario.setString(4, paciente.getCpf());
+            psUsuario.setString(5, paciente.getDataNascimento());
+            psUsuario.setString(6, paciente.getTelefone());
+            psUsuario.setLong(7, idEndereco);
+            psUsuario.setBoolean(8, true);
+
+            psUsuario.execute();
+            System.out.println("Usuário cadastrado com sucesso");
+
+            ResultSet rsUsuario = psUsuario.getGeneratedKeys();
+            Long idUsuario = null;
+            if(rsUsuario.next()) {
+                idUsuario = rsUsuario.getLong(1);
+            }
+            psUsuario.close();
+
+            // Inserir um Paciente
+            PreparedStatement psPaciente = connection.prepareStatement(sqlPaciente);
+            psPaciente.setLong(1, idUsuario);
+            psPaciente.setInt(2, paciente.getDependentes());
+
+            psPaciente.execute();
+            System.out.println("Paciente cadastrado com sucesso");
+
+            psPaciente.close();
+
+        }catch (Exception e){
+            System.out.println("Erro ao inserir dados no Banco: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void cadastrarUsuario (Medico medico) {
@@ -79,6 +148,7 @@ public class UsuarioDAO {
 
             ResultSet rsUsuario = psUsuario.getGeneratedKeys();
             Long idUsuario = null;
+
             if(rsUsuario.next()) {
                 idUsuario = rsUsuario.getLong(1);
             }
@@ -117,7 +187,6 @@ public class UsuarioDAO {
     public void deletarUsuario (Medico medico){
 
     }
-
 
 }
 
