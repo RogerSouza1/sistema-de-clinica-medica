@@ -29,5 +29,5 @@ public class Disponibilidade {
         this.data = data;
     }
 
-    
+
 }

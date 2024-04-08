@@ -5,7 +5,7 @@ import br.com.clinicamedica.model.Disponibilidade;
 
 public class DisponibilidadeDAO {
 
-    public void atualizarDisponibilidade (Disponibilidade disponibilidade) {
+    public void atualizarHorarios (Disponibilidade disponibilidade) {
 
     }
     

@@ -1,30 +1,33 @@
 package br.com.clinicamedica.dao;
 
+import br.com.clinicamedica.model.Horario;
+import br.com.clinicamedica.model.Medico;
+import br.com.clinicamedica.model.Paciente;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import br.com.clinicamedica.model.Medico;
-import br.com.clinicamedica.model.Paciente;
+import java.util.Collections;
+import java.util.List;
 
 
 public class UsuarioDAO {
-    
-    private boolean validarUsuario (String email, String cpf){
+
+    private boolean validarUsuario(String email, String cpf) {
         return true;
     }
 
-    public void redefinicaoSenha (String novaSenha, String email, String cpf){
+    public void redefinicaoSenha(String novaSenha, String email, String cpf) {
 
-        if (validarUsuario(email, cpf)){
+        if (validarUsuario(email, cpf)) {
 
         } else {
 
         }
     }
 
-    public void cadastrarUsuario (Paciente paciente){
+    public void cadastrarUsuario(Paciente paciente) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
         final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
         final String sqlPaciente = "INSERT INTO paciente (id_usuario, dependente) VALUES (?, ?)";
@@ -52,7 +55,7 @@ public class UsuarioDAO {
 
             ResultSet rs = psEndereco.getGeneratedKeys();
             Long idEndereco = null;
-            if(rs.next()){
+            if (rs.next()) {
                 idEndereco = rs.getLong(1);
             }
 
@@ -76,7 +79,7 @@ public class UsuarioDAO {
 
             ResultSet rsUsuario = psUsuario.getGeneratedKeys();
             Long idUsuario = null;
-            if(rsUsuario.next()) {
+            if (rsUsuario.next()) {
                 idUsuario = rsUsuario.getLong(1);
             }
             psUsuario.close();
@@ -91,13 +94,13 @@ public class UsuarioDAO {
 
             psPaciente.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erro ao inserir dados no Banco: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public void cadastrarUsuario (Medico medico) {
+    public void cadastrarUsuario(Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
         final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
         final String sqlMedico = "INSERT INTO medico (id_usuario, especialidade, crm, clinica) VALUES (?, ?, ?, ?)";
@@ -125,7 +128,7 @@ public class UsuarioDAO {
 
             ResultSet rs = psEndereco.getGeneratedKeys();
             Long idEndereco = null;
-            if(rs.next()){
+            if (rs.next()) {
                 idEndereco = rs.getLong(1);
             }
 
@@ -149,7 +152,7 @@ public class UsuarioDAO {
             ResultSet rsUsuario = psUsuario.getGeneratedKeys();
             Long idUsuario = null;
 
-            if(rsUsuario.next()) {
+            if (rsUsuario.next()) {
                 idUsuario = rsUsuario.getLong(1);
             }
             psUsuario.close();
@@ -172,20 +175,40 @@ public class UsuarioDAO {
         }
     }
 
-    public void atualizarUsuario (Paciente paciente){
+    public void atualizarUsuario(Paciente paciente) {
 
     }
 
-    public void atualizarUsuario (Medico medico){
+    public void atualizarUsuario(Medico medico) {
 
     }
 
-    public void deletarUsuario (Paciente paciente){
+    public void deletarUsuario(Paciente paciente) {
 
     }
 
-    public void deletarUsuario (Medico medico){
+    public void deletarUsuario(Medico medico) {
 
+    }
+
+    public boolean realizarLogin(String email, String senha) {
+        return true;
+    }
+
+    public List<String> buscarEspecialidades() {
+        return Collections.emptyList();
+    }
+
+    public List<String> buscarClinicas(String especialidade) {
+        return Collections.emptyList();
+    }
+
+    public List<Medico> buscarMedicos(String especialidade, String clinica) {
+        return Collections.emptyList();
+    }
+
+    public List<Horario> buscarHorario(String data, Medico medico) {
+        return Collections.emptyList();
     }
 
 }
