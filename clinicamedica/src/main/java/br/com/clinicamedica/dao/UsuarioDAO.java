@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -25,6 +26,14 @@ public class UsuarioDAO {
         } else {
 
         }
+    }
+
+    public HashMap<String, Boolean> realizarLogin(String CPF, String senha){
+
+        // Verificar se o usuário é um paciente ou médico = String (isPaciente, isMedico)
+        // Verificar se o cadastro é válido = Boolean (true, false)
+
+        return new HashMap<>();
     }
 
     public void cadastrarUsuario(Paciente paciente) {
@@ -55,6 +64,7 @@ public class UsuarioDAO {
 
             ResultSet rs = psEndereco.getGeneratedKeys();
             Long idEndereco = null;
+            
             if (rs.next()) {
                 idEndereco = rs.getLong(1);
             }
@@ -79,6 +89,7 @@ public class UsuarioDAO {
 
             ResultSet rsUsuario = psUsuario.getGeneratedKeys();
             Long idUsuario = null;
+            
             if (rsUsuario.next()) {
                 idUsuario = rsUsuario.getLong(1);
             }
@@ -94,11 +105,12 @@ public class UsuarioDAO {
 
             psPaciente.close();
 
-        } catch (Exception e) {
+        }  catch (Exception e)  {
             System.out.println("Erro ao inserir dados no Banco: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 
     public void cadastrarUsuario(Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
@@ -128,7 +140,7 @@ public class UsuarioDAO {
 
             ResultSet rs = psEndereco.getGeneratedKeys();
             Long idEndereco = null;
-            if (rs.next()) {
+            if  (rs.next())  {
                 idEndereco = rs.getLong(1);
             }
 
@@ -152,7 +164,7 @@ public class UsuarioDAO {
             ResultSet rsUsuario = psUsuario.getGeneratedKeys();
             Long idUsuario = null;
 
-            if (rsUsuario.next()) {
+            if  (rsUsuario.next()) {
                 idUsuario = rsUsuario.getLong(1);
             }
             psUsuario.close();
@@ -189,10 +201,6 @@ public class UsuarioDAO {
 
     public void deletarUsuario(Medico medico) {
 
-    }
-
-    public boolean realizarLogin(String email, String senha) {
-        return true;
     }
 
     public List<String> buscarEspecialidades() {
