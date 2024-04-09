@@ -64,7 +64,7 @@ public class UsuarioDAO {
 
             ResultSet rs = psEndereco.getGeneratedKeys();
             Long idEndereco = null;
-            if (rs.next()) {
+            
             if (rs.next()) {
                 idEndereco = rs.getLong(1);
             }
@@ -89,7 +89,7 @@ public class UsuarioDAO {
 
             ResultSet rsUsuario = psUsuario.getGeneratedKeys();
             Long idUsuario = null;
-            if (rsUsuario.next()) {
+            
             if (rsUsuario.next()) {
                 idUsuario = rsUsuario.getLong(1);
             }
@@ -111,7 +111,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void cadastrarUsuario(Medico medico) {
+
     public void cadastrarUsuario(Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
         final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -188,16 +188,13 @@ public class UsuarioDAO {
     }
 
     public void atualizarUsuario(Paciente paciente) {
-    public void atualizarUsuario(Paciente paciente) {
 
     }
 
     public void atualizarUsuario(Medico medico) {
-    public void atualizarUsuario(Medico medico) {
 
     }
 
-    public void deletarUsuario(Paciente paciente) {
     public void deletarUsuario(Paciente paciente) {
 
     }
