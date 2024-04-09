@@ -27,15 +27,15 @@
 </body>
 
 <main>
-    <div class="cadastro-medico">
+    <div class="cadastro">
     
         <h1 class="areaExclusiva">Alterar Dados</h1>
         <div class="forms-container" id="alterarDados-container">
             <h2>Dados Cadastrais</h2>
             <form id="forms-alterar-dados-medico">
-                <input type="nome" id="alterar-nome-medico" name="nome" required placeholder="Nome" />
-                <input type="text" id="alterar-cpf-medico" name="cpf" required placeholder="CPF" />
-                <input list="especialidades" id="alterar-especialidade-medico" name="especialidade" required placeholder="Especialidade" />
+                <input type="nome" id="alterar-nome-medico" name="medico-nome" required placeholder="Nome" />
+                <input type="text" id="alterar-cpf-medico" name="medico-cpf" required placeholder="CPF" />
+                <input list="especialidades" id="alterar-especialidade-medico" name="medico-especialidade" required placeholder="Especialidade" />
                 <datalist>
                     <option value="">
                     <option value="">
@@ -51,7 +51,7 @@
                     <option value="">
                 </datalist>
 
-                <input list="clinicas" id="alterar-clinica-medico" name="clinica" required placeholder="Clinica"/>
+                <input list="clinicas" id="alterar-clinica-medico" name="medico-clinica" required placeholder="Clinica"/>
                 <datalist>
                     <option value="">
                     <option value="">
@@ -64,28 +64,37 @@
                     <option value="">
                 </datalist>
 
-                <input type="text" id="alterar-crm-medico" name="crm" required placeholder="CRM/SP"/>
-                <input type="email" id="alterar-email-medico" name="email" required placeholder="Email" />
-                <input type="email" id="alterar-confirmar-email-medico" name="email" required placeholder="Confirmar Email" />
-                <input type="password" id="alterar-senha-medico" name="senha" required placeholder="Senha" />
-                <input type="password" id="alterar-confirmar-senha-medico" name="senha" required placeholder="Confirmar Senha" />
-                <input type="date" id="alterar-data-medico" name="data" required placeholder="Data de Nascimento" />
+                <input type="text" id="alterar-crm-medico" name="medico-crm" required placeholder="CRM/SP"/>
+                <input type="email" id="alterar-email-medico" name="medico-email" required placeholder="Email" />
+                <input type="email" id="alterar-confirmar-email-medico" name="medico-email" required placeholder="Confirmar Email" />
+                <input type="password" id="alterar-senha-medico" name="medico-senha" required placeholder="Senha" />
+                <input type="password" id="alterar-confirmar-senha-medico" name="medico-senha" required placeholder="Confirmar Senha" />
+                <input type="date" id="alterar-data-medico" name="medico-data" required placeholder="Data de Nascimento" />
                 
-                <div class="sub-forms-container">
-                    <input type="number" name="ddd" id="alterar-ddd-medico" required placeholder="DDD">
-                    <input type="text" name="telefone" id="alterar-telefone-medico" required placeholder="Telefone">
+                <div class="dividir-caixa">
+                    <div class="caixa-ddd">
+                    <input type="number" name="medico-ddd" id="alterar-ddd-medico" required placeholder="DDD">
+                    </div>
+                    <div class="caixa-telefone">
+                    <input type="text" name="medico-telefone" id="alterar-telefone-medico" required placeholder="Telefone">
+                </div>
                 </div>
 
-                <div class="sub-forms-container">
-                    <input type="text" id="alterar-lougradouro-medico" name="lougradouro" required placeholder="Lougradouro">
-                    <input type="number" id="alterar-numero-medico" name="numero" required placeholder="Nº">
+                <div class="dividir-caixa">
+                    <div class="caixa-lougradouro">
+                    <input type="text" id="alterar-lougradouro-medico" name="medico-lougradouro" required placeholder="Lougradouro">
+                    </div>
+                    <div class="caixa-numero">
+                    <input type="number" id="alterar-numero-medico" name="medico-numero" required placeholder="Nº">
+                    </div>
                 </div>
 
-                <input type="text" id="alterar-bairro-medico" name="bairro" required placeholder="Bairro">
-                <input type="text" id="aletar-cidade-medico" name="cidade" required placeholder="Cidade">
+                <input type="text" id="alterar-bairro-medico" name="medico-bairro" required placeholder="Bairro">
+                <input type="text" id="aletar-cidade-medico" name="medico-cidade" required placeholder="Cidade">
 
-                <div class="sub-forms-container">
-                    <input list="estados" id="alterar-estado-medico" name="estado" required placeholder="UF">
+                <div class="dividir-caixa">
+                    <div class="caixa-estado">
+                    <input list="estados" id="alterar-estado-medico" name="medico-estado" required placeholder="UF">
                     <datalist id="estados">
                         <option value="Acre">
                         <option value="Alagoas">
@@ -114,7 +123,10 @@
                         <option value="Tocantins">
                         <option value="Distrito Federal">
                     </datalist>
-                    <input type="text" id="aletar-cep-medico" name="cep" required placeholder="CEP">
+                </div>
+                <div class="caixa-cep">
+                    <input type="text" id="aletar-cep-medico" name="medico-cep" required placeholder="CEP">
+                </div>
                 </div>
 
                 <button type="submit">Enviar</button>
