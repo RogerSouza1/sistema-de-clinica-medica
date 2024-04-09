@@ -377,7 +377,7 @@
 
 
     .forms-container {
-        padding: 2rem 5%;
+        padding: 2rem 5% ;
         font-weight: 700;
         font-size: 2rem;
         align-items: center;
@@ -393,10 +393,10 @@
     .forms-container h2 {
         font-family: 'Baloo Tammudu 2', system-ui;
         font-size: 1.8vw;
-            
-            font-weight: 800;
-            text-align: center;
-            padding-bottom: 1vh;
+        padding-top: -8%;    
+        font-weight: 800;
+        text-align: center;
+        padding-bottom: 1vh;
     }
 
     .forms-container p {
@@ -408,8 +408,7 @@
     .forms-container form {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        margin-top: 2vh;
+        margin-top: -1vh;
     }
 
     .forms-container input {
@@ -425,7 +424,7 @@
 
     .forms-container button {
         width: 8rem;
-        height: 2.5rem;
+        height: 3rem;
         padding: auto;
         margin: 3vh 0;
         border-radius: 0.8rem;
@@ -435,18 +434,16 @@
         font-weight: 500;
         transition: 0.2s;
         font-family: 'Poppins', sans-serif;
-        font-size: 1rem;
+        font-size: 1.5rem;
+        margin: 0 40% 0;
+        
+        
     }
 
     .forms-container button:hover {
         background-color: var(--azul-logo);
         cursor: pointer;
     }
-
-
-
-
-
 
 
 
@@ -514,9 +511,12 @@
 
     /*----------------------------------------Login---------------------------------------------------------------*/
     .areaExcl{
-        margin: 20% 0 10% ;
-    
-        margin-left: 20%;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        font-size:x-large;
+        margin-top: 2em;
+        margin-left: 43%;
+        padding-top: 1.5em;
         }
     
     .telaLogin{
@@ -540,25 +540,28 @@
 
     .primeiroAcesso{
         font-family: 'Poppins', sans-serif;
+        margin-left: .2em;
     }
 
     .senha{
         font-family: 'Poppins', sans-serif;
-        margin-right: 3em;
+        margin-right: 13em;
         
     }
 
     .linkCad{
         font-family: 'Poppins', sans-serif;
-        font-size: .6em;
-        color: #0455BF;
+        font-size: .45em;
         margin-left: .5em;
+        color:var(--azul-logo);
+        font-weight: 400;
     }
 
     .linkSenha{
         font-family: 'Poppins', sans-serif;
         font-size: .9em;
         color: #0455BF;
+        margin-right: 9em;
     }
 
      /* ---------------- horarios - Medico ----------------*/
@@ -807,19 +810,15 @@
 
          /* ---------------- Cadastro ----------------*/
 
-        .cadastro-medico {
+        .cadastro{
             background-color: #E9E9E9;
-            }
-
-        .cadastro-paciente{
-            background-color: #E9E9E9; 
             
             }
 
 
          .areaExclusiva{
-            margin: 3% 0 3% ;
-            padding: 5%;
+            margin: 3% 0 -1% ;
+            padding: 2%;
             color: var(--azul-logo);
             text-decoration: none;
             font-size: 2vw;
@@ -828,25 +827,42 @@
             text-align: center;
             padding-bottom: 1vh;
          }
-         .caixa {
+         
+
+         .dividir-caixa {
             display: flex;
+            gap: 50px; /* Adicionando um espaçamento entre os elementos */
+             
           }
           
-          .caixa-dividir {
-            margin-right: 10px;
-          }
+          .caixa-ddd {
+            width: 20%; /* Definindo a largura da caixa de DDD */
+            padding-right: 10px; /* Adicionando um espaçamento à direita */
+           
+        }
           
-          .caixa-dividir input {
-            width: 100%; /* Para garantir que os inputs ocupem a largura total da caixa-dividir */
-          }
-          
-          .caixa-dividir:nth-child(2) {
-            margin-right: 10px; /* Remover a margem à direita do último elemento caixa-dividir */
+          .caixa-telefone {
+            width:70%;
           }
 
-          .caixa-ddd, .caixa-dividir{
-            width: 20%;
-            margin-right: 13%; /* Alterando a largura da caixa de DDD para 60% */
+          .caixa-lougradouro{
+            width: 70%; /* Definindo a largura da caixa de DDD */
+            padding-right: 10px; /* Adicionando um espaçamento à direita */
+           text-align: justify; 
           }
+
+          .caixa-numero{
+            width:20%;
+          }
+
+          .caixa-estado {
+            width: 20%; /* Definindo a largura da caixa de DDD */
+            padding-right: 10px; /* Adicionando um espaçamento à direita */
+            
+        }
           
-           
+          .caixa-cep {
+            width:70%;
+          }
+
+   
