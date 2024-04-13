@@ -200,10 +200,85 @@
 
     /*Especialidades carrossel*/
     .especialidades-index-container {
-        padding: 2% 5%;
+        padding: 1vw 2vw;
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 2vw;
     }
+
+    .especialidades-index-container h1 {
+        margin-left: 6vh;
+    }
+    
+    .carousel-container-1,
+    .carousel-container-2 {
+        display: flex;
+        align-items: center;
+        margin-top: 2vw;
+        margin-bottom: 3vw;
+    }
+    
+    #carousel {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 2vw;
+    }
+    
+    .slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--cinza);
+        border-radius: 1.5vw;
+    }
+    
+    .slide h3 {
+        font-size: 1.5vw;
+        margin-top: 1vw;
+    }
+    
+    .slide a {
+        text-decoration: none;
+        color: var(--branco);
+        font-weight: 500;
+        padding: 0.5vw 1vw;
+        margin: 1vw;
+        border-radius: 0.5vw;
+        background-color: var(--azul-principal);
+        font-size: 3vh;
+    }
+    
+    .slide a:hover {
+        background-color: var(--azul-logo);
+    }
+    
+    #prev,
+    #next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--branco);
+        border: solid var(--branco);
+        cursor: pointer;
+    }
+    
+    #prev img,
+    #next img {
+        width: 2.5vw;
+        margin: 3vw
+    }
+    
+    .carousel-container-1 {
+        display: flex;
+        align-items: center;
+        margin-top: 2vw;
+    }
+    
+    .carousel-container-2 {
+        display: none;
+    }
+    
 
     /* Footer */
     .rodape {
@@ -377,7 +452,7 @@
 
 
     .forms-container {
-        padding: 2rem 5% ;
+        padding: 2rem 5%;
         font-weight: 700;
         font-size: 2rem;
         align-items: center;
@@ -393,7 +468,7 @@
     .forms-container h2 {
         font-family: 'Baloo Tammudu 2', system-ui;
         font-size: 1.8vw;
-        padding-top: -8%;    
+        padding-top: -8%;
         font-weight: 800;
         text-align: center;
         padding-bottom: 1vh;
@@ -436,8 +511,8 @@
         font-family: 'Poppins', sans-serif;
         font-size: 1.5rem;
         margin: 0 40% 0;
-        
-        
+
+
     }
 
     .forms-container button:hover {
@@ -448,7 +523,7 @@
 
 
     /*------------------------------------------------sobre--------------------------------------------------------*/
-    .sobre{
+    .sobre {
         align-items: center;
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
@@ -456,11 +531,11 @@
         border-radius: 69px;
         width: 59em;
         margin-left: 5em;
-        
-    } 
-    
-    
-    .bloco-impar{
+
+    }
+
+
+    .bloco-impar {
         display: flex;
         flex-direction: row;
         background-color: var(--azul-claro);
@@ -468,381 +543,391 @@
         margin-top: 2em;
         margin-bottom: 1em;
     }
-    .bloco2{
+
+    .bloco2 {
         display: flex;
         flex-direction: row;
         background-color: var(--azul-logo);
-        color:#FFFFFF;
+        color: #FFFFFF;
         border-radius: 69px;
         margin-top: 2em;
     }
 
-    .textos-sobre{
+    .textos-sobre {
         display: flex;
         flex-direction: column;
         margin-top: 1em;
         margin-left: 3em;
     }
 
-    .descricao-sobre{
-        color:#FFFFFF;
+    .descricao-sobre {
+        color: #FFFFFF;
         margin-top: 1em;
     }
 
-    .img-sobre{
+    .img-sobre {
         margin: 1em;
     }
-    .img-direita{
+
+    .img-direita {
         margin-left: 5.5em;
     }
 
-    .par-sobre{
+    .par-sobre {
         font-weight: 700;
         font-family: 'Poppins', sans-serif;
-        font-size:x-large;
+        font-size: x-large;
     }
-    .impar-sobre{
+
+    .impar-sobre {
         font-weight: 700;
         font-family: 'Poppins', sans-serif;
-        font-size:x-large;
+        font-size: x-large;
     }
 
 
 
     /*----------------------------------------Login---------------------------------------------------------------*/
-    .area-exclusiva{
+    .area-exclusiva {
         font-weight: 700;
         font-family: 'Poppins', sans-serif;
-        font-size:x-large;
+        font-size: x-large;
         margin-top: 2em;
         margin-left: 43%;
         padding-top: 1.5em;
-        }
-    
-    .tela-login{
+    }
+
+    .tela-login {
         background-color: var(--cinza);
         padding: 0.5em;
 
     }
 
-    .main-login{
+    .main-login {
         background-color: var(--cinza);
         margin-bottom: 1em;
         margin-top: 1em;
     }
 
-    .senha-login{
+    .senha-login {
         font-family: 'Poppins', sans-serif;
         margin-right: 13em;
-        
+
     }
 
-    .link-senha{
+    .link-senha {
         font-family: 'Poppins', sans-serif;
         font-size: .9em;
         color: #0455BF;
         margin-right: 9em;
     }
 
-     /* ---------------- horarios - Medico ----------------*/
+    /* ---------------- horarios - Medico ----------------*/
 
-        #sair {
-             text-decoration: none;
-             color: var(--branco);
-             font-weight: 500;
-             padding: 1vh 2vw;
-             border-radius: 0.5em;
-             background-color: var(--azul-principal);
-             transition: 0.2s;
-        }
+    #sair {
+        text-decoration: none;
+        color: var(--branco);
+        font-weight: 500;
+        padding: 1vh 2vw;
+        border-radius: 0.5em;
+        background-color: var(--azul-principal);
+        transition: 0.2s;
+    }
 
-        #sair:hover {
-            background-color: var(--azul-logo);
-        }
+    #sair:hover {
+        background-color: var(--azul-logo);
+    }
 
-        #sair img {
-            width: 0.9em;
-            margin-bottom: 0.1em;
-            vertical-align: middle;
-        }
+    #sair img {
+        width: 0.9em;
+        margin-bottom: 0.1em;
+        vertical-align: middle;
+    }
 
-        .horarios-index h1 {
-             font-size: 2.0vw;
-             color: var(--azul-logo);
-             font-family: 'Baloo Tammudu 2', system-ui;
-             font-weight: 800;
-             text-align: center;
-             margin-top: 30px;
-        }
+    .horarios-index h1 {
+        font-size: 2.0vw;
+        color: var(--azul-logo);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 30px;
+    }
 
-        .horarios-index h2 {
-             font-size: 18px;
-             color: var(--azul-logo);
-             font-family: 'Baloo Tammudu 2', system-ui;
-             font-weight: 800;
-             margin-left: 285px;
-        }
+    .horarios-index h2 {
+        font-size: 18px;
+        color: var(--azul-logo);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 800;
+        margin-left: 285px;
+    }
 
-        .data-campo #data {
-             margin-left: 285px;
-             margin-bottom: 10px;
-             width: 25vw;
-             height: 5px;
-             background-color: var(--cinza);
-             padding: 20px;
-             border-radius: 8px;
-             max-width: 750px;
-             border: 2px solid var(--azul-principal);
-             margin-bottom: 30px;
-        }
+    .data-campo #data {
+        margin-left: 285px;
+        margin-bottom: 10px;
+        width: 25vw;
+        height: 5px;
+        background-color: var(--cinza);
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 750px;
+        border: 2px solid var(--azul-principal);
+        margin-bottom: 30px;
+    }
 
-        .horarios-campo{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            background-color: var(--cinza);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 0 auto;
-            max-width: 750px;
-            border: 2px solid var(--azul-principal);
-        }
+    .horarios-campo {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background-color: var(--cinza);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 0 auto;
+        max-width: 750px;
+        border: 2px solid var(--azul-principal);
+    }
 
-        .horario-option{
-            font-size: 16px;
-        }
+    .horario-option {
+        font-size: 16px;
+    }
 
-        #botão-salvar{
-            display: block;
-            margin: 20px auto;
-            width: 10vw;
-            height: 7vh;
-            font-family: 'Baloo Tammudu 2', system-ui;
-            color: var(--branco);
-            font-weight: 700;
-            font-size: 20px;
-            text-align: center;
-            border-radius: 0.5em;
-            text-decoration: none;
-            background-color: var(--azul-principal);
-            border: 2px solid transparent;
-        }
+    #botão-salvar {
+        display: block;
+        margin: 20px auto;
+        width: 10vw;
+        height: 7vh;
+        font-family: 'Baloo Tammudu 2', system-ui;
+        color: var(--branco);
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 0.5em;
+        text-decoration: none;
+        background-color: var(--azul-principal);
+        border: 2px solid transparent;
+    }
 
-        #botão-salvar:hover {
-             background-color: var(--azul-logo);
-             cursor: pointer;
-        }
+    #botão-salvar:hover {
+        background-color: var(--azul-logo);
+        cursor: pointer;
+    }
 
-        .footer-container-medico {
-            display: block;
-            justify-content: space-between;
-            margin: 2vh 5vw;
-        }
+    .footer-container-medico {
+        display: block;
+        justify-content: space-between;
+        margin: 2vh 5vw;
+    }
 
-        .contatos-aba-medico ul {
-            display: flex;
-            list-style-type: none;
-            padding: 0;
-            margin-left: 50px;
-        }
+    .contatos-aba-medico ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin-left: 50px;
+    }
 
-        .contatos-aba-medico li {
-             margin: 0 auto;
-        }
+    .contatos-aba-medico li {
+        margin: 0 auto;
+    }
 
-        .contatos-aba-medico a {
-            text-decoration: none;
-            color: var(--azul-principal);
-            font-weight: 500;
-            font-size: 1rem;
-            display: flex;
-        }
+    .contatos-aba-medico a {
+        text-decoration: none;
+        color: var(--azul-principal);
+        font-weight: 500;
+        font-size: 1rem;
+        display: flex;
+    }
 
-        .contatos-aba-medico img {
-            width: 1.5em;
-            margin-right: 0.5em;
-        }
+    .contatos-aba-medico img {
+        width: 1.5em;
+        margin-right: 0.5em;
+    }
 
-         /* ---------------- Agendar Consulta - Paciente ----------------*/
+    /* ---------------- Agendar Consulta - Paciente ----------------*/
 
-        .agendardar-consulta-main {
-             display: flex;
-             justify-content: center;
-        }
+    .agendardar-consulta-main {
+        display: flex;
+        justify-content: center;
+    }
 
-        .agendardar-consulta-index h1 {
-             font-size: 2.0vw;
-             color: var(--azul-logo);
-             font-family: 'Baloo Tammudu 2', system-ui;
-             font-weight: 800;
-             text-align: center;
-             margin-top: 30px;
-             margin-bottom: 10px;
-        }
+    .agendardar-consulta-index h1 {
+        font-size: 2.0vw;
+        color: var(--azul-logo);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
 
-        .agendardar-consulta-index h2 {
-             font-size: 18px;
-             color: var(--azul-logo);
-             font-family: 'Baloo Tammudu 2', system-ui;
-             font-weight: 800;
-             margin-left: 285px;
-        }
+    .agendardar-consulta-index h2 {
+        font-size: 18px;
+        color: var(--azul-logo);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 800;
+        margin-left: 285px;
+    }
 
-        .campos-agendar-consulta #especialidade-agendamento, #clinica-agendamento,
-        #horario-agendamento, #medico-agendamento {
-             margin-left: 285px;
-             margin-bottom: 10px;
-             width: 25vw;
-             height: 5px;
-             background-color: var(--cinza);
-             padding: 20px;
-             border-radius: 8px;
-             max-width: 750px;
-             border: 2px solid var(--azul-principal);
-             margin-bottom: 30px;
-        }
+    .campos-agendar-consulta #especialidade-agendamento,
+    #clinica-agendamento,
+    #horario-agendamento,
+    #medico-agendamento {
+        margin-left: 285px;
+        margin-bottom: 10px;
+        width: 25vw;
+        height: 5px;
+        background-color: var(--cinza);
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 750px;
+        border: 2px solid var(--azul-principal);
+        margin-bottom: 30px;
+    }
 
-       .campos-agendar-consulta select {
-             font-size: 18px;
-             color: var(--azul-logo);
-             font-family: 'Baloo Tammudu 2', system-ui;
-             font-weight: 800;
-             background-color: var(--cinza);
-             border: 2px solid var(--azul-principal);
-             cursor: pointer;
-       }
+    .campos-agendar-consulta select {
+        font-size: 18px;
+        color: var(--azul-logo);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 800;
+        background-color: var(--cinza);
+        border: 2px solid var(--azul-principal);
+        cursor: pointer;
+    }
 
-       .campos-agendar-consulta select option {
+    .campos-agendar-consulta select option {
         background-color: var(--cinza);
         color: var(--azul-principal);
-        }
+    }
 
-        .campos-esquerda-agendar-consulta {
-            flex: 1;
-            text-align: left;
-            margin-right: 20px;
-        }
+    .campos-esquerda-agendar-consulta {
+        flex: 1;
+        text-align: left;
+        margin-right: 20px;
+    }
 
-        .campos-direita-agendar-consulta {
-            flex: 1;
-            text-align: left;
-            margin-left: 20px;
-            display: flex;
-            align-items: left;
-            justify-content: left;
-        }
+    .campos-direita-agendar-consulta {
+        flex: 1;
+        text-align: left;
+        margin-left: 20px;
+        display: flex;
+        align-items: left;
+        justify-content: left;
+    }
 
-        .campos-direita-agendar-consulta h2 {
-             font-size: 18px;
-             color: var(--azul-logo);
-             font-family: 'Baloo Tammudu 2', system-ui;
-             font-weight: 800;
-             margin-left: 0;
-        }
+    .campos-direita-agendar-consulta h2 {
+        font-size: 18px;
+        color: var(--azul-logo);
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-weight: 800;
+        margin-left: 0;
+    }
 
-        .campos-agendar-consulta #data-agendamento {
-              margin-bottom: 10px;
-              width: 25vw;
-              height: 5px;
-              background-color: var(--cinza);
-              padding: 20px;
-              border-radius: 8px;
-              max-width: 750px;
-              border: 2px solid var(--azul-principal);
-              margin-bottom: 30px;
-        }
+    .campos-agendar-consulta #data-agendamento {
+        margin-bottom: 10px;
+        width: 25vw;
+        height: 5px;
+        background-color: var(--cinza);
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 750px;
+        border: 2px solid var(--azul-principal);
+        margin-bottom: 30px;
+    }
 
-        .botoes-agendar-consulta {
-             text-align: center;
-        }
+    .botoes-agendar-consulta {
+        text-align: center;
+    }
 
-        #botão-cancelar-agendamento {
-              display: inline-block;
-              margin: 20px 10px;
-              width: 10vw;
-              height: 7vh;
-              font-family: 'Baloo Tammudu 2', system-ui;
-              color: var(--branco);
-              font-weight: 700;
-              font-size: 20px;
-              text-align: center;
-              border-radius: 0.5em;
-              text-decoration: none;
-              background-color: var(--vermelho);
-              border: 2px solid transparent;
-        }
+    #botão-cancelar-agendamento {
+        display: inline-block;
+        margin: 20px 10px;
+        width: 10vw;
+        height: 7vh;
+        font-family: 'Baloo Tammudu 2', system-ui;
+        color: var(--branco);
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 0.5em;
+        text-decoration: none;
+        background-color: var(--vermelho);
+        border: 2px solid transparent;
+    }
 
-        #botão-agendar {
-              display: inline-block;
-              margin: 20px 10px;
-              width: 10vw;
-              height: 7vh;
-              font-family: 'Baloo Tammudu 2', system-ui;
-              color: var(--branco);
-              font-weight: 700;
-              font-size: 20px;
-              text-align: center;
-              border-radius: 0.5em;
-              text-decoration: none;
-              background-color: var(--verde);
-              border: 2px solid transparent;
-        }
+    #botão-agendar {
+        display: inline-block;
+        margin: 20px 10px;
+        width: 10vw;
+        height: 7vh;
+        font-family: 'Baloo Tammudu 2', system-ui;
+        color: var(--branco);
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 0.5em;
+        text-decoration: none;
+        background-color: var(--verde);
+        border: 2px solid transparent;
+    }
 
-         /* ---------------- Cadastro ----------------*/
+    /* ---------------- Cadastro ----------------*/
 
-        .cadastro{
-            background-color: #E9E9E9;
-            
-            }
+    .cadastro {
+        background-color: #E9E9E9;
+
+    }
 
 
-         .areaExclusiva{
-            margin: 3% 0 -1% ;
-            padding: 2%;
-            color: var(--azul-logo);
-            text-decoration: none;
-            font-size: 2vw;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            text-align: center;
-            padding-bottom: 1vh;
-         }
-         
+    .areaExclusiva {
+        margin: 3% 0 -1%;
+        padding: 2%;
+        color: var(--azul-logo);
+        text-decoration: none;
+        font-size: 2vw;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 800;
+        text-align: center;
+        padding-bottom: 1vh;
+    }
 
-         .dividir-caixa {
-            display: flex;
-            gap: 50px; /* Adicionando um espaçamento entre os elementos */
-             
-          }
-          
-          .caixa-ddd {
-            width: 20%; /* Definindo a largura da caixa de DDD */
-            padding-right: 10px; /* Adicionando um espaçamento à direita */
-           
-        }
-          
-          .caixa-telefone {
-            width:70%;
-          }
 
-          .caixa-lougradouro{
-            width: 70%; /* Definindo a largura da caixa de DDD */
-            padding-right: 10px; /* Adicionando um espaçamento à direita */
-           text-align: justify; 
-          }
+    .dividir-caixa {
+        display: flex;
+        gap: 50px;
+        /* Adicionando um espaçamento entre os elementos */
 
-          .caixa-numero{
-            width:20%;
-          }
+    }
 
-          .caixa-estado {
-            width: 20%; /* Definindo a largura da caixa de DDD */
-            padding-right: 10px; /* Adicionando um espaçamento à direita */
-            
-        }
-          
-          .caixa-cep {
-            width:70%;
-          }
+    .caixa-ddd {
+        width: 20%;
+        /* Definindo a largura da caixa de DDD */
+        padding-right: 10px;
+        /* Adicionando um espaçamento à direita */
 
-   
+    }
+
+    .caixa-telefone {
+        width: 70%;
+    }
+
+    .caixa-lougradouro {
+        width: 70%;
+        /* Definindo a largura da caixa de DDD */
+        padding-right: 10px;
+        /* Adicionando um espaçamento à direita */
+        text-align: justify;
+    }
+
+    .caixa-numero {
+        width: 20%;
+    }
+
+    .caixa-estado {
+        width: 20%;
+        /* Definindo a largura da caixa de DDD */
+        padding-right: 10px;
+        /* Adicionando um espaçamento à direita */
+
+    }
+
+    .caixa-cep {
+        width: 70%;
+    }

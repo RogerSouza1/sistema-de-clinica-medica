@@ -1,117 +1,201 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>MedEasy</title>
-  </head>
-  <body>
-    <!--Navbar-->
-    <header>
-      <nav class="navbar">
-        <div class="navbar-container">
-          <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
-          <ul class="navbar-links ms-auto">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>MedEasy</title>
+</head>
+
+<body>
+  <!--Navbar-->
+  <header>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
+        <ul class="navbar-links ms-auto">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="especialidade.html">Especialidades</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="login.html" id="login">Login</a></li>
+          <li class="dropdown-cadastro">
+            <a href="#" id="cadastre-se">Cadastre-se <img src="img/setinha.svg" alt="seta" /></a>
+            <ul class="dropdown-content-cadastro" id="dropdown-content-cadastro">
+              <li>
+                <a href="cadastroPaciente.html">Beneficiário do Plano</a>
+              </li>
+              <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!--Banner-->
+    <section id="banner">
+      <div class="banner-container">
+        <h2 class="primeira-frase">
+          Cuide do seu bem-estar com paixão e propósito.
+        </h2>
+        <h2 class="segunda-frase">Seja o protagonista da sua saúde!</h2>
+        <h3 class="terceira-frase">
+          Sua jornada para o bem-estar é única, estamos aqui para fazer parte
+          desse enredo extraordinário da sua vida saudável.
+        </h3>
+        <a class="botao-saiba-mais" href="especialidade.html">Saiba mais!</a>
+      </div>
+    </section>
+
+    <!--Especialidades-->
+    <section id="especialidades-index">
+      <div class="especialidades-index-container">
+        <h1>Especialidades</h1>
+        <div class="carousel-container-1">
+          <button id="prev" onclick="prevSlide()"><img src="img/seta-esquerda.svg" alt="Anterior"></button>
+          <div id="carousel">
+            <div class="slide active">
+              <img src="img/cardiologia.png" alt="Cardiologia">
+              <h3>Cardiologia</h3>
+              <a href="especialidade.html#cardiologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/dermatologia.png" alt="Dermatologia">
+              <h3>Dermatologia</h3>
+              <a href="especialidade.html#dermatologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/endocrinologia.png" alt="Endocrinologia">
+              <h3>Endocrinologia</h3>
+              <a href="especialidade.html#endocrinologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/gastroenterologia.png" alt="Gastroenterologia">
+              <h3>Gastroenterologia</h3>
+              <a href="especialidade.html#gastroenterologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/geriatria.png" alt="Geriatria">
+              <h3>Geriatria</h3>
+              <a href="especialidade.html#geriatria">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/ginecologia.png" alt="Ginecologia">
+              <h3>Ginecologia</h3>
+              <a href="especialidade.html#ginecologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/mastologia.png" alt="Mastologia">
+              <h3>Mastologia</h3>
+              <a href="especialidade.html#mastologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/nefrologia.png" alt="Nefrologia">
+              <h3>Nefrologia</h3>
+              <a href="especialidade.html#nefrologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/neurologia.png" alt="Neurologia">
+              <h3>Neurologia</h3>
+              <a href="especialidade.html#neurologia">Saiba mais!</a>
+            </div>
+          </div>
+          <button id="next" onclick="nextSlide()"><img src="img/seta-direita.svg" alt="Proximo"></button>
+        </div>
+        <div class="carousel-container-2">
+          <button id="prev" onclick="prevSlide()"><img src="img/seta-esquerda.svg" alt="Anterior"></button>
+          <div id="carousel">
+            <div class="slide active">
+              <img src="img/oftalmologia.png" alt="Oftalmologia">
+              <h3>Oftalmologia</h3>
+              <a href="especialidade.html#oftalmologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/oncologia.png" alt="Oncologia">
+              <h3>Oncologia</h3>
+              <a href="especialidade.html#oncologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/ortopedia.png" alt="Ortopedia">
+              <h3>Ortopedia</h3>
+              <a href="especialidade.html#ortopedia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/otorrinolaringologia.png" alt="Otorrinolaringologia">
+              <h3>Otorrinolaringologia</h3>
+              <a href="especialidade.html#otorrinolaringologia">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/pediatria.png" alt="Pediatria">
+              <h3>Pediatria</h3>
+              <a href="especialidade.html#pediatria">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/psiquiatria.png" alt="Psiquiatria">
+              <h3>Psiquiatria</h3>
+              <a href="especialidade.html#psiquiatria">Saiba mais!</a>
+            </div>
+            <div class="slide active">
+              <img src="img/urologia.png" alt="Urologia">
+              <h3>Urologia</h3>
+              <a href="especialidade.html#urologia">Saiba mais!</a>
+            </div>
+        </div>
+        <button id="next" onclick="nextSlide()"><img src="img/seta-direita.svg" alt="Proximo"></button>
+      </div>
+    </section>
+  </main>
+
+  <!--Footer-->
+  <footer>
+    <div class="rodape">
+      <h3 class="footer-logo">MedEasy</h3>
+      <div class="footer-container">
+        <div class="navegacao">
+          <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="especialidade.html">Especialidades</a></li>
             <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="login.html" id="login">Login</a></li>
-            <li class="dropdown-cadastro">
-              <a href="#" id="cadastre-se"
-                >Cadastre-se <img src="img/setinha.svg" alt="seta"
-              /></a>
-              <ul
-                class="dropdown-content-cadastro"
-                id="dropdown-content-cadastro"
-              >
-                <li>
-                  <a href="cadastroPaciente.html">Beneficiário do Plano</a>
-                </li>
-                <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
-              </ul>
+          </ul>
+        </div>
+        <div class="contatos">
+          <ul>
+            <li>
+              <a href="#"><img src="img/phone.svg" alt="telefone" />(11) 3881-3637</a>
+            </li>
+            <li>
+              <a href="#"><img src="img/whatsapp.svg" alt="whatsapp" />(11)
+                98066-7105</a>
+            </li>
+            <li>
+              <a href="#"><img src="img/email.svg" alt="email" />medeasy@gmail.com</a>
             </li>
           </ul>
         </div>
-      </nav>
-    </header>
-
-    <main>
-      <!--Banner-->
-      <section id="banner">
-        <div class="banner-container">
-          <h2 class="primeira-frase">
-            Cuide do seu bem-estar com paixão e propósito.
-          </h2>
-          <h2 class="segunda-frase">Seja o protagonista da sua saúde!</h2>
-          <h3 class="terceira-frase">
-            Sua jornada para o bem-estar é única, estamos aqui para fazer parte
-            desse enredo extraordinário da sua vida saudável.
-          </h3>
-          <a class="botao-saiba-mais" href="especialidade.html">Saiba mais!</a>
-        </div>
-      </section>
-
-      <!--Especialidades-->
-      <section id="especialidades-index">
-        <div class="especialidades-index-container">
-          <h1>Especialidades</h1>
-        </div>
-      </section>
-    </main>
-
-    <!--Footer-->
-    <footer>
-      <div class="rodape">
-        <h3 class="footer-logo">MedEasy</h3>
-        <div class="footer-container">
-          <div class="navegacao">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="sobre.html">Sobre</a></li>
-            </ul>
-          </div>
-          <div class="contatos">
-            <ul>
-              <li>
-                <a href="#"
-                  ><img src="img/phone.svg" alt="telefone" />(11) 3881-3637</a
-                >
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="img/whatsapp.svg" alt="whatsapp" />(11)
-                  98066-7105</a
-                >
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="img/email.svg" alt="email" />medeasy@gmail.com</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="redes-sociais">
-            <ul>
-              <li>
-                <a href="#"><img src="img/linkedin.svg" alt="linkedin" /></a>
-              </li>
-              <li>
-                <a href="#"><img src="img/facebook.svg" alt="facebook" /></a>
-              </li>
-              <li>
-                <a href="#"><img src="img/instagram.svg" alt="instagram" /></a>
-              </li>
-            </ul>
-          </div>
+        <div class="redes-sociais">
+          <ul>
+            <li>
+              <a href="#"><img src="img/linkedin.svg" alt="linkedin" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="img/facebook.svg" alt="facebook" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="img/instagram.svg" alt="instagram" /></a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="rodape-frase">
-        <h3>MedEasy - Projeto Integrador - 3ª Semestre</h3>
-      </div>
-    </footer>
+    </div>
+    <div class="rodape-frase">
+      <h3>MedEasy - Projeto Integrador - 3ª Semestre</h3>
+    </div>
+  </footer>
 
-    <script src="js/dropdown.js"></script>
-  </body>
+  <script src="js/dropdown.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>
