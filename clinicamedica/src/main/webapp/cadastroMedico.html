@@ -40,11 +40,11 @@
     <h1 class="areaExclusiva">Área Exclusiva</h1>
     <div class="forms-container">
       <h2>Cadastro</h2>
-      <form>
+      <form action="/cadastrar-medico" method="post">
         <input type="nome" id="medico-nome" name="medico-nome" required placeholder="Nome" />
         <input type="text" id="medico-cpf" name="medico-cpf" required placeholder="CPF" />
 
-        <input list="especialidades" id="medico-especialidade" name="medico-especialidade" required
+        <input list="especialidade" id="medico-especialidade" name="medico-especialidade" required
           placeholder="Especialidade" />
         <datalist id="especialidade">
           <option value="Cardiologia">
@@ -65,8 +65,8 @@
           <option value="Urologia">
         </datalist>
 
-        <input list="clinicas" id="medico-clinica" name="medico-clinica" required placeholder="Clinica" />
-        <datalist>
+        <input list="clinica" id="medico-clinica" name="medico-clinica" required placeholder="Clinica" />
+        <datalist id="clinica">
           <option value="">
           <option value="">
           <option value="">
@@ -143,6 +143,8 @@
             <input type="text" id="medico-cep" name="medico-cep" required placeholder="CEP">
           </div>
         </div>
+
+
 
         <button type="submit">Enviar</button>
       </form>

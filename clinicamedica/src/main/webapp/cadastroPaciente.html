@@ -29,7 +29,7 @@
                 <li>
                   <a href="cadastroPaciente.html">Beneficiário do Plano</a>
                 </li>
-                <li><a href="cadastropaciente.html">Credenciado Médico</a></li>
+                <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
               </ul>
             </li>
           </ul>
@@ -43,7 +43,7 @@
     <h1 class="areaExclusiva">Área Exclusiva</h1>
     <div class="forms-container" >
         <h2>Cadastro</h2>
-        <form>
+        <form action="/cadastar-paciente" method="post">
             <input type="nome" id="paciente-nome" name="paciente-nome" required placeholder="Nome" />
             <input type="text" id="paciente-cpf" name="paciente-cpf" required placeholder="CPF" />
 
@@ -113,6 +113,8 @@
                 <input type="text" id="paciente-cep" name="paciente-cep" required placeholder="CEP">
               </div>
             </div>
+
+            <input type="number" name="paciente-dependentes" id="dependentes" required placeholder= "Quantidade de Dependentes">
     
             <button type="submit">Enviar</button>
           </form>

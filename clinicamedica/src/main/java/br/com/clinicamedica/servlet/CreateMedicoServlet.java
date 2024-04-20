@@ -22,25 +22,24 @@ public class CreateMedicoServlet extends HttpServlet {
 
         medico.setPaciente(false);
 
-        endereco.setLogradouro(req.getParameter("logradouro-medico"));
-        endereco.setNumero(Integer.parseInt(req.getParameter("numero-medico")));
-        endereco.setBairro(req.getParameter("bairro-medico"));
-        endereco.setCidade(req.getParameter("cidade-medico"));
-        endereco.setEstado(req.getParameter("estado-medico"));
-        endereco.setCep(req.getParameter("cep-medico"));
+        endereco.setLogradouro(req.getParameter("medico-logradouro"));
+        endereco.setNumero(Integer.parseInt(req.getParameter("medico-numero")));
+        endereco.setBairro(req.getParameter("medico-bairro"));
+        endereco.setCidade(req.getParameter("medico-cidade"));
+        endereco.setEstado(req.getParameter("medico-estado"));
+        endereco.setCep(req.getParameter("medico-cep"));
 
-        medico.setNome(req.getParameter("nome-medico"));
-        medico.setCpf(req.getParameter("cpf-medico"));
-        medico.setEmail(req.getParameter("email-medico"));
-        medico.setSenha(req.getParameter("senha-medico"));
-        medico.setDataNascimento(req.getParameter("data-nascimento-medico"));
-        medico.setTelefone(req.getParameter("telefone-medico"));
+        medico.setNome(req.getParameter("medico-nome"));
+        medico.setCpf(req.getParameter("medico-cpf"));
+        medico.setEmail(req.getParameter("medico-email"));
+        medico.setSenha(req.getParameter("medico-senha"));
+        medico.setDataNascimento(req.getParameter("medico-data-nascimento"));
+        medico.setTelefone(req.getParameter("medico-telefone"));
         medico.setEndereco(endereco);
 
-        medico.setEspecialidade(req.getParameter("especialidade-medico"));
-        medico.setCrm(req.getParameter("crm-medico"));
-        medico.setClinica(req.getParameter("clinica-medico"));
-
+        medico.setEspecialidade(req.getParameter("medico-especialidade"));
+        medico.setCrm(req.getParameter("medico-crm"));
+        medico.setClinica(req.getParameter("medico-clinica"));
 
         new UsuarioDAO().cadastrarUsuario(medico);
 

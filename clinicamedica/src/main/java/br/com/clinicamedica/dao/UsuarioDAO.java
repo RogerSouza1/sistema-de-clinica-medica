@@ -19,6 +19,46 @@ public class UsuarioDAO {
         return true;
     }
 
+    public HashMap<Boolean, Boolean> validarLogin (String cpf, String senha){
+
+        HashMap<Boolean, Boolean> validacao = new HashMap<>();
+
+        Boolean isPaciente = false;
+        Boolean validado = false;
+
+        try {
+            final String url = "jdbc:h2:~/test";
+            final String usuario = "sa";
+            final String senhaBanco = "sa";
+
+            Connection connection = DriverManager.getConnection(url, usuario, senhaBanco);
+            System.out.println("Sucesso ao conectar no banco de dados");
+
+            final String sql = "SELECT cpf FROM usuario WHERE cpf = ? AND senha = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, cpf);
+            ps.setString(2, senha);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                isPaciente = rs.getBoolean("isPaciente");
+                validado = true;
+            }
+
+            ps.close();
+            connection.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        validacao.put(validado, isPaciente);
+
+
+        return validacao;
+    }
+
     public void redefinicaoSenha(String novaSenha, String email, String cpf) {
 
         if (validarUsuario(email, cpf)) {
@@ -38,7 +78,7 @@ public class UsuarioDAO {
 
     public void cadastrarUsuario(Paciente paciente) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
-        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         final String sqlPaciente = "INSERT INTO paciente (id_usuario, dependente) VALUES (?, ?)";
 
         final String url = "jdbc:h2:~/test";
@@ -111,10 +151,9 @@ public class UsuarioDAO {
         }
     }
 
-
     public void cadastrarUsuario(Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
-        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, dataNascimento, telefone, idEndereco, isPaciente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         final String sqlMedico = "INSERT INTO medico (id_usuario, especialidade, crm, clinica) VALUES (?, ?, ?, ?)";
 
         final String url = "jdbc:h2:~/test";
