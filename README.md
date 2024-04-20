@@ -148,32 +148,32 @@
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
 | id_horario | int | chave primária |
-| 06:00-06:30 | boolean | atributo |
-| 06:30-07:00 | boolean | atributo |
-| 07:00-07:30 | boolean | atributo |
-| 07:30-08:00 | boolean | atributo |
-| 08:00-08:30 | boolean | atributo |
-| 08:30-09:00 | boolean | atributo |
-| 09:00-09:30 | boolean | atributo |
-| 09:30-10:00 | boolean | atributo |
-| 10:00-10:30 | boolean | atributo |
-| 10:30-11:00 | boolean | atributo |
-| 11:00-11:30 | boolean | atributo |
-| 11:30-12:00 | boolean | atributo |
-| 12:00-12:30 | boolean | atributo |
-| 12:30-13:00 | boolean | atributo |
-| 13:00-13:30 | boolean | atributo |
-| 13:30-14:00 | boolean | atributo |
-| 14:00-14:30 | boolean | atributo |
-| 14:30-15:00 | boolean | atributo |
-| 15:00-15:30 | boolean | atributo |
-| 15:30-16:00 | boolean | atributo |
-| 16:00-16:30 | boolean | atributo |
-| 16:30-17:00 | boolean | atributo |
-| 17:00-17:30 | boolean | atributo |
-| 17:30-18:00 | boolean | atributo |
-| 18:00-18:30 | boolean | atributo |
-| 18:30-19:00 | boolean | atributo |
+| h0600_0630 | boolean | atributo |
+| h0630_0700 | boolean | atributo |
+| h0700_0730 | boolean | atributo |
+| h0730_0800 | boolean | atributo |
+| h0800_0830 | boolean | atributo |
+| h0830_0900 | boolean | atributo |
+| h0900_0930 | boolean | atributo |
+| h0930_1000 | boolean | atributo |
+| h1000_1030 | boolean | atributo |
+| h1030_1100 | boolean | atributo |
+| h1100_1130 | boolean | atributo |
+| h1130_1200 | boolean | atributo |
+| h1200_1230 | boolean | atributo |
+| h1230_1300 | boolean | atributo |
+| h1300_1330 | boolean | atributo |
+| h1330_1400 | boolean | atributo |
+| h1400_1430 | boolean | atributo |
+| h1430_1500 | boolean | atributo |
+| h1500_1530 | boolean | atributo |
+| h1530_1600 | boolean | atributo |
+| h1600_1630 | boolean | atributo |
+| h1630_1700 | boolean | atributo |
+| h1700_1730 | boolean | atributo |
+| h1730_1800 | boolean | atributo |
+| h1800_1830 | boolean | atributo |
+| h1830_1900 | boolean | atributo |
 
 ## 👨‍💻Autores do projeto
 [**Carla Brito**](https://github.com/carladfb)
