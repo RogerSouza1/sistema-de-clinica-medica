@@ -43,9 +43,9 @@
     <section id="tela-login">
       <div class="forms-container" id="login-container">
         <h2>Login</h2>
-        <form class="form-login">
-          <input type="text" id="login-cpf" name="cpf" required placeholder="CPF" />
-          <input type="password" id="login-senha" name="senha" required placeholder="Senha" />
+        <form class="form-login" action="/validar-login" method="post">
+          <input type="text" id="login-cpf" name="login-cpf" required placeholder="CPF" />
+          <input type="password" id="login-senha" name="login-senha" required placeholder="Senha" />
           <button type="submit">Enviar</button>
         </form>
         <div class="links-login">

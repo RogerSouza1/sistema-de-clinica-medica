@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class UsuarioDAO {
@@ -20,32 +21,26 @@ public class UsuarioDAO {
         return true;
     }
 
-    public HashMap<Boolean, Boolean> validarLogin(String cpf, String senha) {
+    public ValidarLogin validarLogin(String cpfLogin, String senhaLogin) {
 
-        HashMap<Boolean, Boolean> validacao = new HashMap<>();
-
-        Boolean isPaciente = false;
-        Boolean validado = false;
+        boolean isPaciente = false;
+        boolean isValido = false;
 
         try {
-            final String url = "jdbc:h2:~/test";
-            final String usuario = "sa";
-            final String senhaBanco = "sa";
-
-            Connection connection = DriverManager.getConnection(url, usuario, senhaBanco);
+            Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
 
-            final String sql = "SELECT cpf FROM usuario WHERE cpf = ? AND senha = ?";
+            final String sql = "SELECT paciente FROM usuario WHERE cpf = ? AND senha = ?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, cpf);
-            ps.setString(2, senha);
+            ps.setString(1, cpfLogin);
+            ps.setString(2, senhaLogin);
 
-            ResultSet rs = ps.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
 
-            if (rs.next()) {
-                isPaciente = rs.getBoolean("isPaciente");
-                validado = true;
+            if (resultSet.next()) {
+                isPaciente = resultSet.getBoolean("paciente");
+                isValido = true;
             }
 
             ps.close();
@@ -54,10 +49,10 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
 
-        validacao.put(validado, isPaciente);
+        System.out.println("Usuário válido: " + isValido);
+        System.out.println("Usuário é paciente: " + isPaciente);
 
-
-        return validacao;
+        return new ValidarLogin(isValido, isPaciente);
     }
 
     public void redefinicaoSenha(String novaSenha, String email, String cpf) {
@@ -84,10 +79,16 @@ public class UsuarioDAO {
 
 
         try {
-            // Cadastrar endereço
+
             Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
 
+            if (cpfExiste(medico.getCpf())){
+                System.out.println("CPF já cadastrado");
+                return;
+            }
+
+            // Cadastrar endereço
             PreparedStatement psEndereco = connection.prepareStatement(sqlEndereco, Statement.RETURN_GENERATED_KEYS);
 
             int cep = Integer.parseInt(medico.getEndereco().getCep().replace("-", ""));
@@ -117,10 +118,7 @@ public class UsuarioDAO {
             //Inserir um Usuário
             PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
 
-            if (cpfExiste(medico.getCpf())){
-                System.out.println("CPF já cadastrado");
-                return;
-            }
+
 
             psUsuario.setString(1, medico.getNome());
             psUsuario.setString(2, medico.getEmail());
@@ -155,7 +153,7 @@ public class UsuarioDAO {
 
             ResultSet psMedicoGeneratedKeys = psMedico.getGeneratedKeys();
 
-            Long id_medico = null;
+            Long id_medico;
 
             if (psMedicoGeneratedKeys.next()) {
                 id_medico = psMedicoGeneratedKeys.getLong(1);
@@ -179,9 +177,16 @@ public class UsuarioDAO {
 
 
         try {
-            // Cadastrar endereço
+
             Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
+
+            if (cpfExiste(paciente.getCpf())){
+                System.out.println("CPF já cadastrado");
+                return;
+            }
+
+            // Cadastrar endereço
 
             PreparedStatement psEndereco = connection.prepareStatement(sqlEndereco, Statement.RETURN_GENERATED_KEYS);
 
@@ -212,10 +217,7 @@ public class UsuarioDAO {
             //Inserir um Usuário
             PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
 
-            if (cpfExiste(paciente.getCpf())){
-                System.out.println("CPF já cadastrado");
-                return;
-            }
+
 
             psUsuario.setString(1, paciente.getNome());
             psUsuario.setString(2, paciente.getEmail());
@@ -224,7 +226,7 @@ public class UsuarioDAO {
             psUsuario.setString(5, paciente.getDataNascimento());
             psUsuario.setLong(6, paciente.getTelefone());
             psUsuario.setLong(7, id_endereco);
-            psUsuario.setBoolean(8, false);
+            psUsuario.setBoolean(8, true);
 
             psUsuario.execute();
 
@@ -247,7 +249,7 @@ public class UsuarioDAO {
             psPaciente.execute();
 
             ResultSet psPacienteGeneratedKeys = psPaciente.getGeneratedKeys();
-            Long id_paciente = null;
+            Long id_paciente;
 
             if (psPacienteGeneratedKeys.next()) {
                 id_paciente = psPacienteGeneratedKeys.getLong(1);
@@ -288,7 +290,6 @@ public class UsuarioDAO {
 
         return false;
     }
-
 
     public void atualizarUsuario(Paciente paciente) {
 

@@ -1,6 +1,7 @@
 package br.com.clinicamedica.servlet;
 
 import br.com.clinicamedica.dao.UsuarioDAO;
+import br.com.clinicamedica.dao.ValidarLogin;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,13 +19,13 @@ public class ValidarUsuarioLogin extends HttpServlet {
         String cpf = req.getParameter("login-cpf");
         String senha = req.getParameter("login-senha");
 
-        HashMap<Boolean, Boolean> validacao = new UsuarioDAO().validarLogin(cpf, senha);
+        ValidarLogin validacao = new UsuarioDAO().validarLogin(cpf, senha);
 
-        if (validacao.get(true)) {
-            if (validacao.get(false)) {
-                req.getRequestDispatcher("home-paciente.html").forward(req, resp);
+        if (validacao.getIsValido()) {
+            if (validacao.getIsPaciente()) {
+                req.getRequestDispatcher("paciente/consultas.html").forward(req, resp);
             } else {
-                req.getRequestDispatcher("home-medico.html").forward(req, resp);
+                req.getRequestDispatcher("medico/calendario.html").forward(req, resp);
             }
         } else {
             req.getRequestDispatcher("login.html").forward(req, resp);

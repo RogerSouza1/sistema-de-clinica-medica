@@ -1,0 +1,88 @@
+CREATE TABLE endereco (
+                          id_endereco SERIAL PRIMARY KEY,
+                          logradouro VARCHAR(255) NOT NULL DEFAULT '',
+                          numero INT NOT NULL,
+                          bairro VARCHAR(255) NOT NULL DEFAULT '',
+                          cidade VARCHAR(255) NOT NULL DEFAULT '',
+                          estado VARCHAR(255) NOT NULL DEFAULT '',
+                          cep INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE horarios (
+                          id_horarios SERIAL PRIMARY KEY,
+                          h0600_0630 BOOLEAN DEFAULT FALSE,
+                          h0630_0700 BOOLEAN DEFAULT FALSE,
+                          h0700_0730 BOOLEAN DEFAULT FALSE,
+                          h0730_0800 BOOLEAN DEFAULT FALSE,
+                          h0800_0830 BOOLEAN DEFAULT FALSE,
+                          h0830_0900 BOOLEAN DEFAULT FALSE,
+                          h0900_0930 BOOLEAN DEFAULT FALSE,
+                          h0930_1000 BOOLEAN DEFAULT FALSE,
+                          h1000_1030 BOOLEAN DEFAULT FALSE,
+                          h1030_1100 BOOLEAN DEFAULT FALSE,
+                          h1100_1130 BOOLEAN DEFAULT FALSE,
+                          h1130_1200 BOOLEAN DEFAULT FALSE,
+                          h1200_1230 BOOLEAN DEFAULT FALSE,
+                          h1230_1300 BOOLEAN DEFAULT FALSE,
+                          h1300_1330 BOOLEAN DEFAULT FALSE,
+                          h1330_1400 BOOLEAN DEFAULT FALSE,
+                          h1400_1430 BOOLEAN DEFAULT FALSE,
+                          h1430_1500 BOOLEAN DEFAULT FALSE,
+                          h1500_1530 BOOLEAN DEFAULT FALSE,
+                          h1530_1600 BOOLEAN DEFAULT FALSE,
+                          h1600_1630 BOOLEAN DEFAULT FALSE,
+                          h1630_1700 BOOLEAN DEFAULT FALSE,
+                          h1700_1730 BOOLEAN DEFAULT FALSE,
+                          h1730_1800 BOOLEAN DEFAULT FALSE,
+                          h1800_1830 BOOLEAN DEFAULT FALSE,
+                          h1830_1900 BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE usuario (
+                         id_usuario SERIAL PRIMARY KEY,
+                         id_endereco INTEGER NOT NULL,
+                         nome VARCHAR(255) NOT NULL DEFAULT '',
+                         cpf LONG NOT NULL,
+                         email VARCHAR(255) NOT NULL DEFAULT '',
+                         senha VARCHAR(255) NOT NULL DEFAULT '',
+                         data_nascimento DATE NOT NULL,
+                         telefone LONG NOT NULL,
+                         paciente BOOLEAN,
+                         FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco) ON DELETE CASCADE
+);
+
+CREATE TABLE paciente (
+                          id_paciente SERIAL PRIMARY KEY,
+                          id_usuario INTEGER NOT NULL,
+                          dependentes INT NOT NULL,
+                          FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+);
+CREATE TABLE medico (
+                        id_medico SERIAL PRIMARY KEY,
+                        id_usuario INTEGER NOT NULL,
+                        especialidade VARCHAR(255) NOT NULL DEFAULT '',
+                        crm VARCHAR(255) NOT NULL DEFAULT '',
+                        clinica VARCHAR(255) NOT NULL DEFAULT '',
+                        FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE
+);
+
+CREATE TABLE disponibilidade (
+                                 id_disponibilidade SERIAL PRIMARY KEY,
+                                 id_horarios INTEGER NOT NULL,
+                                 id_medico INTEGER NOT NULL,
+                                 data DATE NOT NULL,
+                                 FOREIGN KEY (id_horarios) REFERENCES horarios(id_horarios),
+                                 FOREIGN KEY (id_medico) REFERENCES medico(id_medico)
+);
+
+CREATE TABLE agendamento (
+                             id_agendamento SERIAL PRIMARY KEY,
+                             id_paciente INTEGER NOT NULL,
+                             id_disponibilidade INTEGER NOT NULL,
+                             prontuario VARCHAR (255) NOT NULL DEFAULT '',
+                             confirmada BOOLEAN DEFAULT FALSE,
+                             finalizada BOOLEAN DEFAULT FALSE,
+                             cancelada BOOLEAN DEFAULT FALSE,
+                             FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
+                             FOREIGN KEY (id_disponibilidade) REFERENCES disponibilidade(id_disponibilidade)
+);
