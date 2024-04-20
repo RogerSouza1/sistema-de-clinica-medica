@@ -30,11 +30,12 @@ public class CreateMedicoServlet extends HttpServlet {
         endereco.setCep(req.getParameter("medico-cep"));
 
         medico.setNome(req.getParameter("medico-nome"));
-        medico.setCpf(req.getParameter("medico-cpf"));
+        medico.setCpf(Long.parseLong(req.getParameter("medico-cpf").replaceAll("[^0-9]", "")));
         medico.setEmail(req.getParameter("medico-email"));
         medico.setSenha(req.getParameter("medico-senha"));
         medico.setDataNascimento(req.getParameter("medico-data-nascimento"));
-        medico.setTelefone(req.getParameter("medico-telefone"));
+        medico.setTelefone(Long.parseLong(req.getParameter("medico-telefone").replaceAll("[^0-9]", "")));
+
         medico.setEndereco(endereco);
 
         medico.setEspecialidade(req.getParameter("medico-especialidade"));

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/cadastar-paciente")
+@WebServlet("/cadastrar-paciente")
 public class CreatePacienteServlet extends HttpServlet {
 
     @Override
@@ -22,25 +22,28 @@ public class CreatePacienteServlet extends HttpServlet {
 
         paciente.setPaciente(true);
 
-        endereco.setLogradouro(req.getParameter("paciente-lougradouro"));
+        endereco.setLogradouro(req.getParameter("paciente-logradouro"));
         endereco.setNumero(Integer.parseInt(req.getParameter("paciente-numero")));
         endereco.setBairro(req.getParameter("paciente-bairro"));
         endereco.setCidade(req.getParameter("paciente-cidade"));
         endereco.setEstado(req.getParameter("paciente-estado"));
         endereco.setCep(req.getParameter("paciente-cep"));
 
+
+
         paciente.setNome(req.getParameter("paciente-nome"));
-        paciente.setCpf(req.getParameter("paciente-cpf"));
+        paciente.setCpf(Long.parseLong(req.getParameter("paciente-cpf").replaceAll("[^0-9]", "")));
         paciente.setEmail(req.getParameter("paciente-email"));
         paciente.setSenha(req.getParameter("paciente-senha"));
         paciente.setDataNascimento(req.getParameter("paciente-data-nascimento"));
-        paciente.setTelefone(req.getParameter("paciente-telefone"));
+        paciente.setTelefone(Long.parseLong(req.getParameter("paciente-telefone").replaceAll("[^0-9]", "")));
+
         paciente.setEndereco(endereco);
 
         paciente.setDependentes(Integer.parseInt(req.getParameter("paciente-dependentes")));
 
         new UsuarioDAO().cadastrarUsuario(paciente);
 
-        req.getRequestDispatcher("../login.html").forward(req, resp);
+        req.getRequestDispatcher("login.html").forward(req, resp);
     }
 }

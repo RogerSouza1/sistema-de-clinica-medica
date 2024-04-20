@@ -2,11 +2,11 @@ package br.com.clinicamedica.model;
 
 public abstract class Usuario {
     private String nome;
-    private String cpf;
+    private Long cpf;
     private String email;
     private String senha;
     private String dataNascimento;
-    private String telefone;
+    private Long telefone;
     private Endereco endereco;
     private boolean paciente;
 
@@ -18,11 +18,11 @@ public abstract class Usuario {
         this.nome = nome;
     }
 
-    public String getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
@@ -50,11 +50,11 @@ public abstract class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getTelefone() {
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
 
