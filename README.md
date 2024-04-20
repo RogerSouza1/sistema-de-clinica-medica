@@ -88,62 +88,66 @@
 ### Usuário
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Usuario | int | chave primária |
-| Nome | varchar | atributo | 
-| CPF | int | atributo |
-| Email | varchar | atributo |
-| Senha | varchar | atributo |
-| DataNascimento | date | atributo |
-| Telefone | varchar | atributo |
-| fk_Endereco_Id_Endereco | int | chave estrangeira |
+| id_usuario | int | chave primária |
+| nome | varchar | atributo | 
+| cpf | long | atributo |
+| email | varchar | atributo |
+| senha | varchar | atributo |
+| data_nascimento | date | atributo |
+| telefone | long | atributo |
+| paciente | boolean | atributo |
+| id_endereco | int | chave estrangeira |
 
 ### Endereço
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Endereco | int | chave primária |
-| Logradouro | varchar | atributo | 
-| Numero | int | atributo |
-| Bairro | varchar | atributo |
-| Cidade | varchar | atributo |
-| Estado | varchar | atributo |
-| CEP | int | atributo |
+| id_endereco | int | chave primária |
+| logradouro | varchar | atributo | 
+| numero | int | atributo |
+| bairro | varchar | atributo |
+| cidade | varchar | atributo |
+| estado | varchar | atributo |
+| cep | int | atributo |
 
 ### Paciente
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Paciente | int | chave primária |
-| Dependente | int | atributo | 
-| fk_Usuario_Id_Usuario | int | chave estrangeira |
+| id_paciente | int | chave primária |
+| dependentes | int | atributo | 
+| id_usuario | int | chave estrangeira |
 
 ### Médico
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Medico | int | chave primária |
-| Especialidade | varchar | atributo | 
-| CRM | varchar | atributo |
-| Clinica | varchar | atributo |
-| fk_Usuario_Id_Usuario | int | chave estrangeira |
+| id_medico | int | chave primária |
+| especialidade | varchar | atributo | 
+| crm | varchar | atributo |
+| clinica | varchar | atributo |
+| id_usuario | int | chave estrangeira |
 
 ### Agendamento
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Agendamento | int | chave primária |
-| Prontuario | varchar | atributo |
-| fk_Paciente_Id_Paciente | int | chave estrangeira | 
-| fk_Disponibilidade | int | chave estrangeira |
+| id_agendamento | int | chave primária |
+| prontuario | varchar | atributo |
+| confirmada | boolean | atributo |
+| finalizada | boolean | atributo |
+| cancelada | boolean | atributo |
+| id_Paciente | int | chave estrangeira | 
+| id_disponibilidade | int | chave estrangeira |
 
 ### Disponibilidade
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Disponibilidade | int | chave primária |
-| Data | date | atributo |
-| fk_Horario_Id_Horario | int | chave estrangeira | 
-| fk_Medico_Id_Medico | int | chave estrangeira |
+| id_disponibilidade | int | chave primária |
+| data | date | atributo |
+| id_Horario | int | chave estrangeira | 
+| id_Medico | int | chave estrangeira |
 
 ### Horários
 | nomeAtributo | tipo | descrição|
 | --- | --- | --- |
-| Id_Horario | int | chave primária |
+| id_horario | int | chave primária |
 | 06:00-06:30 | boolean | atributo |
 | 06:30-07:00 | boolean | atributo |
 | 07:00-07:30 | boolean | atributo |
