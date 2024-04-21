@@ -5,10 +5,10 @@
 
 ## 🔧Lista de Funcionalidades
 #### Requisitos Funcionais
-- [ ] O usuário deve conseguir se cadastrar como Paciente ou Médico
+- [X] O usuário deve conseguir se cadastrar como Paciente ou Médico
 - [ ] O usuário deve conseguir consultar e alterar suas informações cadastrais necessárias
-- [ ] O usuário deve conseguir fazer login em sua Área Credenciada específica
-- [ ] O usuário deve conseguir alterar a sua senha, fornecendo o CPF e Email
+- [X] O usuário deve conseguir fazer login em sua Área Credenciada específica
+- [X] O usuário deve conseguir alterar a sua senha, fornecendo o CPF e Email
 - [ ] O paciente deve conseguir agendar suas consultas, selecionando a especialidade, data e horário disponíveis
 - [ ] O paciente deve conseguir acessar seu painel de consultas agendadas e ter a opção de confirmá-las ou cancelá-las
 - [ ] O médico deve conseguir definir e alterar seus horários disponíveis individualmente por data e horário
@@ -16,9 +16,9 @@
 - [ ] O médico deve conseguir cancelar suas consultas individualmente
 
 #### Requisitos Não-Funcionais
-- [ ] O site deve conter uma página principal que mostre as especialidades atendidas
+- [X] O site deve conter uma página principal que mostre as especialidades atendidas
 - [ ] O site deve conter um sobre referente ao plano
-- [ ] O site deve conter uma descrição de cada especialidade
+- [X] O site deve conter uma descrição de cada especialidade
 
 #### Regras de Negócio
 - [ ] O usuário só deve conseguir se cadastrar se tiver mais de 18 anos no dia do cadastro
@@ -86,7 +86,7 @@
 ![MER](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/c91afa8e-2a1d-45b2-8565-4ef03aaa0632)
 
 ### Usuário
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_usuario | int | chave primária |
 | nome | varchar | atributo | 
@@ -99,7 +99,7 @@
 | id_endereco | int | chave estrangeira |
 
 ### Endereço
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_endereco | int | chave primária |
 | logradouro | varchar | atributo | 
@@ -110,14 +110,14 @@
 | cep | int | atributo |
 
 ### Paciente
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_paciente | int | chave primária |
 | dependentes | int | atributo | 
 | id_usuario | int | chave estrangeira |
 
 ### Médico
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_medico | int | chave primária |
 | especialidade | varchar | atributo | 
@@ -126,26 +126,26 @@
 | id_usuario | int | chave estrangeira |
 
 ### Agendamento
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_agendamento | int | chave primária |
 | prontuario | varchar | atributo |
 | confirmada | boolean | atributo |
 | finalizada | boolean | atributo |
 | cancelada | boolean | atributo |
-| id_Paciente | int | chave estrangeira | 
+| id_paciente | int | chave estrangeira | 
 | id_disponibilidade | int | chave estrangeira |
 
 ### Disponibilidade
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_disponibilidade | int | chave primária |
 | data | date | atributo |
-| id_Horario | int | chave estrangeira | 
-| id_Medico | int | chave estrangeira |
+| id_horario | int | chave estrangeira | 
+| id_medico | int | chave estrangeira |
 
 ### Horários
-| nomeAtributo | tipo | descrição|
+| nome_atributo | tipo | descrição|
 | --- | --- | --- |
 | id_horario | int | chave primária |
 | h0600_0630 | boolean | atributo |
