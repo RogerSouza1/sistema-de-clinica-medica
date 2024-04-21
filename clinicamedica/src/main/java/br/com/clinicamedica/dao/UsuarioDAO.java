@@ -49,12 +49,39 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
 
-        System.out.println("Usuário válido: " + isValido);
+        System.out.println("Usuário válido para login: " + isValido);
         System.out.println("Usuário é paciente: " + isPaciente);
 
         return new ValidarLogin(isValido, isPaciente);
     }
+    public ValidarRedefinir validarRedefinir(String email, String cpf) {
+        boolean isValido = false;
 
+        try{
+            Connection connection = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Sucesso ao conectar no banco de dados");
+
+            final String sql = "SELECT * FROM usuario WHERE email = ? AND cpf = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, cpf);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()){
+                isValido = true;
+            }
+            ps.close();
+            connection.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("Usuário validado para redefinição de senha: " + isValido);
+
+        return new ValidarRedefinir(isValido);
+    }
     public void redefinicaoSenha(String novaSenha, String email, String cpf) {
 
         if (validarUsuario(email, cpf)) {
@@ -62,14 +89,6 @@ public class UsuarioDAO {
         } else {
 
         }
-    }
-
-    public HashMap<String, Boolean> realizarLogin(String CPF, String senha) {
-
-        // Verificar se o usuário é um paciente ou médico = String (isPaciente, isMedico)
-        // Verificar se o cadastro é válido = Boolean (true, false)
-
-        return new HashMap<>();
     }
 
     public void cadastrarUsuario(Medico medico) {

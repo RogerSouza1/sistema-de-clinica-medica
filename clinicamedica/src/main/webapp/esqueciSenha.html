@@ -40,9 +40,9 @@
     <div class="forms-container" id="esqueci-senha-container">
       <h2>Redefinição de Senha</h2>
       <p>Para redefinir sua senha, informe seus dados para validação!</p>
-      <form>
-        <input type="email" id="validacao-email" name="email" required placeholder="Email" />
-        <input type="text" id="validacao-cpf" name="cpf" required placeholder="CPF" />
+      <form class="form-redefinir-senha" action="/validar-redefinir-senha" method="post">
+        <input type="email" id="validacao-email" name="validacao-email" required placeholder="Email" />
+        <input type="text" id="validacao-cpf" name="validacao-cpf" required placeholder="CPF" />
         <button type="submit">Enviar</button>
       </form>
     </div>
