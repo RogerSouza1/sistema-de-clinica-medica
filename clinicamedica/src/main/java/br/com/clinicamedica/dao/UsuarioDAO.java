@@ -6,9 +6,7 @@ import br.com.clinicamedica.model.Paciente;
 
 import java.sql.*;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class UsuarioDAO {
@@ -17,8 +15,28 @@ public class UsuarioDAO {
     final String usuario = "sa";
     final String senha = "sa";
 
-    private boolean validarUsuario(String email, String cpf) {
-        return true;
+    private boolean validarUsuario(String cpf) {
+        try {
+            Connection connection = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Sucesso ao conectar no banco de dados");
+
+            final String sql = "SELECT cpf FROM usuario WHERE cpf = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, cpf);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
+            }
+
+            ps.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public ValidarLogin validarLogin(String cpfLogin, String senhaLogin) {
@@ -82,13 +100,34 @@ public class UsuarioDAO {
 
         return new ValidarRedefinir(isValido);
     }
-    public void redefinicaoSenha(String novaSenha, String email, String cpf) {
+    public boolean redefinicaoSenha(String cpf, String novaSenha) {
 
-        if (validarUsuario(email, cpf)) {
+        if (validarUsuario(cpf)) {
+            try {
+                Connection connection = DriverManager.getConnection(url, usuario, senha);
+                System.out.println("Sucesso ao conectar no banco de dados");
 
+                final String sql = "UPDATE usuario SET senha = ? WHERE cpf = ?";
+
+                PreparedStatement ps = connection.prepareStatement(sql);
+                ps.setString(1, novaSenha);
+                ps.setString(2, cpf);
+
+                ps.execute();
+
+                ps.close();
+                connection.close();
+
+                System.out.println("Senha redefinida com sucesso");
+                return true;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
-
+            System.out.println("Usuário não encontrado");
         }
+        return false;
     }
 
     public void cadastrarUsuario(Medico medico) {
@@ -102,8 +141,12 @@ public class UsuarioDAO {
             Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
 
-            if (cpfExiste(medico.getCpf())){
+            if (dadosExiste(medico.getCpf())){
                 System.out.println("CPF já cadastrado");
+                return;
+            }
+            if(dadosExiste(medico.getEmail())){
+                System.out.println("Email já cadastrado");
                 return;
             }
 
@@ -200,8 +243,12 @@ public class UsuarioDAO {
             Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
 
-            if (cpfExiste(paciente.getCpf())){
+            if (dadosExiste(paciente.getCpf())){
                 System.out.println("CPF já cadastrado");
+                return;
+            }
+            if(dadosExiste(paciente.getEmail())){
+                System.out.println("Email já cadastrado");
                 return;
             }
 
@@ -285,7 +332,7 @@ public class UsuarioDAO {
         }
     }
 
-    private boolean cpfExiste(Long cpf) {
+    private boolean dadosExiste(Long cpf) {
 
         try {
             Connection connection = DriverManager.getConnection(url, usuario, senha);
@@ -293,6 +340,30 @@ public class UsuarioDAO {
 
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, cpf);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+
+            ps.close();
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+    private boolean dadosExiste(String email) {
+
+        try {
+            Connection connection = DriverManager.getConnection(url, usuario, senha);
+            final String sql = "SELECT email FROM usuario WHERE email = ?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
 
             ResultSet rs = ps.executeQuery();
 
