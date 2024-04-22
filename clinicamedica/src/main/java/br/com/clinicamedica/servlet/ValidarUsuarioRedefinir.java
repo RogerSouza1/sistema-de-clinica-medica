@@ -1,7 +1,6 @@
 package br.com.clinicamedica.servlet;
 
 import br.com.clinicamedica.dao.UsuarioDAO;
-import br.com.clinicamedica.dao.ValidarRedefinir;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,12 +16,11 @@ public class ValidarUsuarioRedefinir extends HttpServlet {
         String email = req.getParameter("validacao-email");
         String cpf = req.getParameter("validacao-cpf");
 
-        ValidarRedefinir validacao = new UsuarioDAO().validarRedefinir(email, cpf);
+        boolean usuarioValido = new UsuarioDAO().validarRedefinir(email, cpf);
 
-        if (validacao.getIsValido()) {
+        if (usuarioValido) {
             // Armazenar o CPF na sessão
             req.getSession().setAttribute("cpf", cpf);
-
             req.getRequestDispatcher("redefinicaoSenha.html").forward(req, resp);
         } else {
             req.getRequestDispatcher("esqueciSenha.html").forward(req, resp);

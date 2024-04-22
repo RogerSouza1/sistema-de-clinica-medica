@@ -72,7 +72,8 @@ public class UsuarioDAO {
 
         return new ValidarLogin(isValido, isPaciente);
     }
-    public ValidarRedefinir validarRedefinir(String email, String cpf) {
+
+    public boolean validarRedefinir(String email, String cpf) {
         boolean isValido = false;
 
         try{
@@ -98,8 +99,9 @@ public class UsuarioDAO {
         }
         System.out.println("Usuário validado para redefinição de senha: " + isValido);
 
-        return new ValidarRedefinir(isValido);
+        return isValido;
     }
+
     public boolean redefinicaoSenha(String cpf, String novaSenha) {
 
         if (validarUsuario(cpf)) {
@@ -356,6 +358,7 @@ public class UsuarioDAO {
 
         return false;
     }
+
     private boolean dadosExiste(String email) {
 
         try {

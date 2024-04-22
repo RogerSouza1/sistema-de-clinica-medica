@@ -18,7 +18,9 @@ public class UpdateSenha extends HttpServlet {
         // Recuperar o CPF da sessão
         String cpf = (String) req.getSession().getAttribute("cpf");
 
-        if (new UsuarioDAO().redefinicaoSenha(cpf, novaSenha)) {
+        boolean senhaRedefinida = new UsuarioDAO().redefinicaoSenha(cpf, novaSenha);
+
+        if (senhaRedefinida) {
             req.getRequestDispatcher("login.html").forward(req, resp);
         } else {
             req.getRequestDispatcher("esqueciSenha.html").forward(req, resp);
