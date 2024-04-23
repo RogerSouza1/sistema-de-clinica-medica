@@ -463,11 +463,12 @@
         width: 30%;
         max-width: 30rem;
         margin: 3.5rem auto;
+        
     }
 
     .forms-container h2 {
         font-family: 'Baloo Tammudu 2', system-ui;
-        font-size: 1.8vw;
+        font-size: 2vw;
         padding-top: -8%;
         font-weight: 800;
         text-align: center;
@@ -598,7 +599,12 @@
     .tela-login {
         background-color: var(--cinza);
         padding: 0.5em;
+        
 
+    }
+
+    .tela-login, #botao-login {
+        margin-top: 5%;
     }
 
     .main-login {
@@ -617,7 +623,7 @@
         font-family: 'Poppins', sans-serif;
         font-size: .9em;
         color: #0455BF;
-        margin-right: 9em;
+        margin-right: 24em;
     }
 
     /* ---------------- horarios - Medico ----------------*/
@@ -864,10 +870,28 @@
         border: 2px solid transparent;
     }
 
+    /*-----------------Consultas-----------------*/
+    .consultas-main {
+        display: flex;
+        justify-content: center;
+    }
+
+    .consultas-main h2{
+        font-family: 'Baloo Tammudu 2', system-ui;
+        font-size: 1.8vw;
+        padding-top: -8%;
+        font-weight: 800;
+        text-align: center;
+        padding-bottom: 1vh;
+        margin-top: 5%;
+
+    }
+
     /* ---------------- Cadastro ----------------*/
 
     .cadastro {
         background-color: #E9E9E9;
+        
 
     }
 
