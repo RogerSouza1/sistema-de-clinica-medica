@@ -24,7 +24,7 @@ public class ValidarUsuarioLogin extends HttpServlet {
             if (validacao.getIsPaciente()) {
                 req.getRequestDispatcher("paciente/consultas.html").forward(req, resp);
             } else {
-                req.getRequestDispatcher("medico/calendario.html").forward(req, resp);
+                req.getRequestDispatcher("medico/horarios.html").forward(req, resp);
             }
         } else {
             req.getRequestDispatcher("login.html").forward(req, resp);

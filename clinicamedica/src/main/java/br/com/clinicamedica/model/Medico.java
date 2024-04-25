@@ -1,25 +1,19 @@
 package br.com.clinicamedica.model;
 
 public class Medico extends Usuario {
-    Long idUsuario;
-    String especialidade;
-    String crm;
-    String clinica;
+    private long id;
+    private String crm;
+    private Especialidade especialidade;
+    private Clinica clinica;
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    // getters and setters
+
+    public long getId() {
+        return id;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCrm() {
@@ -30,11 +24,19 @@ public class Medico extends Usuario {
         this.crm = crm;
     }
 
-    public String getClinica() {
+    public Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public Clinica getClinica() {
         return clinica;
     }
 
-    public void setClinica(String clinica) {
+    public void setClinica(Clinica clinica) {
         this.clinica = clinica;
     }
 }
