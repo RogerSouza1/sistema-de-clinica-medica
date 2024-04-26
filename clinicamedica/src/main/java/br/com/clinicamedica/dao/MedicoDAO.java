@@ -41,4 +41,28 @@ public class MedicoDAO {
 
         return null;
     }
+
+    public Medico getMedicoByCPF(String cpf) {
+
+        final String sqlSelect = "SELECT * FROM usuario WHERE cpf = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement ps = connection.prepareStatement(sqlSelect);
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Medico medico = new Medico();
+                medico.setId(rs.getLong("id_usuario"));
+                medico.setCpf(rs.getLong("cpf"));
+                // Set other fields as necessary
+                return medico;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao recuperar o médico pelo CPF: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

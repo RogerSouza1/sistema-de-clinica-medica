@@ -26,18 +26,18 @@
 
 <main>
     <!--Definição de Horários-->
-    <section>
-        <div class="horarios-index">
-            <h1>Definição de Horários</h1>
-
-            <div class="data-campo">
-                <h2>Data: </h2>
-                <label for="data-horarios"></label>
-                <input type="date" id="data-horarios">
-            </div>
-
-            <h2>Horários: </h2>
             <form action="/cadastrar-horarios" method="post">
+                <section>
+                    <div class="horarios-index">
+                        <h1>Definição de Horários</h1>
+
+                        <div class="data-campo">
+                            <h2>Data: </h2>
+                            <label for="data-horarios"></label>
+                            <input name= "data-horarios" type="date" id="data-horarios">
+                        </div>
+
+                        <h2>Horários: </h2>
                 <div class="horarios-campo">
                     <div class="horario-option">
                         <input type="checkbox" id="07:00 - 07:30" name="horario" value="07:00 - 07:30">
@@ -137,9 +137,11 @@
                     </div>
                 </div>
                 <button type="submit" id="botão-salvar">Salvar</button>
-            </form>
+
         </div>
+
     </section>
+            </form>
 </main>
 
 <!--Footer-->

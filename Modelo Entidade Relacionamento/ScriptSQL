@@ -179,6 +179,7 @@ CREATE TABLE Usuario (
     senha VARCHAR(255) NOT NULL DEFAULT '',
     data_nascimento DATE NOT NULL,
     telefone LONG NOT NULL,
+    is_paciente BOOLEAN,
     FOREIGN KEY (id_endereco) REFERENCES Endereco(id_endereco) ON DELETE CASCADE
 );
 

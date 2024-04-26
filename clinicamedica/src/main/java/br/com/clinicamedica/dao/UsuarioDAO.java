@@ -49,7 +49,7 @@ public class UsuarioDAO {
             Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
 
-            final String sql = "SELECT paciente FROM usuario WHERE cpf = ? AND senha = ?";
+            final String sql = "SELECT is_paciente FROM usuario WHERE cpf = ? AND senha = ?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, cpfLogin);
@@ -58,7 +58,7 @@ public class UsuarioDAO {
             ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                isPaciente = resultSet.getBoolean("paciente");
+                isPaciente = resultSet.getBoolean("is_paciente");
                 isValido = true;
             }
 
@@ -135,7 +135,7 @@ public class UsuarioDAO {
 
     public void cadastrarUsuario(Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
-        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, is_paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         final String sqlMedico = "INSERT INTO medico (id_usuario, id_especialidade, crm, id_clinica) VALUES (?, ?, ?, ?)";
 
 
@@ -244,7 +244,7 @@ public class UsuarioDAO {
 
     public void cadastrarUsuario(Paciente paciente) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
-        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, is_paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         final String sqlPaciente = "INSERT INTO paciente (id_usuario, dependentes) VALUES (?, ?)";
 
 

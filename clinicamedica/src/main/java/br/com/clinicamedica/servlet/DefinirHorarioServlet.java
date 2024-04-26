@@ -23,31 +23,34 @@ public class DefinirHorarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recuperar o médico logado
         MedicoDAO medicoDAO = new MedicoDAO();
-        Medico medico = medicoDAO.getMedicoLogado(request.getSession());
+        Medico medico = (Medico) request.getSession().getAttribute("medicoLogado");
 
         // Recuperar a data selecionada
-        String dataString = request.getParameter("data");
+        String dataString = request.getParameter("data-horarios");
         Date data = null;
         if (dataString != null && !dataString.isEmpty()) {
             try {
-                data = new SimpleDateFormat("yyyy-MM-dd").parse(dataString);
+                data = new SimpleDateFormat("dd-MM-yyyy").parse(dataString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         } else {
             System.out.println("Data é null ou está vazio.");
+            return; // Se a data for nula ou vazia, retorne imediatamente
         }
 
         // Recuperar os horários selecionados do formulário
+        Horario horario = new Horario();
+
         String[] horariosSelecionados = request.getParameterValues("horario");
 
-        // Marcar como verdadeiros os horários selecionados
-        DisponibilidadeDAO disponibilidadeDAO = new DisponibilidadeDAO();
+
         if (horariosSelecionados != null) {
             for (String horarioSelecionado : horariosSelecionados) {
-                int idHorario = Integer.parseInt(horarioSelecionado);
-                disponibilidadeDAO.definirHorarios(medico, data, idHorario);
+                horario.setDisponibilidade(horarioSelecionado, true);
             }
+            DisponibilidadeDAO disponibilidadeDAO = new DisponibilidadeDAO();
+            disponibilidadeDAO.definirDisponibilidade(medico, data, horario);
         } else {
             System.out.println("Nenhum horário selecionado.");
         }
