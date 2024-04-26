@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Horario {
+    private Long id_horario;
+    private String horarioSelecionado;
     private final Map<String, Boolean> disponibilidade;
 
     public Horario() {
@@ -49,6 +51,23 @@ public class Horario {
             disponibilidade.put(horario, disponivel);
         }
     }
+
+    public Long getId_horario() {
+        return id_horario;
+    }
+
+    public void setId_horario(Long id_horario) {
+        this.id_horario = id_horario;
+    }
+
+    public String getHorarioSelecionado() {
+        return horarioSelecionado;
+    }
+
+    public void setHorarioSelecionado(String horarioSelecionado) {
+        this.horarioSelecionado = horarioSelecionado;
+    }
+
 
     @Override
     public String toString() {

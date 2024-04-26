@@ -86,3 +86,142 @@ CREATE TABLE agendamento (
                              FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
                              FOREIGN KEY (id_disponibilidade) REFERENCES disponibilidade(id_disponibilidade)
 );
+
+Sugestão de alteração:
+
+CREATE TABLE endereco (
+                          id_endereco SERIAL PRIMARY KEY,
+                          logradouro VARCHAR(255) NOT NULL DEFAULT '',
+                          numero INT NOT NULL,
+                          bairro VARCHAR(255) NOT NULL DEFAULT '',
+                          cidade VARCHAR(255) NOT NULL DEFAULT '',
+                          estado VARCHAR(255) NOT NULL DEFAULT '',
+                          cep INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE horarios (
+    id_horarios SERIAL PRIMARY KEY,
+    horario VARCHAR(255) NOT NULL
+);
+
+INSERT INTO horarios (horario) VALUES
+('06:00 - 06:30'),
+('06:30 - 07:00'),
+('07:00 - 07:30'),
+('07:30 - 08:00'),
+('08:00 - 08:30'),
+('08:30 - 09:00'),
+('09:00 - 09:30'),
+('09:30 - 10:00'),
+('10:00 - 10:30'),
+('10:30 - 11:00'),
+('11:00 - 11:30'),
+('11:30 - 12:00'),
+('12:00 - 12:30'),
+('12:30 - 13:00'),
+('13:00 - 13:30'),
+('13:30 - 14:00'),
+('14:00 - 14:30'),
+('14:30 - 15:00'),
+('15:00 - 15:30'),
+('15:30 - 16:00'),
+('16:00 - 16:30'),
+('16:30 - 17:00'),
+('17:00 - 17:30'),
+('17:30 - 18:00'),
+('18:00 - 18:30'),
+('18:30 - 19:00');
+
+CREATE TABLE Especialidade (
+    id_especialidade SERIAL PRIMARY KEY,
+    nome_especialidade VARCHAR(255) NOT NULL
+);
+
+INSERT INTO Especialidade (nome_especialidade) VALUES
+('Cardiologia'),
+('Dermatologia'),
+('Endocrinologia'),
+('Gastroenterologia'),
+('Geriatria'),
+('Ginecologia'),
+('Mastologia'),
+('Nefrologia'),
+('Neurologia'),
+('Oftalmologia'),
+('Oncologia'),
+('Ortopedia'),
+('Otorrinolaringologia'),
+('Pediatria'),
+('Psiquiatria'),
+('Urologia');
+
+
+CREATE TABLE Clinica (
+    id_clinica SERIAL PRIMARY KEY,
+    nome_clinica VARCHAR(255) NOT NULL
+);
+
+INSERT INTO Clinica (nome_clinica) VALUES
+('Clinica Rosa'),
+('Clinica Azul'),
+('Clinica Verde'),
+('Clinica Lilás'),
+('Clinica Prata'),
+('Clinica Laranja'),
+('Clinica Vermelha'),
+('Clinica Amarela'),
+('Clinica Dourada'),
+('Clinica Cinza');
+
+CREATE TABLE Usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    id_endereco INTEGER NOT NULL,
+    nome VARCHAR(255) NOT NULL DEFAULT '',
+    cpf LONG NOT NULL,
+    email VARCHAR(255) NOT NULL DEFAULT '',
+    senha VARCHAR(255) NOT NULL DEFAULT '',
+    data_nascimento DATE NOT NULL,
+    telefone LONG NOT NULL,
+    is_paciente BOOLEAN,
+    FOREIGN KEY (id_endereco) REFERENCES Endereco(id_endereco) ON DELETE CASCADE
+);
+
+CREATE TABLE Paciente (
+    id_paciente SERIAL PRIMARY KEY,
+    id_usuario INTEGER NOT NULL,
+    dependentes INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
+);
+
+CREATE TABLE Medico (
+    id_medico SERIAL PRIMARY KEY,
+    id_usuario INTEGER NOT NULL,
+    id_especialidade INTEGER NOT NULL,
+    id_clinica INTEGER NOT NULL,
+    crm VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (id_especialidade) REFERENCES Especialidade(id_especialidade),
+    FOREIGN KEY (id_clinica) REFERENCES Clinica(id_clinica)
+);
+
+CREATE TABLE disponibilidade (
+    id_disponibilidade SERIAL PRIMARY KEY,
+    id_horarios INTEGER NOT NULL,
+    id_medico INTEGER NOT NULL,
+    data DATE NOT NULL,
+    disponivel BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (id_horarios) REFERENCES Horarios(id_horarios),
+    FOREIGN KEY (id_medico) REFERENCES Medico(id_medico)
+);
+
+CREATE TABLE Agendamento (
+    id_agendamento SERIAL PRIMARY KEY,
+    id_paciente INTEGER NOT NULL,
+    id_disponibilidade INTEGER NOT NULL,
+    prontuario VARCHAR (255) NOT NULL DEFAULT '',
+    confirmada BOOLEAN DEFAULT FALSE,
+    finalizada BOOLEAN DEFAULT FALSE,
+    cancelada BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
+    FOREIGN KEY (id_disponibilidade) REFERENCES Disponibilidade(id_disponibilidade)
+);

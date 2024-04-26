@@ -3,6 +3,7 @@ package br.com.clinicamedica.dao;
 import br.com.clinicamedica.model.Horario;
 import br.com.clinicamedica.model.Medico;
 import br.com.clinicamedica.model.Paciente;
+import br.com.clinicamedica.model.Especialidade;
 
 import java.sql.*;
 import java.util.Collections;
@@ -48,7 +49,7 @@ public class UsuarioDAO {
             Connection connection = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Sucesso ao conectar no banco de dados");
 
-            final String sql = "SELECT paciente FROM usuario WHERE cpf = ? AND senha = ?";
+            final String sql = "SELECT is_paciente FROM usuario WHERE cpf = ? AND senha = ?";
 
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, cpfLogin);
@@ -57,7 +58,7 @@ public class UsuarioDAO {
             ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                isPaciente = resultSet.getBoolean("paciente");
+                isPaciente = resultSet.getBoolean("is_paciente");
                 isValido = true;
             }
 
@@ -134,8 +135,8 @@ public class UsuarioDAO {
 
     public void cadastrarUsuario(Medico medico) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
-        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        final String sqlMedico = "INSERT INTO medico (id_usuario, especialidade, crm, clinica) VALUES (?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, is_paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        final String sqlMedico = "INSERT INTO medico (id_usuario, id_especialidade, crm, id_clinica) VALUES (?, ?, ?, ?)";
 
 
         try {
@@ -179,6 +180,12 @@ public class UsuarioDAO {
 
             System.out.println("Endereço cadastrado com sucesso");
 
+            EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+            Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(medico.getEspecialidade().getNomeEspecialidade());
+
+            long idEspecialidade = especialidade.getIdEspecialidade();
+            String nomeEspecialidade = especialidade.getNomeEspecialidade();
+
             //Inserir um Usuário
             PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
 
@@ -209,9 +216,10 @@ public class UsuarioDAO {
             // Inserir um Médico
             PreparedStatement psMedico = connection.prepareStatement(sqlMedico, Statement.RETURN_GENERATED_KEYS);
             psMedico.setLong(1, id_usuario);
-            psMedico.setString(2, medico.getEspecialidade());
+            psMedico.setLong(2, idEspecialidade);
             psMedico.setString(3, medico.getCrm());
-            psMedico.setString(4, medico.getClinica());
+            psMedico.setLong(4, medico.getClinica().getId());
+
 
             psMedico.execute();
 
@@ -236,7 +244,7 @@ public class UsuarioDAO {
 
     public void cadastrarUsuario(Paciente paciente) {
         final String sqlEndereco = "INSERT INTO endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES (?, ?, ?, ?, ?, ?)";
-        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        final String sqlUsuario = "INSERT INTO usuario (nome, email, senha, cpf, data_nascimento, telefone, id_endereco, is_paciente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         final String sqlPaciente = "INSERT INTO paciente (id_usuario, dependentes) VALUES (?, ?)";
 
 

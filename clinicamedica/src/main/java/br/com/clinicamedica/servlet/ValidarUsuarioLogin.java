@@ -1,7 +1,9 @@
 package br.com.clinicamedica.servlet;
 
+import br.com.clinicamedica.dao.MedicoDAO;
 import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.dao.ValidarLogin;
+import br.com.clinicamedica.model.Medico;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +26,9 @@ public class ValidarUsuarioLogin extends HttpServlet {
             if (validacao.getIsPaciente()) {
                 req.getRequestDispatcher("paciente/consultas.html").forward(req, resp);
             } else {
-                req.getRequestDispatcher("medico/calendario.html").forward(req, resp);
+                Medico medico = new MedicoDAO().getMedicoByCPF(cpf);
+                req.getSession().setAttribute("medicoLogado", medico);
+                req.getRequestDispatcher("medico/horarios.html").forward(req, resp);
             }
         } else {
             req.getRequestDispatcher("login.html").forward(req, resp);

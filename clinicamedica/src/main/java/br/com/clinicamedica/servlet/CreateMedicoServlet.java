@@ -3,6 +3,10 @@ package br.com.clinicamedica.servlet;
 import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
+import br.com.clinicamedica.dao.EspecialidadeDAO;
+import br.com.clinicamedica.model.Especialidade;
+import br.com.clinicamedica.dao.ClinicaDAO;
+import br.com.clinicamedica.model.Clinica;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 @WebServlet("/cadastrar-medico")
 public class CreateMedicoServlet extends HttpServlet {
 
@@ -38,9 +41,15 @@ public class CreateMedicoServlet extends HttpServlet {
 
         medico.setEndereco(endereco);
 
-        medico.setEspecialidade(req.getParameter("medico-especialidade"));
+        EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
+        Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(req.getParameter("medico-especialidade"));
+        medico.setEspecialidade(especialidade);
+
         medico.setCrm(req.getParameter("medico-crm"));
-        medico.setClinica(req.getParameter("medico-clinica"));
+
+        ClinicaDAO clinicaDAO = new ClinicaDAO();
+        Clinica clinica = clinicaDAO.getClinicaByName(req.getParameter("medico-clinica"));
+        medico.setClinica(clinica);
 
         new UsuarioDAO().cadastrarUsuario(medico);
 
