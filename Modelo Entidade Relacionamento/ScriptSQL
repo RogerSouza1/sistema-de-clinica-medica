@@ -100,34 +100,37 @@ CREATE TABLE endereco (
 );
 
 CREATE TABLE horarios (
-                          id_horarios SERIAL PRIMARY KEY,
-                          h0600_0630 BOOLEAN DEFAULT FALSE,
-                          h0630_0700 BOOLEAN DEFAULT FALSE,
-                          h0700_0730 BOOLEAN DEFAULT FALSE,
-                          h0730_0800 BOOLEAN DEFAULT FALSE,
-                          h0800_0830 BOOLEAN DEFAULT FALSE,
-                          h0830_0900 BOOLEAN DEFAULT FALSE,
-                          h0900_0930 BOOLEAN DEFAULT FALSE,
-                          h0930_1000 BOOLEAN DEFAULT FALSE,
-                          h1000_1030 BOOLEAN DEFAULT FALSE,
-                          h1030_1100 BOOLEAN DEFAULT FALSE,
-                          h1100_1130 BOOLEAN DEFAULT FALSE,
-                          h1130_1200 BOOLEAN DEFAULT FALSE,
-                          h1200_1230 BOOLEAN DEFAULT FALSE,
-                          h1230_1300 BOOLEAN DEFAULT FALSE,
-                          h1300_1330 BOOLEAN DEFAULT FALSE,
-                          h1330_1400 BOOLEAN DEFAULT FALSE,
-                          h1400_1430 BOOLEAN DEFAULT FALSE,
-                          h1430_1500 BOOLEAN DEFAULT FALSE,
-                          h1500_1530 BOOLEAN DEFAULT FALSE,
-                          h1530_1600 BOOLEAN DEFAULT FALSE,
-                          h1600_1630 BOOLEAN DEFAULT FALSE,
-                          h1630_1700 BOOLEAN DEFAULT FALSE,
-                          h1700_1730 BOOLEAN DEFAULT FALSE,
-                          h1730_1800 BOOLEAN DEFAULT FALSE,
-                          h1800_1830 BOOLEAN DEFAULT FALSE,
-                          h1830_1900 BOOLEAN DEFAULT FALSE
+    id_horarios SERIAL PRIMARY KEY,
+    horario VARCHAR(255) NOT NULL
 );
+
+INSERT INTO horarios (horario) VALUES
+('06:00 - 06:30'),
+('06:30 - 07:00'),
+('07:00 - 07:30'),
+('07:30 - 08:00'),
+('08:00 - 08:30'),
+('08:30 - 09:00'),
+('09:00 - 09:30'),
+('09:30 - 10:00'),
+('10:00 - 10:30'),
+('10:30 - 11:00'),
+('11:00 - 11:30'),
+('11:30 - 12:00'),
+('12:00 - 12:30'),
+('12:30 - 13:00'),
+('13:00 - 13:30'),
+('13:30 - 14:00'),
+('14:00 - 14:30'),
+('14:30 - 15:00'),
+('15:00 - 15:30'),
+('15:30 - 16:00'),
+('16:00 - 16:30'),
+('16:30 - 17:00'),
+('17:00 - 17:30'),
+('17:30 - 18:00'),
+('18:00 - 18:30'),
+('18:30 - 19:00');
 
 CREATE TABLE Especialidade (
     id_especialidade SERIAL PRIMARY KEY,
@@ -201,12 +204,12 @@ CREATE TABLE Medico (
     FOREIGN KEY (id_clinica) REFERENCES Clinica(id_clinica)
 );
 
-CREATE TABLE Disponibilidade (
+CREATE TABLE disponibilidade (
     id_disponibilidade SERIAL PRIMARY KEY,
     id_horarios INTEGER NOT NULL,
     id_medico INTEGER NOT NULL,
     data DATE NOT NULL,
-    disponivel BOOLEAN DEFAULT TRUE, //disponivel diz respeito a se aquele horario segue disponivel ou não
+    disponivel BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (id_horarios) REFERENCES Horarios(id_horarios),
     FOREIGN KEY (id_medico) REFERENCES Medico(id_medico)
 );

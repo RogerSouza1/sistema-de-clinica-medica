@@ -2,6 +2,7 @@ package br.com.clinicamedica.servlet;
 
 import br.com.clinicamedica.dao.DisponibilidadeDAO;
 import br.com.clinicamedica.dao.MedicoDAO;
+import br.com.clinicamedica.model.Disponibilidade;
 import br.com.clinicamedica.model.Horario;
 import br.com.clinicamedica.model.Medico;
 
@@ -19,6 +20,7 @@ import java.util.Date;
 @WebServlet("/cadastrar-horarios")
 public class DefinirHorarioServlet extends HttpServlet {
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recuperar o médico logado
@@ -30,7 +32,7 @@ public class DefinirHorarioServlet extends HttpServlet {
         Date data = null;
         if (dataString != null && !dataString.isEmpty()) {
             try {
-                data = new SimpleDateFormat("dd-MM-yyyy").parse(dataString);
+                data = new SimpleDateFormat("yyyy-dd-MM").parse(dataString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -44,12 +46,12 @@ public class DefinirHorarioServlet extends HttpServlet {
 
         String[] horariosSelecionados = request.getParameterValues("horario");
 
-
         if (horariosSelecionados != null) {
+            DisponibilidadeDAO disponibilidadeDAO = new DisponibilidadeDAO();
             for (String horarioSelecionado : horariosSelecionados) {
                 horario.setDisponibilidade(horarioSelecionado, true);
+                disponibilidadeDAO.inserirHorarios(horarioSelecionado);
             }
-            DisponibilidadeDAO disponibilidadeDAO = new DisponibilidadeDAO();
             disponibilidadeDAO.definirDisponibilidade(medico, data, horario);
         } else {
             System.out.println("Nenhum horário selecionado.");
