@@ -105,8 +105,6 @@ CREATE TABLE horarios (
 );
 
 INSERT INTO horarios (horario) VALUES
-('06:00 - 06:30'),
-('06:30 - 07:00'),
 ('07:00 - 07:30'),
 ('07:30 - 08:00'),
 ('08:00 - 08:30'),

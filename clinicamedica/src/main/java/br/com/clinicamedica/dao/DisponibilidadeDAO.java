@@ -28,29 +28,63 @@ public class DisponibilidadeDAO {
     }
 
     public void definirDisponibilidade(Medico medico, Date data, Horario horario) {
-        final String sqlInsert = "INSERT INTO disponibilidade (id_medico, data, id_horarios, disponivel) VALUES (?, ?, ?, ?)";
+    final String sqlInsert = "INSERT INTO disponibilidade (id_medico, data, id_horarios, disponivel) VALUES (?, ?, ?, ?)";
+    final String sqlDelete = "DELETE FROM disponibilidade WHERE id_medico = ? AND data = ? AND id_horarios = ?";
 
-        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
-            PreparedStatement ps = connection.prepareStatement(sqlInsert);
+    try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+        PreparedStatement psInsert = connection.prepareStatement(sqlInsert);
+        PreparedStatement psDelete = connection.prepareStatement(sqlDelete);
 
-            for (Map.Entry<String, Boolean> entry : horario.getDisponibilidade().entrySet()) {
-                if (entry.getValue()) {
-                    System.out.println("Horário disponível: " + entry.getKey());
+        // Buscar todos os horários para o médico e a data especificados
+        Set<Long> horariosExistentes = buscarHorarios(medico, data);
 
-                    Long id_horario = getIdHorarios(entry.getKey()); // Assuming getIdHorarios returns Long for given time slot
+        for (Map.Entry<String, Boolean> entry : horario.getDisponibilidade().entrySet()) {
+            Long id_horario = getIdHorarios(entry.getKey());
 
-                    ps.setLong(1, medico.getId());
-                    ps.setDate(2, new java.sql.Date(data.getTime()));
-                    ps.setLong(3, id_horario);
-                    ps.setBoolean(4, true);
-
-                    ps.executeUpdate(); // Execute the prepared statement
+            if (entry.getValue()) {
+                // Se o horário não existir no banco de dados, insira-o
+                if (!horariosExistentes.contains(id_horario)) {
+                    psInsert.setLong(1, medico.getId());
+                    psInsert.setDate(2, new java.sql.Date(data.getTime()));
+                    psInsert.setLong(3, id_horario);
+                    psInsert.setBoolean(4, true);
+                    psInsert.executeUpdate();
+                }
+            } else {
+                // Se o horário existir no banco de dados, mas não estiver na lista de horários selecionados, remova-o
+                if (horariosExistentes.contains(id_horario)) {
+                    psDelete.setLong(1, medico.getId());
+                    psDelete.setDate(2, new java.sql.Date(data.getTime()));
+                    psDelete.setLong(3, id_horario);
+                    psDelete.executeUpdate();
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
+
+private Set<Long> buscarHorarios(Medico medico, Date data) {
+    final String sqlSelect = "SELECT id_horarios FROM disponibilidade WHERE id_medico = ? AND data = ?";
+    Set<Long> horarios = new HashSet<>();
+
+    try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+        PreparedStatement psSelect = connection.prepareStatement(sqlSelect);
+        psSelect.setLong(1, medico.getId());
+        psSelect.setDate(2, new java.sql.Date(data.getTime()));
+        ResultSet rs = psSelect.executeQuery();
+
+        while (rs.next()) {
+            horarios.add(rs.getLong("id_horarios"));
+        }
+    } catch (SQLException e) {
+        System.out.println("Erro ao buscar horários: " + e.getMessage());
+        e.printStackTrace();
+    }
+
+    return horarios;
+}
 
     private Long getIdHorarios(String horario) {
         final String sqlSelect = "SELECT id_horarios FROM horarios WHERE horario = ?";
@@ -88,4 +122,5 @@ public class DisponibilidadeDAO {
             e.printStackTrace();
         }
     }
+
 }
