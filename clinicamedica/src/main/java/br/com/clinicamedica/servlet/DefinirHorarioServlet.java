@@ -32,7 +32,7 @@ public class DefinirHorarioServlet extends HttpServlet {
         Date data = null;
         if (dataString != null && !dataString.isEmpty()) {
             try {
-                data = new SimpleDateFormat("yyyy-dd-MM").parse(dataString);
+                data = new SimpleDateFormat("yyyy-MM-dd").parse(dataString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
