@@ -35,8 +35,8 @@
             <form id="forms-alterar-dados-medico">
                 <input type="nome" id="alterar-nome-medico" name="medico-nome" required placeholder="Nome" />
                 <input type="text" id="alterar-cpf-medico" name="medico-cpf" required placeholder="CPF" />
-                <input list="especialidades" id="alterar-especialidade-medico" name="medico-especialidade" required placeholder="Especialidade" />
-                <datalist>
+                <input list="especialidade" id="alterar-especialidade-medico" name="medico-especialidade" required placeholder="Especialidade" />
+                <datalist id="especialidade">
                     <option value="">
                     <option value="">
                     <option value="">
@@ -51,8 +51,8 @@
                     <option value="">
                 </datalist>
 
-                <input list="clinicas" id="alterar-clinica-medico" name="medico-clinica" required placeholder="Clinica"/>
-                <datalist>
+                <input list="clinica" id="alterar-clinica-medico" name="medico-clinica" required placeholder="Clinica"/>
+                <datalist id="clinica">
                     <option value="">
                     <option value="">
                     <option value="">
