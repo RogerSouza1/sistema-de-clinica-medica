@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -31,42 +32,49 @@
             <div class="campos-esquerda-agendar-consulta">
                 <div class="campos-agendar-consulta">
                     <h2>Especialidades:</h2>
-                    <select name="especialidade" id="especialidade-agendamento">
-                        <option value="Cardiologia">Cardiologia</option>
-                        <option value="Dermatologiaseta">Dermatologiaseta</option>
-                        <option value="Endocrinologiaseta">Endocrinologiaseta</option>
-                        <option value="Gastroenterologiaseta">Gastroenterologiaseta</option>
-                        <option value="Geriatriaseta">Geriatriaseta</option>
-                        <option value="Ginecologiaseta">Ginecologiaseta</option>
-                        <option value="Mastologiaseta">Mastologiaseta</option>
-                        <option value="Nefrologiaseta">Nefrologiaseta</option>
-                        <option value="Neurologiaseta">Neurologiaseta</option>
-                        <option value="Oftalmologiaseta">Oftalmologiaseta</option>
-                        <option value="Oncologiaseta">Oncologiaseta</option>
-                        <option value="Ortopediaseta">Ortopediaseta</option>
-                        <option value="Otorrinolaringologiaseta">Otorrinolaringologiaseta</option>
-                        <option value="Pediatriaseta">Pediatriaseta</option>
-                        <option value="Psiquiatriaseta">Psiquiatriaseta</option>
-                        <option value="Urologia">Urologia</option>
-                    </select>
+                    <input list="especialidade-agendamento-list" name="especialidade" id="especialidade-agendamento" required placeholder="Especialidade" />
+                    <datalist id="especialidade-agendamento-list">
+                        <option value="Cardiologia">
+                        <option value="Dermatologia">
+                        <option value="Endocrinologia">
+                        <option value="Gastroenterologia">
+                        <option value="Geriatria">
+                        <option value="Ginecologia">
+                        <option value="Mastologia">
+                        <option value="Nefrologia">
+                        <option value="Neurologia">
+                        <option value="Oftalmologia">
+                        <option value="Oncologia">
+                        <option value="Ortopedia">
+                        <option value="Otorrinolaringologia">
+                        <option value="Pediatria">
+                        <option value="Psiquiatria">
+                        <option value="Urologia">
+                    </datalist>
                 </div>
 
                 <div class="campos-agendar-consulta">
                     <h2>Clínica:</h2>
-                    <select name="clinica" id="clinica-agendamento">
-                    </select>
+                    <input list="clinica-agendamento-list" name="clinica" id="clinica-agendamento" required placeholder="Clínica" />
+                    <datalist id="clinica-agendamento-list">
+                        <!-- Options will be filled dynamically by JavaScript -->
+                    </datalist>
                 </div>
 
                 <div class="campos-agendar-consulta">
                     <h2>Médico:</h2>
-                    <select name="medico" id="medico-agendamento">
-                    </select>
+                    <input list="medico-agendamento-list" name="medico" id="medico-agendamento" required placeholder="Médico" />
+                    <datalist id="medico-agendamento-list">
+                        <!-- Options will be filled dynamically by JavaScript -->
+                    </datalist>
                 </div>
 
                 <div class="campos-agendar-consulta">
                     <h2>Horários Disponíveis:</h2>
-                    <select name="horario" id="horario-agendamento">
-                    </select>
+                    <input list="horario-agendamento-list" name="horario" id="horario-agendamento" required placeholder="Horário" />
+                    <datalist id="horario-agendamento-list">
+                        <!-- Options will be filled dynamically by JavaScript -->
+                    </datalist>
                 </div>
             </div>
 
@@ -116,5 +124,9 @@
     </div>
 </footer>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/agendamento.js"></script>
 <script src="../js/dropdown.js"></script>
+
 </body>
+</html>
