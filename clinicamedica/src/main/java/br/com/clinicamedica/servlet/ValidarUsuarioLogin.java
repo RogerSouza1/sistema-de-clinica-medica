@@ -1,9 +1,11 @@
 package br.com.clinicamedica.servlet;
 
 import br.com.clinicamedica.dao.MedicoDAO;
+import br.com.clinicamedica.dao.PacienteDAO;
 import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.dao.ValidarLogin;
 import br.com.clinicamedica.model.Medico;
+import br.com.clinicamedica.model.Paciente;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +26,8 @@ public class ValidarUsuarioLogin extends HttpServlet {
 
         if (validacao.getIsValido()) {
             if (validacao.getIsPaciente()) {
+                Paciente paciente = new PacienteDAO().getPacienteByCPF(cpf);
+                req.getSession().setAttribute("pacienteLogado", paciente);
                 req.getRequestDispatcher("paciente/consultas.html").forward(req, resp);
             } else {
                 Medico medico = new MedicoDAO().getMedicoByCPF(cpf);

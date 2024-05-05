@@ -392,8 +392,28 @@ public class UsuarioDAO {
         return false;
     }
 
-    public void atualizarUsuario(Paciente paciente) {
+    public boolean atualizarUsuario(Long cpf, String nome) {
 
+        try{
+            Connection connection = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Sucesso ao conectar no banco de dados");
+            final String sql = "UPDATE usuario SET nome = ? WHERE cpf = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, nome);
+            ps.setLong(2, cpf);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                System.out.println("Dados atualizados com sucesso");
+            }
+            ps.close();
+            connection.close();
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Usuário não válido para atualização");
+        }
+        return false;
     }
 
     public void atualizarUsuario(Medico medico) {
