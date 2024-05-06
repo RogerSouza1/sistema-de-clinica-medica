@@ -51,3 +51,14 @@ $('#data-agendamento').change(function () {
         });
     });
 });
+
+$('#especialidade-agendamento').change(function () {
+    var especialidade = $(this).val();
+    $.get('/buscarClinicas?especialidade=' + especialidade, function (data) {
+        var clinicaDropdown = $('#clinica-agendamento-list');
+        clinicaDropdown.empty();
+        $.each(data, function (index, clinica) {
+             clinicaDropdown.append($('<option></option>').attr('value', clinica.nome));
+            });
+    });
+});
