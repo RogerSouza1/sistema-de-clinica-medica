@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MedicoDAO {
     private final String url = "jdbc:h2:~/test";
@@ -70,9 +72,11 @@ public class MedicoDAO {
 
     public List<Medico> getMedicosByClinicaAndEspecialidade(String clinicaNome, String especialidadeNome) {
         List<Medico> medicos = new ArrayList<>();
-        final String sqlSelect = "SELECT m.* FROM Medico m " +
+        final String sqlSelect = "SELECT m.id_medico, u.nome " +
+                "FROM Medico m " +
                 "JOIN Clinica c ON m.id_clinica = c.id_clinica " +
                 "JOIN Especialidade e ON m.id_especialidade = e.id_especialidade " +
+                "JOIN Usuario u ON m.id_usuario = u.id_usuario " +
                 "WHERE c.nome_clinica = ? AND e.nome_especialidade = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
@@ -83,8 +87,8 @@ public class MedicoDAO {
 
             while (rs.next()) {
                 Medico medico = new Medico();
-                medico.setId(rs.getLong("id_medico"));
-                medico.setNome(rs.getString("nome_medico"));
+                medico.setId(rs.getLong("id_medico")); // Define o ID do médico
+                medico.setNome(rs.getString("nome")); // Define o nome do médico
                 medicos.add(medico);
             }
         } catch (SQLException e) {
@@ -95,9 +99,9 @@ public class MedicoDAO {
         return medicos;
     }
 
-    public List<String> getDatasByMedico(String medicoId) {
-        List<String> datas = new ArrayList<>();
-        final String sqlSelect = "SELECT d.data FROM Disponibilidade d " +
+    public Set<String> getDatasByMedico(String medicoId) {
+        Set<String> datas = new HashSet<>(); // Usando um conjunto para manter apenas valores únicos
+        final String sqlSelect = "SELECT DISTINCT d.data FROM Disponibilidade d " +
                 "JOIN Medico m ON d.id_medico = m.id_medico " +
                 "WHERE m.id_medico = ?";
 
@@ -108,7 +112,7 @@ public class MedicoDAO {
 
             while (rs.next()) {
                 String data = rs.getString("data");
-                datas.add(data);
+                datas.add(data); // Adicionando a data ao conjunto
             }
         } catch (SQLException e) {
             System.out.println("Erro ao recuperar as datas: " + e.getMessage());
@@ -120,13 +124,14 @@ public class MedicoDAO {
 
     public List<String> getHorariosByMedicoAndData(String medicoId, String data) {
         List<String> horarios = new ArrayList<>();
-        final String sqlSelect = "SELECT d.horario FROM Disponibilidade d " +
+        final String sqlSelect = "SELECT h.horario FROM Disponibilidade d " +
                 "JOIN Medico m ON d.id_medico = m.id_medico " +
+                "JOIN Horarios h ON d.id_horarios = h.id_horarios " +
                 "WHERE m.id_medico = ? AND d.data = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             PreparedStatement ps = connection.prepareStatement(sqlSelect);
-            ps.setString(1, medicoId);
+            ps.setLong(1, Long.parseLong(medicoId)); // Convertendo String para Long
             ps.setString(2, data);
             ResultSet rs = ps.executeQuery();
 
@@ -140,5 +145,27 @@ public class MedicoDAO {
         }
 
         return horarios;
+    }
+
+    public Long getIdByNome(String nomeMedico) {
+        Long idMedico = null;
+        final String sqlSelect = "SELECT id_medico FROM Medico m " +
+                "JOIN Usuario u ON m.id_usuario = u.id_usuario " +
+                "WHERE u.nome = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement ps = connection.prepareStatement(sqlSelect);
+            ps.setString(1, nomeMedico);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idMedico = rs.getLong("id_medico");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao recuperar o ID do médico pelo nome: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return idMedico;
     }
 }

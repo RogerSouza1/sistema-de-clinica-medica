@@ -80,9 +80,11 @@
 
             <div class="campos-direita-agendar-consulta">
                 <div class="campos-agendar-consulta">
-                    <h2>Data: </h2>
-                    <label for="data-agendamento"></label>
-                    <input name="data-agendamento" type="date" id="data-agendamento">
+                    <h2>Data:</h2>
+                    <input list="data-agendamento-list" name="data" id="data-agendamento" required placeholder="Data">
+                    <datalist id="data-agendamento-list">
+                        <!-- Options will be filled dynamically by JavaScript -->
+                     </datalist>
                 </div>
             </div>
         </div>
