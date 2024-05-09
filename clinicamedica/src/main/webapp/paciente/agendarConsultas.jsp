@@ -26,6 +26,7 @@
 </header>
 
 <main>
+    <form action="/cadastrar-agendamento" method="post">
     <section class="agendardar-consulta-index">
         <h1>Agendamento de Consulta</h1>
         <div class="agendardar-consulta-main">
@@ -90,9 +91,10 @@
         </div>
         <div class="botoes-agendar-consulta">
             <button type="button" id="botão-cancelar-agendamento">Cancelar</button>
-            <button type="button" id="botão-agendar">Agendar</button>
+            <button type="submit" id="botão-agendar">Agendar</button>
         </div>
     </section>
+    </form>
 </main>
 
 <footer>

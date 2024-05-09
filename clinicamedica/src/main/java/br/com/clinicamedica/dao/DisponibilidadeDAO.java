@@ -105,6 +105,35 @@ private Set<Long> buscarHorarios(Medico medico, Date data) {
         return null;
     }
 
+    public Long getIdDisponibilidade(String especialidade, String clinica, long idMedico, String horario) {
+        final String sqlSelect = "SELECT d.id_disponibilidade " +
+                "FROM Disponibilidade d " +
+                "JOIN Medico m ON d.id_medico = m.id_medico " +
+                "JOIN Clinica c ON m.id_clinica = c.id_clinica " +
+                "JOIN Especialidade e ON m.id_especialidade = e.id_especialidade " +
+                "JOIN horarios h ON d.id_horarios = h.id_horarios " +
+                "WHERE e.nome_especialidade = ? AND c.nome_clinica = ? AND m.id_medico = ? AND h.horario = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha);
+             PreparedStatement ps = connection.prepareStatement(sqlSelect)) {
+            ps.setString(1, especialidade);
+            ps.setString(2, clinica);
+            ps.setLong(3, idMedico);
+            ps.setString(4, horario);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getLong("id_disponibilidade");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao obter ID da disponibilidade: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null; // Retorna null se não encontrar nenhuma disponibilidade correspondente
+    }
+
     public void atualizarHorarios(Medico medico, java.util.Date data, int idHorarios, boolean disponivel) {
         final String sqlUpdate = "UPDATE disponibilidade SET disponivel = ? WHERE id_medico = ? AND data = ? AND id_horarios = ?";
 

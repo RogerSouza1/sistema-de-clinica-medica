@@ -94,6 +94,31 @@ public class MedicoDAO {
         return null;
     }
 
+    public Medico getMedicoByNome(String nomeMedico) {
+        final String sqlSelect = "SELECT m.id_medico, u.id_usuario " +
+                "FROM Medico m " +
+                "JOIN Usuario u ON m.id_usuario = u.id_usuario " +
+                "WHERE u.nome = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha);
+             PreparedStatement ps = connection.prepareStatement(sqlSelect)) {
+            ps.setString(1, nomeMedico);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Medico medico = new Medico();
+                medico.setId(rs.getLong("id_medico"));
+                // Preencher outros campos, se necessário
+                return medico;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao recuperar o médico pelo nome: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List<Medico> getMedicosByClinicaAndEspecialidade(String clinicaNome, String especialidadeNome) {
         List<Medico> medicos = new ArrayList<>();
         final String sqlSelect = "SELECT m.id_medico, u.nome " +
