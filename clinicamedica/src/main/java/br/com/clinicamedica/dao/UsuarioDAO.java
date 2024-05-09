@@ -184,7 +184,6 @@ public class UsuarioDAO {
             Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(medico.getEspecialidade().getNomeEspecialidade());
 
             long idEspecialidade = especialidade.getIdEspecialidade();
-            String nomeEspecialidade = especialidade.getNomeEspecialidade();
 
             //Inserir um Usuário
             PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
@@ -392,28 +391,31 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean atualizarUsuario(Long cpf, String nome) {
-
-        try{
-            Connection connection = DriverManager.getConnection(url, usuario, senha);
+    public boolean atualizarUsuario(Paciente paciente, Long cpf) {
+        new UsuarioDAO();
+        final String sql = "UPDATE usuario SET nome = ?, senha = ? WHERE cpf = ?";
+        try(Connection connection = DriverManager.getConnection(url, usuario, senha)){
             System.out.println("Sucesso ao conectar no banco de dados");
-            final String sql = "UPDATE usuario SET nome = ? WHERE cpf = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, nome);
-            ps.setLong(2, cpf);
-            ResultSet rs = ps.executeQuery();
 
-            if(rs.next()){
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, paciente.getNome());
+            ps.setString(2, paciente.getSenha());
+            ps.setLong(3, cpf);
+
+            int affectedRows = ps.executeUpdate();
+
+            if(affectedRows > 0){
                 System.out.println("Dados atualizados com sucesso");
+                return true;
+            }else{
+                System.out.println("Usuário não válido para atualização");
+                return false;
             }
-            ps.close();
-            connection.close();
-            return true;
         }catch (Exception e) {
             e.printStackTrace();
             System.out.println("Usuário não válido para atualização");
+            return false;
         }
-        return false;
     }
 
     public void atualizarUsuario(Medico medico) {

@@ -21,7 +21,10 @@ public class PacienteDAO {
             if (rs.next()) {
                 Paciente paciente = new Paciente();
                 paciente.setIdUsuario(rs.getLong("id_usuario"));
+                paciente.setNome(rs.getString("nome"));
                 paciente.setCpf(rs.getLong("cpf"));
+                paciente.setSenha(rs.getString("senha"));
+
                 // Set other fields as necessary
                 return paciente;
             }
