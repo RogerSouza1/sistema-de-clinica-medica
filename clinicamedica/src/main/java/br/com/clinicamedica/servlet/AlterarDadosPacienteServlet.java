@@ -87,7 +87,7 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
             req.getSession().setAttribute("pacienteLogado", new PacienteDAO().getPacienteByCPF(cpf));
             req.getRequestDispatcher("paciente/agendarConsultas.html").forward(req, resp);
         } else {
-            req.getRequestDispatcher("alterarDadosPaciente.html").forward(req, resp);
+            req.getRequestDispatcher("paciente/pacienteDados.html").forward(req, resp);
         }
     }
 }

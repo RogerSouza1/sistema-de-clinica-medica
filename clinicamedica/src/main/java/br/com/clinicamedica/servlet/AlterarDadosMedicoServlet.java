@@ -1,13 +1,10 @@
 package br.com.clinicamedica.servlet;
 
-import br.com.clinicamedica.dao.ClinicaDAO;
-import br.com.clinicamedica.dao.EspecialidadeDAO;
-import br.com.clinicamedica.dao.MedicoDAO;
-import br.com.clinicamedica.model.Clinica;
-import br.com.clinicamedica.model.Endereco;
-import br.com.clinicamedica.model.Especialidade;
-import br.com.clinicamedica.model.Medico;
 
+import br.com.clinicamedica.dao.EnderecoDAO;
+import br.com.clinicamedica.dao.MedicoDAO;
+import br.com.clinicamedica.model.Endereco;
+import br.com.clinicamedica.model.Medico;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,41 +14,80 @@ import java.io.IOException;
 
 @WebServlet("/alterar-dados-medico")
 public class AlterarDadosMedicoServlet extends HttpServlet {
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Recuperar o médico logado
-        MedicoDAO medicoDAO = new MedicoDAO();
-        Medico medico = (Medico) req.getSession().getAttribute("medicoLogado");
-        Medico novoMedico = new Medico();
-
-        // Recuperar os dados do formulário
-        novoMedico.setId(medico.getId());
-        novoMedico.setNome(req.getParameter("alterar-medico-nome"));
-        novoMedico.setCpf(medico.getCpf());
-        Especialidade especialidade = new EspecialidadeDAO().getEspecialidadeByName(req.getParameter("alterar-medico-especialidade"));
-        novoMedico.setEspecialidade(especialidade);
-        Clinica clinica = new ClinicaDAO().getClinicaByName(req.getParameter("alterar-medico-clinica"));
-        novoMedico.setClinica(clinica);
-
-
-        novoMedico.setEmail(req.getParameter("alterar-medico-email"));
-        novoMedico.setSenha(req.getParameter("alterar-medico-senha"));
-
-        novoMedico.setDataNascimento(medico.getDataNascimento());
-
+        Medico identificador = (Medico) req.getSession().getAttribute("medicoLogado");
+        String cpf = identificador.getCpf().toString();
+        Endereco enderecoIdentificador = new EnderecoDAO().getEnderecoById(identificador.getEndereco().getId_endereco());
         Endereco endereco = new Endereco();
-        endereco.setLogradouro(req.getParameter("alterar-medico-logradouro"));
-        endereco.setNumero(Integer.parseInt(req.getParameter("alterar-medico-numero")));
-        endereco.setBairro(req.getParameter("alterar-medico-bairro"));
-        endereco.setCidade(req.getParameter("alterar-medico-cidade"));
-        endereco.setEstado(req.getParameter("alterar-medico-estado"));
-        endereco.setCep(req.getParameter("alterar-medico-cep"));
+        Medico medico = new Medico();
 
-        novoMedico.setEndereco(endereco);
 
-        medicoDAO.atualizarMedico(medico);
+        endereco.setId_endereco(enderecoIdentificador.getId_endereco());
+        endereco.setLogradouro(enderecoIdentificador.getLogradouro());
+        endereco.setNumero(enderecoIdentificador.getNumero());
+        endereco.setBairro(enderecoIdentificador.getBairro());
+        endereco.setCidade(enderecoIdentificador.getCidade());
+        endereco.setEstado(enderecoIdentificador.getEstado());
+        endereco.setCep(enderecoIdentificador.getCep());
 
-        req.getRequestDispatcher("perfil-medico.jsp").forward(req, resp);
+        medico.setIdUsuario(identificador.getIdUsuario());
+        medico.setNome(identificador.getNome());
+        medico.setSenha(identificador.getSenha());
+        medico.setTelefone(identificador.getTelefone());
+        medico.setEndereco(enderecoIdentificador);
+
+        String nomeStr = req.getParameter("medico-nome");
+        if (nomeStr != null && !nomeStr.isEmpty()) {
+            medico.setNome(nomeStr);
+        }
+
+        String senhaStr = req.getParameter("medico-senha");
+        if (senhaStr != null && !senhaStr.isEmpty()) {
+            medico.setSenha(senhaStr);
+        }
+
+        String telefone = (req.getParameter("medico-telefone"));
+        if (telefone != null && !telefone.isEmpty()) {
+            medico.setTelefone(Long.parseLong(telefone));
+        }
+
+        String logradouro = req.getParameter("medico-lougradouro");
+        if (logradouro != null && !logradouro.isEmpty()) {
+            endereco.setLogradouro(logradouro);
+        }
+
+        String numero = req.getParameter("medico-numero");
+        if (numero != null && !numero.isEmpty()) {
+            endereco.setNumero(Integer.parseInt(numero));
+        }
+
+        String bairro = req.getParameter("medico-bairro");
+        if (bairro != null && !bairro.isEmpty()) {
+            endereco.setBairro(bairro);
+        }
+
+        String cidade = req.getParameter("medico-cidade");
+        if (cidade != null && !cidade.isEmpty()) {
+            endereco.setCidade(cidade);
+        }
+        String estado = req.getParameter("medico-estado");
+        if (estado != null && !estado.isEmpty()) {
+            endereco.setEstado(estado);
+        }
+
+        String cep = req.getParameter("medico-cep");
+        if (cep != null && !cep.isEmpty()) {
+            endereco.setCep(cep);
+        }
+        medico.setEndereco(endereco);
+
+        boolean dadosAlterados = new MedicoDAO().atualizarMedico(medico, cpf.toString());
+
+        if (dadosAlterados) {
+            req.getSession().setAttribute("medicoLogado", new MedicoDAO().getMedicoByCPF(cpf));
+            req.getRequestDispatcher("medico/calendario.html").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("medico/medicoDados.html").forward(req, resp);
+        }
     }
 }

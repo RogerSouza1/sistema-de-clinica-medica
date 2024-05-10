@@ -19,9 +19,9 @@ public class ValidarUsuarioLogin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
         String cpf = req.getParameter("login-cpf");
         String senha = req.getParameter("login-senha");
-
         ValidarLogin validacao = new UsuarioDAO().validarLogin(cpf, senha);
 
         if (validacao.getIsValido()) {
