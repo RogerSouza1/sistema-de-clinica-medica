@@ -24,6 +24,8 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
 
         paciente.setNome(identificador.getNome());
         paciente.setSenha(identificador.getSenha());
+        paciente.setTelefone(identificador.getTelefone());
+        paciente.setEndereco(identificador.getEndereco());
 
         String nomeStr = req.getParameter("paciente-nome");
         if (nomeStr != null && !nomeStr.isEmpty()) {
@@ -35,6 +37,39 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
             paciente.setSenha(senhaStr);
         }
 
+        String telefoneStr = req.getParameter("paciente-telefone");
+        if (telefoneStr != null && !telefoneStr.isEmpty()) {
+            long telefoneLong = Long.parseLong(telefoneStr);
+            paciente.setTelefone(telefoneLong);
+        }
+
+        String logradouroStr = req.getParameter("paciente-logradouro");
+        if (logradouroStr != null && !logradouroStr.isEmpty()) {
+            endereco.setLogradouro(logradouroStr);
+        }
+
+        int numero = Integer.parseInt(req.getParameter("paciente-numero"));
+        if (numero != 0) {
+            endereco.setNumero(numero);
+        }
+        String bairroStr = req.getParameter("paciente-bairro");
+        if (bairroStr != null && !bairroStr.isEmpty()) {
+            endereco.setBairro(bairroStr);
+        }
+        String cidadeStr = req.getParameter("paciente-cidade");
+        if (cidadeStr != null && !cidadeStr.isEmpty()) {
+            endereco.setCidade(cidadeStr);
+        }
+        String estadoStr = req.getParameter("paciente-estado");
+        if (estadoStr != null && !estadoStr.isEmpty()) {
+            endereco.setEstado(estadoStr);
+        }
+        String cepStr = req.getParameter("paciente-cep");
+        if (cepStr != null && !cepStr.isEmpty()) {
+            endereco.setCep(cepStr);
+        }
+        paciente.setEndereco(endereco);
+
         boolean dadosAlterados = new UsuarioDAO().atualizarUsuario(paciente, cpf);
 
         if (dadosAlterados) {
@@ -43,5 +78,13 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
         } else {
             req.getRequestDispatcher("alterarDadosPaciente.html").forward(req, resp);
         }
+
+
+
+
+
+
+
+
     }
 }

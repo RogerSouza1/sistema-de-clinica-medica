@@ -1,5 +1,6 @@
 package br.com.clinicamedica.dao;
 
+import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Paciente;
 
 import java.sql.*;
@@ -24,8 +25,13 @@ public class PacienteDAO {
                 paciente.setNome(rs.getString("nome"));
                 paciente.setCpf(rs.getLong("cpf"));
                 paciente.setSenha(rs.getString("senha"));
+                paciente.setTelefone(rs.getLong("telefone"));
 
-                // Set other fields as necessary
+                long enderecoId = rs.getLong("id_endereco");
+                EnderecoDAO enderecoDAO = new EnderecoDAO();
+                Endereco endereco = enderecoDAO.getEnderecoById(enderecoId);
+                paciente.setEndereco(endereco);
+
                 return paciente;
             }
         } catch (SQLException e) {
