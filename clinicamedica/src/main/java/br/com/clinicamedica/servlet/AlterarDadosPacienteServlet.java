@@ -1,7 +1,7 @@
 package br.com.clinicamedica.servlet;
 
+import br.com.clinicamedica.dao.EnderecoDAO;
 import br.com.clinicamedica.dao.PacienteDAO;
-import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Paciente;
 
@@ -15,17 +15,26 @@ import java.io.IOException;
 @WebServlet("/alterar-dados-paciente")
 public class AlterarDadosPacienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PacienteDAO pacienteDAO = new PacienteDAO();
         Paciente identificador = (Paciente) req.getSession().getAttribute("pacienteLogado");
-        Long cpf = identificador.getCpf();
+        String cpf = identificador.getCpf().toString();
+        Endereco enderecoIdentificador = new EnderecoDAO().getEnderecoById(identificador.getEndereco().getId_endereco());
 
         Paciente paciente = new Paciente();
         Endereco endereco = new Endereco();
 
+        endereco.setId_endereco(enderecoIdentificador.getId_endereco());
+        endereco.setLogradouro(enderecoIdentificador.getLogradouro());
+        endereco.setNumero(enderecoIdentificador.getNumero());
+        endereco.setBairro(enderecoIdentificador.getBairro());
+        endereco.setCidade(enderecoIdentificador.getCidade());
+        endereco.setEstado(enderecoIdentificador.getEstado());
+        endereco.setCep(enderecoIdentificador.getCep());
+
+        paciente.setIdUsuario(identificador.getIdUsuario());
         paciente.setNome(identificador.getNome());
         paciente.setSenha(identificador.getSenha());
         paciente.setTelefone(identificador.getTelefone());
-        paciente.setEndereco(identificador.getEndereco());
+        paciente.setEndereco(enderecoIdentificador);
 
         String nomeStr = req.getParameter("paciente-nome");
         if (nomeStr != null && !nomeStr.isEmpty()) {
@@ -37,54 +46,48 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
             paciente.setSenha(senhaStr);
         }
 
-        String telefoneStr = req.getParameter("paciente-telefone");
-        if (telefoneStr != null && !telefoneStr.isEmpty()) {
-            long telefoneLong = Long.parseLong(telefoneStr);
-            paciente.setTelefone(telefoneLong);
+        String telefone = (req.getParameter("paciente-telefone"));
+        if (telefone != null && !telefone.isEmpty()) {
+            paciente.setTelefone(Long.parseLong(telefone));
         }
 
-        String logradouroStr = req.getParameter("paciente-logradouro");
-        if (logradouroStr != null && !logradouroStr.isEmpty()) {
-            endereco.setLogradouro(logradouroStr);
+        String logradouro = req.getParameter("paciente-lougradouro");
+        if (logradouro != null && !logradouro.isEmpty()) {
+            endereco.setLogradouro(logradouro);
         }
 
-        int numero = Integer.parseInt(req.getParameter("paciente-numero"));
-        if (numero != 0) {
-            endereco.setNumero(numero);
+        String numero = req.getParameter("paciente-numero");
+        if (numero != null && !numero.isEmpty()) {
+            endereco.setNumero(Integer.parseInt(numero));
         }
-        String bairroStr = req.getParameter("paciente-bairro");
-        if (bairroStr != null && !bairroStr.isEmpty()) {
-            endereco.setBairro(bairroStr);
+
+        String bairro = req.getParameter("paciente-bairro");
+        if (bairro != null && !bairro.isEmpty()) {
+            endereco.setBairro(bairro);
         }
-        String cidadeStr = req.getParameter("paciente-cidade");
-        if (cidadeStr != null && !cidadeStr.isEmpty()) {
-            endereco.setCidade(cidadeStr);
+
+        String cidade = req.getParameter("paciente-cidade");
+        if (cidade != null && !cidade.isEmpty()) {
+            endereco.setCidade(cidade);
         }
-        String estadoStr = req.getParameter("paciente-estado");
-        if (estadoStr != null && !estadoStr.isEmpty()) {
-            endereco.setEstado(estadoStr);
+        String estado = req.getParameter("paciente-estado");
+        if (estado != null && !estado.isEmpty()) {
+            endereco.setEstado(estado);
         }
-        String cepStr = req.getParameter("paciente-cep");
-        if (cepStr != null && !cepStr.isEmpty()) {
-            endereco.setCep(cepStr);
+
+        String cep = req.getParameter("paciente-cep");
+        if (cep != null && !cep.isEmpty()) {
+            endereco.setCep(cep);
         }
         paciente.setEndereco(endereco);
 
-        boolean dadosAlterados = new UsuarioDAO().atualizarUsuario(paciente, cpf);
+        boolean dadosAlterados = new PacienteDAO().atualizarPaciente(paciente, cpf.toString());
 
         if (dadosAlterados) {
-            req.getSession().setAttribute("pacienteLogado", pacienteDAO.getPacienteByCPF(cpf.toString()));
+            req.getSession().setAttribute("pacienteLogado", new PacienteDAO().getPacienteByCPF(cpf));
             req.getRequestDispatcher("paciente/agendarConsultas.html").forward(req, resp);
         } else {
             req.getRequestDispatcher("alterarDadosPaciente.html").forward(req, resp);
         }
-
-
-
-
-
-
-
-
     }
 }

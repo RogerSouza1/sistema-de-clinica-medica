@@ -391,62 +391,6 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean atualizarUsuario(Paciente paciente, Long cpf) {
-        new UsuarioDAO();
-        final String sqlUpdateEndereco = "UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id_endereco = ?";
-        final String sqlUpdate = "UPDATE usuario SET nome = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
-
-        try(Connection connection = DriverManager.getConnection(url, usuario, senha)){
-            System.out.println("Sucesso ao conectar no banco de dados");
-
-            PreparedStatement psEndereco = connection.prepareStatement(sqlUpdateEndereco);
-
-            int cep = Integer.parseInt(paciente.getEndereco().getCep().replace("-", ""));
-            psEndereco.setString(1, paciente.getEndereco().getLogradouro());
-            psEndereco.setInt(2, paciente.getEndereco().getNumero());
-            psEndereco.setString(3, paciente.getEndereco().getBairro());
-            psEndereco.setString(4, paciente.getEndereco().getCidade());
-            psEndereco.setString(5, paciente.getEndereco().getEstado());
-            psEndereco.setInt(6, cep);
-            psEndereco.setLong(7, paciente.getEndereco().getId_endereco());
-
-            psEndereco.execute();
-
-            ResultSet enderecoGeneratedKeys = psEndereco.getGeneratedKeys();
-
-            Long id_endereco = null;
-
-            while (enderecoGeneratedKeys.next()) {
-                id_endereco = enderecoGeneratedKeys.getLong(1);
-            }
-
-            PreparedStatement ps = connection.prepareStatement(sqlUpdate);
-            ps.setString(1, paciente.getNome());
-            ps.setString(2, paciente.getSenha());
-            ps.setLong(3, paciente.getTelefone());
-            ps.setLong(4, id_endereco);
-            ps.setLong(5, cpf);
-
-            int affectedRows = ps.executeUpdate();
-
-            if(affectedRows > 0){
-                System.out.println("Dados atualizados com sucesso");
-                return true;
-            }else{
-                System.out.println("Usuário não válido para atualização");
-                return false;
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Usuário não válido para atualização");
-            return false;
-        }
-    }
-
-    public void atualizarUsuario(Medico medico) {
-
-    }
-
     public void deletarUsuario(Paciente paciente) {
 
     }
