@@ -184,7 +184,6 @@ public class UsuarioDAO {
             Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(medico.getEspecialidade().getNomeEspecialidade());
 
             long idEspecialidade = especialidade.getIdEspecialidade();
-            String nomeEspecialidade = especialidade.getNomeEspecialidade();
 
             //Inserir um Usuário
             PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
@@ -390,14 +389,6 @@ public class UsuarioDAO {
         }
 
         return false;
-    }
-
-    public void atualizarUsuario(Paciente paciente) {
-
-    }
-
-    public void atualizarUsuario(Medico medico) {
-
     }
 
     public void deletarUsuario(Paciente paciente) {

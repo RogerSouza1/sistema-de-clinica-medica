@@ -1,6 +1,8 @@
 package br.com.clinicamedica.model;
 
 public class Endereco {
+
+    private Long id_endereco;
     private String logradouro;
     private int numero;
     private String bairro;
@@ -66,5 +68,13 @@ public class Endereco {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Long getId_endereco() {
+        return id_endereco;
+    }
+
+    public void setId_endereco(Long id_endereco) {
+        this.id_endereco = id_endereco;
     }
 }
