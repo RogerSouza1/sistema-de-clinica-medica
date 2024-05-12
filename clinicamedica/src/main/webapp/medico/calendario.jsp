@@ -1,12 +1,7 @@
-<%@ page import="br.com.clinicamedica.model.Agendamento" %>
-<%@ page import="java.util.List" %>
-<%@ page import="br.com.clinicamedica.model.Paciente" %>
-<%@ page import="br.com.clinicamedica.model.Disponibilidade" %><%--Em um arquivo JSP, você pode usar a diretiva <%@ page import %> para importar classes Java que
-serão usadas no arquivo. Isso é semelhante a usar a declaração import em um arquivo Java normal.
-A sintaxe é a seguinte:%> <%@ page import="nome.do.pacote.NomeDaClasse" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pt-br">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,7 +19,11 @@ A sintaxe é a seguinte:%> <%@ page import="nome.do.pacote.NomeDaClasse" %>--%>
             <h1 class="navbar-logo"><a href="../index.html">MedEasy</a></h1>
             <ul class="navbar-links ms-auto">
                 <li><a href="../medico/horarios.html">Horários</a></li>
-                <li><a href="../medico/calendario.jsp">Calendario</a></li>
+                <li>
+                    <form action="/listar-consultas" method="get">
+                        <button type="submit" id="botao-calendario">calendario</button>
+                    </form>
+                </li>
                 <li><a href="../medico/medicoDados.html">Alterar Dados</a></li>
                 <li><a href="../index.html" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
             </ul>
@@ -33,33 +32,41 @@ A sintaxe é a seguinte:%> <%@ page import="nome.do.pacote.NomeDaClasse" %>--%>
 </header>
 <main>
     <section id="calendario-medico">
-    <div class="calendario-container">
-        <h1 class="titulo-pagina">Pacientes</h1>
-        <div class="calendario-container-interno">
-            <div class="pacientes-dia-container">
-                <%
-                    List<Agendamento> consultasDoDia = (List<Agendamento>) request.getAttribute("consultasDoDia");
-                    for (Agendamento consulta : consultasDoDia) {
-                        Paciente paciente = consulta.getPaciente();
-                        Disponibilidade disponibilidade = consulta.getDisponibilidade();
-                %>
-                <div class="pacientes-cards">
-                    <h3 class="nome-paciente"><%= paciente.getNome() %></h3>
-                    <div class="horario-agendamento">
-                        <p><%= disponibilidade.getData() %></p>
-                        <p><%= disponibilidade.getHorario().getHorarioSelecionado() %></p>
+        <div class="calendario-container">
+
+            <h1 class="titulo-pagina">Pacientes</h1>
+            <div class="calendario-container-interno">
+                <div class="pacientes-dia-container">
+                    <c:forEach var="consulta" items="${consultas}">
+                        <div class="pacientes-cards" data-nome="${consulta.paciente.nome}"
+                             data-idade="${consulta.paciente.idade}" data-cpf="${consulta.paciente.cpf}">
+                            <h3 class="nome-paciente">${consulta.paciente.nome}</h3>
+                            <div class="horario-agendamento">
+                                <p>${consulta.disponibilidade.data}</p>
+                                <p>${consulta.disponibilidade.horario.horarioSelecionado}</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div class="dados-paciente-container">
+                    <div class="dados-paciente-escolhido">
+                        <h3 class="dado-nome" id="dado-nome"></h3>
+                        <h3 class="dado-idade" id="dado-idade"></h3>
+                        <h3 class="dado-cpf" id="dado-cpf"></h3>
+                    </div>
+                    <div class="prontuario-paciente-escolhido">
+                        <h3 class="titulo-prontuario">Prontuário</h3>
+                        <input type="text" name="prontuario" id="protuario">
                     </div>
                 </div>
-                <%
-                    }
-                %>
+            </div>
+            <div class="botoes-calendario-medico">
+                <button type="reset" id="botao-cancelar-consulta-medico">Cancelar</button>
+                <button type="submit" id="botao-salvar-medico">Salvar</button>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </main>
-
-<!--Rodape-->
 <footer>
     <div class="rodape">
         <h3 class="footer-logo">MedEasy</h3>
@@ -91,6 +98,17 @@ A sintaxe é a seguinte:%> <%@ page import="nome.do.pacote.NomeDaClasse" %>--%>
     </div>
 </footer>
 
+<script>
+    window.onload = function() {
+        document.querySelectorAll('.pacientes-cards').forEach(function(card) {
+            card.addEventListener('click', function() {
+                document.getElementById('dado-nome').innerText = 'Nome: ' + this.dataset.nome;
+                document.getElementById('dado-idade').innerText = 'Idade: ' + this.dataset.idade;
+                document.getElementById('dado-cpf').innerText = 'CPF: ' + this.dataset.cpf;
+            });
+        });
+    };
+</script>
 <script src="../js/dropdown.js"></script>
 </body>
 </html>
