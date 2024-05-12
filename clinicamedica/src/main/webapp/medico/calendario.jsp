@@ -1,4 +1,7 @@
-<%--Em um arquivo JSP, você pode usar a diretiva <%@ page import %> para importar classes Java que
+<%@ page import="br.com.clinicamedica.model.Agendamento" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.com.clinicamedica.model.Paciente" %>
+<%@ page import="br.com.clinicamedica.model.Disponibilidade" %><%--Em um arquivo JSP, você pode usar a diretiva <%@ page import %> para importar classes Java que
 serão usadas no arquivo. Isso é semelhante a usar a declaração import em um arquivo Java normal.
 A sintaxe é a seguinte:%> <%@ page import="nome.do.pacote.NomeDaClasse" %>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -30,51 +33,30 @@ A sintaxe é a seguinte:%> <%@ page import="nome.do.pacote.NomeDaClasse" %>--%>
 </header>
 <main>
     <section id="calendario-medico">
-        <div class="calendario-container">
-            <h1 class="titulo-pagina">Pacientes</h1>
-            <div class="calendario-container-interno">
-                <div class="pacientes-dia-container">
-                    <%
-                        // Suponha que 'listaPacientes' é uma lista de objetos Paciente que você obteve do banco de dados
-                        Paciente pacienteSelecionado = null;
-                        for (Paciente paciente : listaPacientes) {
-                            if (pacienteSelecionado == null) {
-                                pacienteSelecionado = paciente;
-                            }
-                    %>
-                    <div class="pacientes-cards">
-                        <h3 class="nome-paciente"><%= paciente.getNome() %></h3>
-                        <div class="horario-agendamento">
-                            <p><%= paciente.getDataConsulta() %></p>
-                            <p><%= paciente.getHoraConsulta() %></p>
-                        </div>
+    <div class="calendario-container">
+        <h1 class="titulo-pagina">Pacientes</h1>
+        <div class="calendario-container-interno">
+            <div class="pacientes-dia-container">
+                <%
+                    List<Agendamento> consultasDoDia = (List<Agendamento>) request.getAttribute("consultasDoDia");
+                    for (Agendamento consulta : consultasDoDia) {
+                        Paciente paciente = consulta.getPaciente();
+                        Disponibilidade disponibilidade = consulta.getDisponibilidade();
+                %>
+                <div class="pacientes-cards">
+                    <h3 class="nome-paciente"><%= paciente.getNome() %></h3>
+                    <div class="horario-agendamento">
+                        <p><%= disponibilidade.getData() %></p>
+                        <p><%= disponibilidade.getHorario().getHorarioSelecionado() %></p>
                     </div>
-                    <%
-                        }
-                        if (pacienteSelecionado != null) {
-                    %>
-                    <div class="dados-paciente-container">
-                        <div class="dados-paciente-escolhido">
-                            <h3 class="dado-nome"><%= pacienteSelecionado.getNome() %></h3>
-                            <h3 class="dado-idade">Idade: <%= pacienteSelecionado.getIdade() %></h3>
-                            <h3 class="dado-cpf">CPF: <%= pacienteSelecionado.getCpf() %></h3>
-                        </div>
-                        <div class="prontuario-paciente-escolhido">
-                            <h3 class="titulo-prontuario">Prontuário</h3>
-                            <textarea name="prontuario" id="protuario" rows="50"></textarea>
-                        </div>
-                        <div class="botoes-calendario-medico">
-                            <button type="reset" id="botao-cancelar-consulta-medico">Cancelar</button>
-                            <button type="submit" id="botao-salvar-medico">Salvar</button>
-                        </div>
-                    </div>
-                    <%
-                        }
-                    %>
                 </div>
+                <%
+                    }
+                %>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 </main>
 
 <!--Rodape-->
