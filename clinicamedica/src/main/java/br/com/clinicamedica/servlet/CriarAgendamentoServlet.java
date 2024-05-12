@@ -27,6 +27,7 @@ public class CriarAgendamentoServlet extends HttpServlet {
         String clinica = request.getParameter("clinica");
         String nomeMedico = request.getParameter("medico");
         String horario = request.getParameter("horario");
+        String data = request.getParameter("data");
 
         // Obtendo o ID do médico
         MedicoDAO medicoDAO = new MedicoDAO();
@@ -35,7 +36,7 @@ public class CriarAgendamentoServlet extends HttpServlet {
 
         // Obtendo o ID da disponibilidade correspondente
         DisponibilidadeDAO disponibilidadeDAO = new DisponibilidadeDAO();
-        Long idDisponibilidade = disponibilidadeDAO.getIdDisponibilidade(especialidade, clinica, idMedico, horario);
+        Long idDisponibilidade = disponibilidadeDAO.getIdDisponibilidade(especialidade, clinica, idMedico, data, horario);
 
         if (idDisponibilidade != null) {
             // Se encontrou a disponibilidade, criar o agendamento

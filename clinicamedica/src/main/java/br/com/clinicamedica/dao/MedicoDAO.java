@@ -176,7 +176,7 @@ public class MedicoDAO {
         final String sqlSelect = "SELECT h.horario FROM Disponibilidade d " +
                 "JOIN Medico m ON d.id_medico = m.id_medico " +
                 "JOIN Horarios h ON d.id_horarios = h.id_horarios " +
-                "WHERE m.id_medico = ? AND d.data = ?";
+                "WHERE m.id_medico = ? AND d.data = ? AND d.disponivel = TRUE"; // Adicionando a condição de disponibilidade
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             PreparedStatement ps = connection.prepareStatement(sqlSelect);
@@ -189,7 +189,7 @@ public class MedicoDAO {
                 horarios.add(horario);
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao recuperar os horários: " + e.getMessage());
+            System.out.println("Erro ao recuperar os horários disponíveis: " + e.getMessage());
             e.printStackTrace();
         }
 

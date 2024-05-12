@@ -105,21 +105,22 @@ private Set<Long> buscarHorarios(Medico medico, Date data) {
         return null;
     }
 
-    public Long getIdDisponibilidade(String especialidade, String clinica, long idMedico, String horario) {
+    public Long getIdDisponibilidade(String especialidade, String clinica, Long idMedico, String data, String horario) {
         final String sqlSelect = "SELECT d.id_disponibilidade " +
                 "FROM Disponibilidade d " +
                 "JOIN Medico m ON d.id_medico = m.id_medico " +
                 "JOIN Clinica c ON m.id_clinica = c.id_clinica " +
                 "JOIN Especialidade e ON m.id_especialidade = e.id_especialidade " +
-                "JOIN horarios h ON d.id_horarios = h.id_horarios " +
-                "WHERE e.nome_especialidade = ? AND c.nome_clinica = ? AND m.id_medico = ? AND h.horario = ?";
+                "JOIN Horarios h ON d.id_horarios = h.id_horarios " +
+                "WHERE e.nome_especialidade = ? AND c.nome_clinica = ? AND m.id_medico = ? AND d.data = ? AND h.horario = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha);
              PreparedStatement ps = connection.prepareStatement(sqlSelect)) {
             ps.setString(1, especialidade);
             ps.setString(2, clinica);
             ps.setLong(3, idMedico);
-            ps.setString(4, horario);
+            ps.setString(4, data);
+            ps.setString(5, horario);
 
             ResultSet rs = ps.executeQuery();
 

@@ -39,7 +39,7 @@ public class ClinicaDAO {
 
     public List<Clinica> getClinicasByEspecialidade(String especialidadeNome) {
         List<Clinica> clinicas = new ArrayList<>();
-        final String sqlSelect = "SELECT c.* FROM Clinica c " +
+        final String sqlSelect = "SELECT DISTINCT c.* FROM Clinica c " +
                 "JOIN Medico m ON c.id_clinica = m.id_clinica " +
                 "JOIN Especialidade e ON m.id_especialidade = e.id_especialidade " +
                 "WHERE e.nome_especialidade = ?";
