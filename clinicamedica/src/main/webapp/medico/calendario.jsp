@@ -61,8 +61,12 @@
                 </div>
             </div>
             <div class="botoes-calendario-medico">
-                <button type="reset" id="botao-cancelar-consulta-medico">Cancelar</button>
-                <button type="submit" id="botao-salvar-medico">Salvar</button>
+                <form method="post" action="${pageContext.request.contextPath}/cancelar-consulta">
+                    <button type="submit" id="botao-cancelar-consulta-medico">Cancelar</button>
+                </form>
+                <form method="post" action="${pageContext.request.contextPath}/finalizar-consulta">
+                    <button type="submit" id="botao-finalizar-consulta-medico">Finalizar</button>
+                </form>
             </div>
         </div>
     </section>
