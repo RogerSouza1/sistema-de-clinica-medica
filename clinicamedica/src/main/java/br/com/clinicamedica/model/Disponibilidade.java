@@ -1,9 +1,18 @@
 package br.com.clinicamedica.model;
 
 public class Disponibilidade {
-    Horario horario;
-    Medico medico;
-    String data;
+    private Long id;
+    private Horario horario;
+    private Medico medico;
+    private String data;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Horario getHorario() {
         return horario;

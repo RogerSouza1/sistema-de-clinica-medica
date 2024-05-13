@@ -1,7 +1,7 @@
 package br.com.clinicamedica.model;
 
 public class Medico extends Usuario {
-    private long id;
+    private Long id;
     private String crm;
     private Especialidade especialidade;
     private Clinica clinica;

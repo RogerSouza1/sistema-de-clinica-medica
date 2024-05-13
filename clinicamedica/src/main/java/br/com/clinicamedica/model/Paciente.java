@@ -1,13 +1,17 @@
 package br.com.clinicamedica.model;
 
 public class Paciente extends Usuario {
-    Long id;
-    Long idUsuario;
-    int dependentes;
-    int idade;
+    private Long id;
+    private Long idUsuario;
+    private int dependentes;
+    private int idade;
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Long getIdUsuario() {

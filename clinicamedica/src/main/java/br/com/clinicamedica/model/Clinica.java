@@ -1,7 +1,7 @@
 package br.com.clinicamedica.model;
 
 public class Clinica {
-    private long id;
+    private Long id;
     private String nome;
 
     // getters and setters
