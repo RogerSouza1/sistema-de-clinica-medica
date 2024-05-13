@@ -1,7 +1,6 @@
 package br.com.clinicamedica.model;
 
 public class Endereco {
-    private Long id;
     private String logradouro;
     private int numero;
     private String bairro;
@@ -16,14 +15,6 @@ public class Endereco {
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Endereco() {

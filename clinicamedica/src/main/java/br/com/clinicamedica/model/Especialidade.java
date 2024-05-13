@@ -2,22 +2,22 @@ package br.com.clinicamedica.model;
 
 
 public class Especialidade {
-    private Long id;
-    private String nome;
+    private long idEspecialidade;
+    private String nomeEspecialidade;
 
-    public String getNome() {
-        return nome;
+    public String getNomeEspecialidade() {
+        return nomeEspecialidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeEspecialidade(String nomeEspecialidade) {
+        this.nomeEspecialidade = nomeEspecialidade;
     }
 
-    public long getId() {
-        return id;
+    public long getIdEspecialidade() {
+        return idEspecialidade;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdEspecialidade(long idEspecialidade) {
+        this.idEspecialidade = idEspecialidade;
     }
 }

@@ -181,10 +181,10 @@ public class UsuarioDAO {
             System.out.println("Endereço cadastrado com sucesso");
 
             EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
-            Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(medico.getEspecialidade().getNome());
+            Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(medico.getEspecialidade().getNomeEspecialidade());
 
-            long idEspecialidade = especialidade.getId();
-            String nomeEspecialidade = especialidade.getNome();
+            long idEspecialidade = especialidade.getIdEspecialidade();
+            String nomeEspecialidade = especialidade.getNomeEspecialidade();
 
             //Inserir um Usuário
             PreparedStatement psUsuario = connection.prepareStatement(sqlUsuario, Statement.RETURN_GENERATED_KEYS);
