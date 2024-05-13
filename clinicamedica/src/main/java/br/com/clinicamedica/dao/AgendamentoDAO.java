@@ -17,6 +17,10 @@ import java.util.List;
 
 public class AgendamentoDAO {
 
+    private final String url = "jdbc:h2:~/test";
+    private final String usuario = "sa";
+    private final String senha = "sa";
+
     public void cadastrarAgendamento(Agendamento agendamento) {
 
     }
@@ -26,11 +30,32 @@ public class AgendamentoDAO {
     }
 
     public void cancelarAgendamento(Agendamento agendamento) {
+        final String SQLCancelar = "UPDATE Agendamento SET cancelada = TRUE WHERE id_agendamento = ?";
 
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement ps = connection.prepareStatement(SQLCancelar);
+            ps.setLong(1, agendamento.getId());
+            ps.executeUpdate();
+            System.out.println("Consulta cancelada com sucesso");
+        } catch (SQLException e) {
+            System.out.println("Erro ao cancelar a consulta: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void finalizarAgendamento(Agendamento agendamento) {
+        final String SQLFinalizada = "UPDATE Agendamento SET finalizada = TRUE AND prontuario = ? WHERE id_agendamento = ?";
 
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement ps = connection.prepareStatement(SQLFinalizada);
+            ps.setString(1, agendamento.getProntuario());
+            ps.setLong(2, agendamento.getId()); // tem que settar esse ID em algum lugar
+            ps.executeUpdate();
+            System.out.println("Consulta finalizada com sucesso");
+        } catch (SQLException e) {
+            System.out.println("Erro ao finalizar a consulta: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public List<Agendamento> buscarAgendamentos(Usuario usuario) {
@@ -91,7 +116,7 @@ public class AgendamentoDAO {
 
             // Cria um comparador que compara os horários das consultas
             Comparator<Agendamento> comparator = new Comparator<Agendamento>() {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 
                 @Override
                 public int compare(Agendamento a1, Agendamento a2) {
