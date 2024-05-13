@@ -1027,22 +1027,12 @@
         color: black;
     }
 
-    #protuario {
+    .prontuario-paciente-escolhido textarea {
         background-color: var(--cinza);
         padding: 1.5vh;
         width: 55vw;
-        height: 50vh;
+        height: 55vh;
         resize: none;
-        border-style: solid;
-        border-width: 2px;
-        border-radius: 15px;
-        border-color: var(--azul-principal);
-    }
-
-    .prontuario-paciente-escolhido input {
-        background-color: var(--cinza);
-        width: 60vw;
-        height: 60vh;
         border-style: solid;
         border-width: 2px;
         border-radius: 15px;

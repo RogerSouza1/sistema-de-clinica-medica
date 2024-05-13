@@ -56,7 +56,7 @@
                     </div>
                     <div class="prontuario-paciente-escolhido">
                         <h3 class="titulo-prontuario">Prontuário</h3>
-                        <input type="text" name="prontuario" id="protuario">
+                        <textarea name="prontuario" id="prontuario" rows="50"></textarea>
                     </div>
                 </div>
             </div>

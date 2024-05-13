@@ -6,9 +6,12 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -85,6 +88,21 @@ public class AgendamentoDAO {
 
                 consultasDoDia.add(agendamento);
             }
+
+            // Cria um comparador que compara os horários das consultas
+            Comparator<Agendamento> comparator = new Comparator<Agendamento>() {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+                @Override
+                public int compare(Agendamento a1, Agendamento a2) {
+                    LocalTime time1 = LocalTime.parse(a1.getDisponibilidade().getHorario().getHorarioSelecionado().split(" - ")[0], formatter);
+                    LocalTime time2 = LocalTime.parse(a2.getDisponibilidade().getHorario().getHorarioSelecionado().split(" - ")[0], formatter);
+                    return time1.compareTo(time2);
+                }
+            };
+
+            // Ordena a lista de consultas do dia usando o comparador
+            Collections.sort(consultasDoDia, comparator);
 
         } catch (SQLException e) {
             e.printStackTrace();
