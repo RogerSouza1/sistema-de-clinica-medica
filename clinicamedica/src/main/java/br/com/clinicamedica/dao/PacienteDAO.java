@@ -1,16 +1,18 @@
 package br.com.clinicamedica.dao;
 
-import br.com.clinicamedica.model.Endereco;
+
+import br.com.clinicamedica.model.Medico;
 import br.com.clinicamedica.model.Paciente;
+
 import java.sql.*;
 
 public class PacienteDAO {
+
     private final String url = "jdbc:h2:~/test";
     private final String usuario = "sa";
     private final String senha = "sa";
-
     public Paciente getPacienteByCPF(String cpf) {
-        new PacienteDAO();
+
         final String sqlSelect = "SELECT * FROM usuario WHERE cpf = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
@@ -30,6 +32,7 @@ public class PacienteDAO {
                 Endereco endereco =  new EnderecoDAO().getEnderecoById(enderecoId);
                 paciente.setEndereco(endereco);
 
+
                 // Set other fields as necessary
                 return paciente;
             }
@@ -40,6 +43,32 @@ public class PacienteDAO {
 
         return null;
     }
+
+
+    public Paciente getidPacienteByCPF(String cpf) {
+        Paciente paciente = getPacienteByCPF(cpf);
+
+        if (paciente != null) {
+            final String sqlSelect = "SELECT * FROM paciente WHERE id_usuario = ?";
+
+            try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+                PreparedStatement ps = connection.prepareStatement(sqlSelect);
+                ps.setLong(1, paciente.getIdUsuario());
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    paciente.setIdUsuario(rs.getLong("id_paciente"));
+                    // Set other fields as necessary
+                    return paciente;
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao recuperar o paciente pelo CPF: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+
     public boolean atualizarPaciente(Paciente paciente, String cpf) {
         new PacienteDAO();
         final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
