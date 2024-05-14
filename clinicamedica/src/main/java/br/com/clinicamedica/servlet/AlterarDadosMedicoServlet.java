@@ -49,7 +49,7 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
 
         String telefone = (req.getParameter("medico-telefone"));
         if (telefone != null && !telefone.isEmpty()) {
-            medico.setTelefone(Long.parseLong(telefone));
+            medico.setTelefone(Long.parseLong(telefone.replaceAll("[^0-9]", "")));
         }
 
         String logradouro = req.getParameter("medico-lougradouro");

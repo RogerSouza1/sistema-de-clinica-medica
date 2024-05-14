@@ -48,7 +48,7 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
 
         String telefone = (req.getParameter("paciente-telefone"));
         if (telefone != null && !telefone.isEmpty()) {
-            paciente.setTelefone(Long.parseLong(telefone));
+            paciente.setTelefone(Long.parseLong(telefone.replaceAll("[^0-9]", "")));
         }
 
         String logradouro = req.getParameter("paciente-lougradouro");
