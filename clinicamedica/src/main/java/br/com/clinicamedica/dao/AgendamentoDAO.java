@@ -75,7 +75,7 @@ public class AgendamentoDAO {
                     "JOIN Usuario u ON p.id_usuario = u.id_usuario " +
                     "JOIN Disponibilidade d ON a.id_disponibilidade = d.id_disponibilidade " +
                     "JOIN Horarios h ON d.id_horarios = h.id_horarios " +
-                    "WHERE a.confirmada = TRUE";
+                    "WHERE a.confirmada = TRUE AND a.finalizada = FALSE AND a.cancelada = FALSE";
 
             PreparedStatement ps = connection.prepareStatement(sql);
             System.out.println("Consulta foi realizada no banco de dados");

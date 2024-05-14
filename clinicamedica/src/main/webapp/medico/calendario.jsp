@@ -38,15 +38,25 @@
             <div class="calendario-container-interno">
                 <div class="pacientes-dia-container">
                     <c:forEach var="consulta" items="${consultas}">
-                        <div class="pacientes-cards" data-nome="${consulta.paciente.nome}"
-                             data-idade="${consulta.paciente.idade}" data-cpf="${consulta.paciente.cpf}">
-                            <h3 class="nome-paciente">${consulta.paciente.nome}</h3>
-                            <div class="horario-agendamento">
-                                <p>${consulta.disponibilidade.data}</p>
-                                <p>${consulta.disponibilidade.horario.horarioSelecionado}</p>
-                            </div>
-                        </div>
-                    </c:forEach>
+    <div class="pacientes-cards" data-nome="${consulta.paciente.nome}"
+         data-idade="${consulta.paciente.idade}" data-cpf="${consulta.paciente.cpf}">
+        <h3 class="nome-paciente">${consulta.paciente.nome}</h3>
+        <div class="horario-agendamento">
+            <p>${consulta.disponibilidade.data}</p>
+            <p>${consulta.disponibilidade.horario.horarioSelecionado}</p>
+        </div>
+    </div>
+    <div class="botoes-calendario-medico">
+        <form method="post" action="${pageContext.request.contextPath}/cancelar-consulta">
+            <input type="hidden" name="consultaId" value="${consulta.id}"/>
+            <button type="submit" id="botao-cancelar-consulta-medico">Cancelar</button>
+        </form>
+        <form method="post" action="${pageContext.request.contextPath}/finalizar-consulta">
+            <input type="hidden" name="consultaId" value="${consulta.id}"/>
+            <button type="submit" id="botao-finalizar-consulta-medico">Finalizar</button>
+        </form>
+    </div>
+</c:forEach>
                 </div>
                 <div class="dados-paciente-container">
                     <div class="dados-paciente-escolhido">

@@ -15,9 +15,9 @@ public class CancelarConsultaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Agendamento agendamento = new Agendamento();
-
-        // Colocar nesse agendamento, o ID do agendamento, juntamente com o prontuário para o método fazer a atualização
-        // Tem que pegar o jsp e colocar no agendamento.
+        agendamento.setProntuario(req.getParameter("prontuario"));
+        long consultaId = Long.parseLong(req.getParameter("consultaId"));
+        agendamento.setId(consultaId);
 
         new AgendamentoDAO().cancelarAgendamento(agendamento);
 

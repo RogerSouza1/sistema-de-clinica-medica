@@ -1,12 +1,21 @@
 package br.com.clinicamedica.model;
 
 public class Endereco {
+    private Long id;
     private String logradouro;
     private int numero;
     private String bairro;
     private String cidade;
     private String estado;
     private String cep;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public Endereco(String cep, String logradouro, int numero, String bairro, String cidade, String estado) {
         this.cep = cep;
