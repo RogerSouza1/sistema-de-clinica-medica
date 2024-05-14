@@ -41,19 +41,19 @@ public class Agendamento {
         this.confirmado = confirmado;
     }
 
-    public Paciente getPaciente() {
+    public Long getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(Long paciente) {
         this.paciente = paciente;
     }
 
-    public Disponibilidade getDisponibilidade() {
+    public Long getDisponibilidade() {
         return disponibilidade;
     }
 
-    public void setDisponibilidade(Disponibilidade disponibilidade) {
+    public void setDisponibilidade(Long disponibilidade) {
         this.disponibilidade = disponibilidade;
     }
 
