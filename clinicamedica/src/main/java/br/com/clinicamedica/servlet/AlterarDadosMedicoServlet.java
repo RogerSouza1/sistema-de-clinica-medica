@@ -5,6 +5,7 @@ import br.com.clinicamedica.dao.EnderecoDAO;
 import br.com.clinicamedica.dao.MedicoDAO;
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -77,11 +78,11 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
 
         String cep = req.getParameter("medico-cep");
         if (cep != null && !cep.isEmpty()) {
-            endereco.setCep(cep);
+            endereco.setCep(cep.replaceAll("[^0-9]", ""));
         }
         medico.setEndereco(endereco);
 
-        boolean dadosAlterados = new MedicoDAO().atualizarMedico(medico, cpf.toString());
+        boolean dadosAlterados = new MedicoDAO().atualizarMedico(medico, cpf);
 
         if (dadosAlterados) {
             req.getSession().setAttribute("medicoLogado", new MedicoDAO().getMedicoByCPF(cpf));

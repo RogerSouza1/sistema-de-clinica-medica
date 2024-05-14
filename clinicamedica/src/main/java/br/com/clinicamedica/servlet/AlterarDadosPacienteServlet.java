@@ -77,11 +77,11 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
 
         String cep = req.getParameter("paciente-cep");
         if (cep != null && !cep.isEmpty()) {
-            endereco.setCep(cep);
+            endereco.setCep(cep.replaceAll("[^0-9]", ""));
         }
         paciente.setEndereco(endereco);
 
-        boolean dadosAlterados = new PacienteDAO().atualizarPaciente(paciente, cpf.toString());
+        boolean dadosAlterados = new PacienteDAO().atualizarPaciente(paciente, cpf);
 
         if (dadosAlterados) {
             req.getSession().setAttribute("pacienteLogado", new PacienteDAO().getPacienteByCPF(cpf));
