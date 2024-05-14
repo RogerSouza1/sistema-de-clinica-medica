@@ -46,16 +46,6 @@
             <p>${consulta.disponibilidade.horario.horarioSelecionado}</p>
         </div>
     </div>
-    <div class="botoes-calendario-medico">
-        <form method="post" action="${pageContext.request.contextPath}/cancelar-consulta">
-            <input type="hidden" name="consultaId" value="${consulta.id}"/>
-            <button type="submit" id="botao-cancelar-consulta-medico">Cancelar</button>
-        </form>
-        <form method="post" action="${pageContext.request.contextPath}/finalizar-consulta">
-            <input type="hidden" name="consultaId" value="${consulta.id}"/>
-            <button type="submit" id="botao-finalizar-consulta-medico">Finalizar</button>
-        </form>
-    </div>
 </c:forEach>
                 </div>
                 <div class="dados-paciente-container">
@@ -72,9 +62,11 @@
             </div>
             <div class="botoes-calendario-medico">
                 <form method="post" action="${pageContext.request.contextPath}/cancelar-consulta">
+                    <input type="hidden" name="consultaId" value="${consulta.id}"/>
                     <button type="submit" id="botao-cancelar-consulta-medico">Cancelar</button>
                 </form>
                 <form method="post" action="${pageContext.request.contextPath}/finalizar-consulta">
+                    <input type="hidden" name="consultaId" value="${consulta.id}"/>
                     <button type="submit" id="botao-finalizar-consulta-medico">Finalizar</button>
                 </form>
             </div>
