@@ -1,12 +1,21 @@
 package br.com.clinicamedica.model;
 
 public class Agendamento {
-    Long paciente;
-    Long disponibilidade;
-    String prontuario;
-    boolean finalizado;
-    boolean cancelado;
-    boolean confirmado;
+    private Long id;
+    private Paciente paciente;
+    private Disponibilidade disponibilidade;
+    private String prontuario;
+    private boolean finalizado;
+    private boolean cancelado;
+    private boolean confirmado;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public boolean isFinalizado() {
         return finalizado;

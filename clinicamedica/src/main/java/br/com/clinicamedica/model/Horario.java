@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Horario {
-    private Long id_horario;
+    private Long id;
     private String horarioSelecionado;
     private final Map<String, Boolean> disponibilidade;
 
@@ -52,12 +52,12 @@ public class Horario {
         }
     }
 
-    public Long getId_horario() {
-        return id_horario;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_horario(Long id_horario) {
-        this.id_horario = id_horario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getHorarioSelecionado() {
