@@ -1,7 +1,7 @@
 package br.com.clinicamedica.dao;
 
+import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
-
 import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,61 +12,51 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.sql.*;
 
 public class MedicoDAO {
     private final String url = "jdbc:h2:~/test";
     private final String usuario = "sa";
     private final String senha = "sa";
 
-    public Medico getMedicoLogado(HttpSession session) {
-        Long idMedicoLogado = (Long) session.getAttribute("idMedicoLogado");
-        if (idMedicoLogado == null) {
-            return null;
-        }
+    public boolean atualizarMedico(Medico medico, String cpf) {
+        new MedicoDAO();
+        final String sqlUpdateEndereco = "UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id_endereco = ?";
+        final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
 
-        final String sqlSelect = "SELECT * FROM medico WHERE id_medico = ?";
-
-        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
-            PreparedStatement ps = connection.prepareStatement(sqlSelect);
-            ps.setLong(1, idMedicoLogado);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                Medico medico = new Medico();
-                medico.setId(rs.getLong("id_medico"));
-                medico.setCrm(rs.getString("crm"));
-                // Set other fields as necessary
-                return medico;
-            }
-        } catch (SQLException e) {
-            System.out.println("Erro ao recuperar o médico logado: " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 
     public Medico getMedicoByCPF(String cpf) {
         final String sqlSelect = "SELECT * FROM usuario WHERE cpf = ?";
-
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
-            PreparedStatement ps = connection.prepareStatement(sqlSelect);
-            ps.setString(1, cpf);
-            ResultSet rs = ps.executeQuery();
+            System.out.println("Sucesso ao conectar ao banco de dados");
 
-            if (rs.next()) {
-                Medico medico = new Medico();
-                medico.setId(rs.getLong("id_usuario"));
-                medico.setCpf(rs.getLong("cpf"));
-                // Set other fields as necessary
-                return medico;
-            }
+            PreparedStatement psEndereco = connection.prepareStatement(sqlUpdateEndereco);
+            psEndereco.setString(1, medico.getEndereco().getLogradouro());
+            psEndereco.setInt(2, medico.getEndereco().getNumero());
+            psEndereco.setString(3, medico.getEndereco().getBairro());
+            psEndereco.setString(4, medico.getEndereco().getCidade());
+            psEndereco.setString(5, medico.getEndereco().getEstado());
+            psEndereco.setString(6, medico.getEndereco().getCep());
+            psEndereco.setLong(7, medico.getEndereco().getId_endereco());
+            psEndereco.executeUpdate();
+            System.out.println("Endereço Atualizado");
+
+            PreparedStatement ps = connection.prepareStatement(sqlUpdateUsuario);
+            ps.setString(1, medico.getNome());
+            ps.setString(2, medico.getSenha());
+            ps.setLong(3, medico.getTelefone());
+            ps.setLong(4, medico.getEndereco().getId_endereco());
+            ps.setLong(5, Long.parseLong(cpf));
+            ps.executeUpdate();
+            System.out.println("Médico Atualizado");
+
+            return true;
+
         } catch (SQLException e) {
-            System.out.println("Erro ao recuperar o médico pelo CPF: " + e.getMessage());
+            System.out.println("Erro ao atualizar o médico: " + e.getMessage());
             e.printStackTrace();
+            return false;
         }
-
-        return null;
     }
 
     public Medico getidMedicoByCPF(String cpf) {
@@ -217,4 +207,5 @@ public class MedicoDAO {
 
         return idMedico;
     }
+}
 }
