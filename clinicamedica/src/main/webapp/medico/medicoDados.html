@@ -34,11 +34,10 @@
         <h1 class="areaExclusiva">Alterar Dados</h1>
         <div class="forms-container" id="alterarDados-container">
             <h2>Dados Cadastrais</h2>
-            <form id="forms-alterar-dados-medico">
-                <input type="nome" id="alterar-nome-medico" name="medico-nome" required placeholder="Nome" />
-                <input type="text" id="alterar-cpf-medico" name="medico-cpf" required placeholder="CPF" />
-                <input list="especialidades" id="alterar-especialidade-medico" name="medico-especialidade" required placeholder="Especialidade" />
-                <datalist>
+            <form id="forms-alterar-dados-medico" action="/alterar-dados-medico" method="post">
+                <input type="nome" id="alterar-nome-medico" name="medico-nome"  placeholder="Nome" />
+                <input list="especialidade" id="alterar-especialidade-medico" name="medico-especialidade"  placeholder="Especialidade" />
+                <datalist id="especialidade">
                     <option value="">
                     <option value="">
                     <option value="">
@@ -53,8 +52,8 @@
                     <option value="">
                 </datalist>
 
-                <input list="clinicas" id="alterar-clinica-medico" name="medico-clinica" required placeholder="Clinica"/>
-                <datalist>
+                <input list="clinica" id="alterar-clinica-medico" name="medico-clinica"  placeholder="Clinica"/>
+                <datalist id="clinica">
                     <option value="">
                     <option value="">
                     <option value="">
@@ -65,38 +64,31 @@
                     <option value="">
                     <option value="">
                 </datalist>
-
-                <input type="text" id="alterar-crm-medico" name="medico-crm" required placeholder="CRM/SP"/>
-                <input type="email" id="alterar-email-medico" name="medico-email" required placeholder="Email" />
-                <input type="email" id="alterar-confirmar-email-medico" name="medico-email" required placeholder="Confirmar Email" />
-                <input type="password" id="alterar-senha-medico" name="medico-senha" required placeholder="Senha" />
-                <input type="password" id="alterar-confirmar-senha-medico" name="medico-senha" required placeholder="Confirmar Senha" />
-                <input type="date" id="alterar-data-medico" name="medico-data" required placeholder="Data de Nascimento" />
-                
+                <input type="password" id="alterar-senha-medico" name="medico-senha"  placeholder="Senha" />
                 <div class="dividir-caixa">
                     <div class="caixa-ddd">
-                    <input type="number" name="medico-ddd" id="alterar-ddd-medico" required placeholder="DDD">
+                    <input type="number" name="medico-ddd" id="alterar-ddd-medico"  placeholder="DDD">
                     </div>
                     <div class="caixa-telefone">
-                    <input type="text" name="medico-telefone" id="alterar-telefone-medico" required placeholder="Telefone">
+                    <input type="text" name="medico-telefone" id="alterar-telefone-medico"  placeholder="Telefone">
                 </div>
                 </div>
 
                 <div class="dividir-caixa">
                     <div class="caixa-lougradouro">
-                    <input type="text" id="alterar-lougradouro-medico" name="medico-lougradouro" required placeholder="Lougradouro">
+                    <input type="text" id="alterar-lougradouro-medico" name="medico-lougradouro"  placeholder="Lougradouro">
                     </div>
                     <div class="caixa-numero">
-                    <input type="number" id="alterar-numero-medico" name="medico-numero" required placeholder="Nº">
+                    <input type="number" id="alterar-numero-medico" name="medico-numero"  placeholder="Nº">
                     </div>
                 </div>
 
-                <input type="text" id="alterar-bairro-medico" name="medico-bairro" required placeholder="Bairro">
-                <input type="text" id="aletar-cidade-medico" name="medico-cidade" required placeholder="Cidade">
+                <input type="text" id="alterar-bairro-medico" name="medico-bairro"  placeholder="Bairro">
+                <input type="text" id="aletar-cidade-medico" name="medico-cidade"  placeholder="Cidade">
 
                 <div class="dividir-caixa">
                     <div class="caixa-estado">
-                    <input list="estados" id="alterar-estado-medico" name="medico-estado" required placeholder="UF">
+                    <input list="estados" id="alterar-estado-medico" name="medico-estado"  placeholder="UF">
                     <datalist id="estados">
                         <option value="AC">
               <option value="AL">
@@ -127,7 +119,7 @@
                     </datalist>
                 </div>
                 <div class="caixa-cep">
-                    <input type="text" id="aletar-cep-medico" name="medico-cep" required placeholder="CEP">
+                    <input type="text" id="alterar-cep-medico" name="medico-cep"  placeholder="CEP">
                 </div>
                 </div>
 

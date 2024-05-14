@@ -1,9 +1,11 @@
 package br.com.clinicamedica.servlet;
 
 import br.com.clinicamedica.dao.MedicoDAO;
+import br.com.clinicamedica.dao.PacienteDAO;
 import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.dao.ValidarLogin;
 import br.com.clinicamedica.model.Medico;
+import br.com.clinicamedica.model.Paciente;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,13 +19,15 @@ public class ValidarUsuarioLogin extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
         String cpf = req.getParameter("login-cpf");
         String senha = req.getParameter("login-senha");
-
         ValidarLogin validacao = new UsuarioDAO().validarLogin(cpf, senha);
 
         if (validacao.getIsValido()) {
             if (validacao.getIsPaciente()) {
+                Paciente paciente = new PacienteDAO().getPacienteByCPF(cpf);
+                req.getSession().setAttribute("pacienteLogado", paciente);
                 req.getRequestDispatcher("paciente/consultas.html").forward(req, resp);
             } else {
                 Medico medico = new MedicoDAO().getMedicoByCPF(cpf);

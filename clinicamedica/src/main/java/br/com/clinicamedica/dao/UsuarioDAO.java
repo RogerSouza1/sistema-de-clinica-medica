@@ -183,6 +183,7 @@ public class UsuarioDAO {
             EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO();
             Especialidade especialidade = especialidadeDAO.getEspecialidadeByName(medico.getEspecialidade().getNome());
 
+
             long idEspecialidade = especialidade.getId();
             String nomeEspecialidade = especialidade.getNome();
 
@@ -390,14 +391,6 @@ public class UsuarioDAO {
         }
 
         return false;
-    }
-
-    public void atualizarUsuario(Paciente paciente) {
-
-    }
-
-    public void atualizarUsuario(Medico medico) {
-
     }
 
     public void deletarUsuario(Paciente paciente) {
