@@ -19,14 +19,46 @@ public class MedicoDAO {
     private final String usuario = "sa";
     private final String senha = "sa";
 
+    public Medico getMedicoByCPF(String cpf) {
+        final String sqlSelect = "SELECT u.*, m.id_medico FROM usuario u LEFT JOIN medico m ON u.id_usuario = m.id_usuario WHERE u.cpf = ?";
+
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement ps = connection.prepareStatement(sqlSelect);
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Medico medico = new Medico();
+                medico.setIdUsuario(rs.getLong("id_usuario"));
+                medico.setNome(rs.getString("nome"));
+                medico.setCpf(rs.getLong("cpf"));
+                medico.setSenha(rs.getString("senha"));
+                medico.setTelefone(rs.getLong("telefone"));
+
+                long enderecoId = rs.getLong("id_endereco");
+                Endereco endereco = new EnderecoDAO().getEnderecoById(enderecoId);
+                medico.setEndereco(endereco);
+
+                // Se houver um ID de médico, define-o
+                if (rs.getLong("id_medico") != 0) {
+                    medico.setId(rs.getLong("id_medico"));
+                }
+
+                return medico;
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao recuperar o médico pelo CPF: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public boolean atualizarMedico(Medico medico, String cpf) {
         new MedicoDAO();
         final String sqlUpdateEndereco = "UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id_endereco = ?";
         final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
 
-
-    public Medico getMedicoByCPF(String cpf) {
-        final String sqlSelect = "SELECT * FROM usuario WHERE cpf = ?";
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             System.out.println("Sucesso ao conectar ao banco de dados");
 
@@ -57,31 +89,6 @@ public class MedicoDAO {
             e.printStackTrace();
             return false;
         }
-    }
-
-    public Medico getidMedicoByCPF(String cpf) {
-        Medico medico = getMedicoByCPF(cpf); // Reutilize a função para buscar o id_usuario
-
-        if (medico != null) {
-            final String sqlSelect = "SELECT * FROM medico WHERE id_usuario = ?";
-
-            try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
-                PreparedStatement ps = connection.prepareStatement(sqlSelect);
-                ps.setLong(1, medico.getId()); // Use o id_usuario retornado pela primeira função
-                ResultSet rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    medico.setId(rs.getLong("id_medico"));
-                    // Set other fields as necessary
-                    return medico;
-                }
-            } catch (SQLException e) {
-                System.out.println("Erro ao recuperar o médico pelo CPF: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-
-        return null;
     }
 
     public Medico getMedicoByNome(String nomeMedico) {
@@ -207,5 +214,4 @@ public class MedicoDAO {
 
         return idMedico;
     }
-}
 }

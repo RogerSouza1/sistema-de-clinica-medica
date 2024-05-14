@@ -1,6 +1,7 @@
 package br.com.clinicamedica.dao;
 
 
+import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
 import br.com.clinicamedica.model.Paciente;
 
@@ -11,9 +12,9 @@ public class PacienteDAO {
     private final String url = "jdbc:h2:~/test";
     private final String usuario = "sa";
     private final String senha = "sa";
-    public Paciente getPacienteByCPF(String cpf) {
 
-        final String sqlSelect = "SELECT * FROM usuario WHERE cpf = ?";
+    public Paciente getPacienteByCPF(String cpf) {
+        final String sqlSelect = "SELECT u.*, p.id_paciente FROM usuario u LEFT JOIN paciente p ON u.id_usuario = p.id_usuario WHERE u.cpf = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             PreparedStatement ps = connection.prepareStatement(sqlSelect);
@@ -29,11 +30,14 @@ public class PacienteDAO {
                 paciente.setTelefone(rs.getLong("telefone"));
 
                 long enderecoId = rs.getLong("id_endereco");
-                Endereco endereco =  new EnderecoDAO().getEnderecoById(enderecoId);
+                Endereco endereco = new EnderecoDAO().getEnderecoById(enderecoId);
                 paciente.setEndereco(endereco);
 
+                // Se houver um ID de paciente, define-o
+                if (rs.getLong("id_paciente") != 0) {
+                    paciente.setIdUsuario(rs.getLong("id_paciente"));
+                }
 
-                // Set other fields as necessary
                 return paciente;
             }
         } catch (SQLException e) {
@@ -43,31 +47,6 @@ public class PacienteDAO {
 
         return null;
     }
-
-
-    public Paciente getidPacienteByCPF(String cpf) {
-        Paciente paciente = getPacienteByCPF(cpf);
-
-        if (paciente != null) {
-            final String sqlSelect = "SELECT * FROM paciente WHERE id_usuario = ?";
-
-            try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
-                PreparedStatement ps = connection.prepareStatement(sqlSelect);
-                ps.setLong(1, paciente.getIdUsuario());
-                ResultSet rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    paciente.setIdUsuario(rs.getLong("id_paciente"));
-                    // Set other fields as necessary
-                    return paciente;
-                }
-            } catch (SQLException e) {
-                System.out.println("Erro ao recuperar o paciente pelo CPF: " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-
-        return null;
 
     public boolean atualizarPaciente(Paciente paciente, String cpf) {
         new PacienteDAO();

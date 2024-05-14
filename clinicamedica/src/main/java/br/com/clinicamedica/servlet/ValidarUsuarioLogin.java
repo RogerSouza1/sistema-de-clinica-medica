@@ -26,11 +26,11 @@ public class ValidarUsuarioLogin extends HttpServlet {
 
         if (validacao.getIsValido()) {
             if (validacao.getIsPaciente()) {
-                Paciente paciente = new PacienteDAO().getidPacienteByCPF(cpf);
+                Paciente paciente = new PacienteDAO().getPacienteByCPF(cpf);
                 req.getSession().setAttribute("pacienteLogado", paciente);
                 req.getRequestDispatcher("paciente/consultas.html").forward(req, resp);
             } else {
-                Medico medico = new MedicoDAO().getidMedicoByCPF(cpf);
+                Medico medico = new MedicoDAO().getMedicoByCPF(cpf);
                 req.getSession().setAttribute("medicoLogado", medico);
                 req.getRequestDispatcher("medico/horarios.html").forward(req, resp);
             }
