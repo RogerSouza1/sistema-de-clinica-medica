@@ -16,11 +16,17 @@ public class CancelarConsultaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Agendamento agendamento = new Agendamento();
         agendamento.setProntuario(req.getParameter("prontuario"));
-        long consultaId = Long.parseLong(req.getParameter("consultaId"));
-        agendamento.setId(consultaId);
+        String dadoIdStr = req.getParameter("dado-id");
+        if (dadoIdStr != null && !dadoIdStr.isEmpty()) {
+            long consultaId = Long.parseLong(dadoIdStr);
+            agendamento.setId(consultaId);
+            new AgendamentoDAO().cancelarAgendamento(agendamento);
+            System.out.println("Consulta cancelada com sucesso");
+        } else {
+            System.out.println("Erro ao cancelar consulta: id não informado");
+        }
 
-        new AgendamentoDAO().cancelarAgendamento(agendamento);
 
-        resp.sendRedirect("consultas.jsp");
+        resp.sendRedirect("/listar-consultas");
     }
 }

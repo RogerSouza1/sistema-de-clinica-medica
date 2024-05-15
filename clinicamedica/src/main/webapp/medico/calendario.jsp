@@ -38,35 +38,42 @@
             <div class="calendario-container-interno">
                 <div class="pacientes-dia-container">
                     <c:forEach var="consulta" items="${consultas}">
-    <div class="pacientes-cards" data-nome="${consulta.paciente.nome}"
-         data-idade="${consulta.paciente.idade}" data-cpf="${consulta.paciente.cpf}">
-        <h3 class="nome-paciente">${consulta.paciente.nome}</h3>
-        <div class="horario-agendamento">
-            <p>${consulta.disponibilidade.data}</p>
-            <p>${consulta.disponibilidade.horario.horarioSelecionado}</p>
-        </div>
-    </div>
-</c:forEach>
+                        <div class="pacientes-cards"
+                             data-nome="${consulta.paciente.nome}"
+                             data-idade="${consulta.paciente.idade}"
+                             data-cpf="${consulta.paciente.cpf}"
+                             data-id="${consulta.id}">
+                            <h4 class="id-consulta" style="display: none">${consulta.id}</h4>
+                            <h3 class="nome-paciente">${consulta.paciente.nome}</h3>
+                            <div class="horario-agendamento">
+                                <p>${consulta.disponibilidade.data}</p>
+                                <p>${consulta.disponibilidade.horario.horarioSelecionado}</p>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
                 <div class="dados-paciente-container">
                     <div class="dados-paciente-escolhido">
+                        <h3 class="dado-id" id="dado-id" style="display: none"></h3>
                         <h3 class="dado-nome" id="dado-nome"></h3>
                         <h3 class="dado-idade" id="dado-idade"></h3>
                         <h3 class="dado-cpf" id="dado-cpf"></h3>
                     </div>
                     <div class="prontuario-paciente-escolhido">
                         <h3 class="titulo-prontuario">Prontuário</h3>
+                        <label for="prontuario"></label>
                         <textarea name="prontuario" id="prontuario" rows="50"></textarea>
                     </div>
                 </div>
             </div>
             <div class="botoes-calendario-medico">
                 <form method="post" action="${pageContext.request.contextPath}/cancelar-consulta">
-                    <input type="hidden" name="consultaId" value="${consulta.id}"/>
+                    <input type="hidden" id="form-dado-id-cancelar" name="dado-id" value="">
                     <button type="submit" id="botao-cancelar-consulta-medico">Cancelar</button>
                 </form>
                 <form method="post" action="${pageContext.request.contextPath}/finalizar-consulta">
-                    <input type="hidden" name="consultaId" value="${consulta.id}"/>
+                    <input type="hidden" id="form-dado-id-finalizar" name="dado-id" value="">
+                    <input type="hidden" id="form-prontuario" name="prontuario" value="">
                     <button type="submit" id="botao-finalizar-consulta-medico">Finalizar</button>
                 </form>
             </div>
@@ -105,13 +112,20 @@
 </footer>
 
 <script>
-    window.onload = function() {
-        document.querySelectorAll('.pacientes-cards').forEach(function(card) {
-            card.addEventListener('click', function() {
+    window.onload = function () {
+        document.querySelectorAll('.pacientes-cards').forEach(function (card) {
+            card.addEventListener('click', function () {
+                var id = this.dataset.id;
+                document.getElementById('dado-id').innerText = this.dataset.id;
+                document.getElementById('form-dado-id-cancelar').value = id;
+                document.getElementById('form-dado-id-finalizar').value = id;
                 document.getElementById('dado-nome').innerText = 'Nome: ' + this.dataset.nome;
                 document.getElementById('dado-idade').innerText = 'Idade: ' + this.dataset.idade;
                 document.getElementById('dado-cpf').innerText = 'CPF: ' + this.dataset.cpf;
             });
+        });
+        document.getElementById('prontuario').addEventListener('input', function () {
+            document.getElementById('form-prontuario').value = this.value;
         });
     };
 </script>

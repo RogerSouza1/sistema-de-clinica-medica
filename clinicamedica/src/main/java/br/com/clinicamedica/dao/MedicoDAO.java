@@ -2,17 +2,12 @@ package br.com.clinicamedica.dao;
 
 import br.com.clinicamedica.model.Endereco;
 import br.com.clinicamedica.model.Medico;
-import javax.servlet.http.HttpSession;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.sql.*;
 
 public class MedicoDAO {
     private final String url = "jdbc:h2:~/test";
@@ -29,7 +24,6 @@ public class MedicoDAO {
 
             if (rs.next()) {
                 Medico medico = new Medico();
-                medico.setIdUsuario(rs.getLong("id_usuario"));
                 medico.setNome(rs.getString("nome"));
                 medico.setCpf(rs.getLong("cpf"));
                 medico.setSenha(rs.getString("senha"));
@@ -69,7 +63,7 @@ public class MedicoDAO {
             psEndereco.setString(4, medico.getEndereco().getCidade());
             psEndereco.setString(5, medico.getEndereco().getEstado());
             psEndereco.setString(6, medico.getEndereco().getCep());
-            psEndereco.setLong(7, medico.getEndereco().getId_endereco());
+            psEndereco.setLong(7, medico.getEndereco().getId());
             psEndereco.executeUpdate();
             System.out.println("Endereço Atualizado");
 
@@ -77,7 +71,7 @@ public class MedicoDAO {
             ps.setString(1, medico.getNome());
             ps.setString(2, medico.getSenha());
             ps.setLong(3, medico.getTelefone());
-            ps.setLong(4, medico.getEndereco().getId_endereco());
+            ps.setLong(4, medico.getEndereco().getId());
             ps.setLong(5, Long.parseLong(cpf));
             ps.executeUpdate();
             System.out.println("Médico Atualizado");

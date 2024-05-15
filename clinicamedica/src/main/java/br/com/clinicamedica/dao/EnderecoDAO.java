@@ -1,6 +1,7 @@
 package br.com.clinicamedica.dao;
 
 import br.com.clinicamedica.model.Endereco;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class EnderecoDAO {
 
             if (rs.next()) {
                 Endereco endereco = new Endereco();
-                endereco.setId_endereco(rs.getLong("id_endereco"));
+                endereco.setId(rs.getLong("id_endereco"));
                 endereco.setLogradouro(rs.getString("logradouro"));
                 endereco.setNumero(rs.getInt("numero"));
                 endereco.setBairro(rs.getString("bairro"));

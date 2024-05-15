@@ -1,14 +1,16 @@
 package br.com.clinicamedica.dao;
 
 
-import br.com.clinicamedica.model.Agendamento;
-import br.com.clinicamedica.model.Disponibilidade;
-import br.com.clinicamedica.model.Paciente;
-import br.com.clinicamedica.model.Usuario;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import br.com.clinicamedica.model.*;
+
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -29,7 +31,7 @@ public class AgendamentoDAO {
             try (PreparedStatement psInsert = connection.prepareStatement(sqlInsert);
                  PreparedStatement psUpdate = connection.prepareStatement(sqlUpdate)) {
 
-                psInsert.setLong(1, paciente.getIdUsuario());
+                psInsert.setLong(1, paciente.getId_usuario());
                 psInsert.setLong(2, idDisponibilidade);
                 psInsert.setString(3, agendamento.getProntuario());
                 psInsert.setBoolean(4, false);
@@ -74,12 +76,12 @@ public class AgendamentoDAO {
     }
 
     public void finalizarAgendamento(Agendamento agendamento) {
-        final String SQLFinalizada = "UPDATE Agendamento SET finalizada = TRUE AND prontuario = ? WHERE id_agendamento = ?";
+        final String SQLFinalizada = "UPDATE Agendamento SET finalizada = TRUE, prontuario = ? WHERE id_agendamento = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             PreparedStatement ps = connection.prepareStatement(SQLFinalizada);
             ps.setString(1, agendamento.getProntuario());
-            ps.setLong(2, agendamento.getId()); // tem que settar esse ID em algum lugar
+            ps.setLong(2, agendamento.getId());
             ps.executeUpdate();
             System.out.println("Consulta finalizada com sucesso");
         } catch (SQLException e) {
@@ -92,28 +94,33 @@ public class AgendamentoDAO {
         return Collections.emptyList();
     }
 
-    public List<Agendamento> buscarConsultasDoDia() {
+    public List<Agendamento> buscarConsultasDoDia(Long id_medico) {
         List<Agendamento> consultasDoDia = new ArrayList<>();
         final String url = "jdbc:h2:~/test";
         final String usuario = "sa";
         final String senha = "sa";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
-            String sql = "SELECT a.*, u.nome, u.cpf, u.data_nascimento, h.horario, d.data " +
+
+            String SQLAgendamento = "SELECT a.id_agendamento, a.*, u.nome, u.cpf, u.data_nascimento, h.horario, d.data " +
                     "FROM Agendamento a " +
                     "JOIN Paciente p ON a.id_paciente = p.id_paciente " +
                     "JOIN Usuario u ON p.id_usuario = u.id_usuario " +
                     "JOIN Disponibilidade d ON a.id_disponibilidade = d.id_disponibilidade " +
                     "JOIN Horarios h ON d.id_horarios = h.id_horarios " +
-                    "WHERE a.confirmada = TRUE AND a.finalizada = FALSE AND a.cancelada = FALSE";
+                    "JOIN Medico m ON d.id_medico = m.id_medico " +
+                    "WHERE a.confirmada = TRUE AND a.finalizada = FALSE AND a.cancelada = FALSE AND m.id_medico = ?";
 
-            PreparedStatement ps = connection.prepareStatement(sql);
-            System.out.println("Consulta foi realizada no banco de dados");
+            PreparedStatement ps = connection.prepareStatement(SQLAgendamento);
+            ps.setLong(1, id_medico);
             ResultSet rs = ps.executeQuery();
+            System.out.println("Consulta foi realizada no banco de dados");
             SimpleDateFormat formatoBrasileiro = new SimpleDateFormat("dd/MM/yyyy");
 
             while (rs.next()) {
+                System.out.println("Consulta retornou resultados");
                 Agendamento agendamento = new Agendamento();
+                agendamento.setId(rs.getLong("id_agendamento"));
                 Paciente paciente = new Paciente();
                 paciente.setNome(rs.getString("nome"));
                 paciente.setCpf(rs.getLong("cpf"));
