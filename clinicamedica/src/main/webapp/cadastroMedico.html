@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
   <title>MedEasy</title>
 </head>
 
@@ -41,7 +42,7 @@
     <div class="forms-container">
       <h2>Cadastro</h2>
       <form action="/cadastrar-medico" method="post">
-        <input type="nome" id="medico-nome" name="medico-nome" required placeholder="Nome" />
+        <input type="text" id="medico-nome" name="medico-nome" required placeholder="Nome" />
         <input type="text" id="medico-cpf" name="medico-cpf" required placeholder="CPF" />
 
         <input list="especialidade" id="medico-especialidade" name="medico-especialidade" required

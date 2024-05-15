@@ -265,7 +265,7 @@ body {
 
 #prev img,
 #next img {
-    width: 2.5vw;
+    width: 2vw;
     margin: 3vw
 }
 
@@ -429,98 +429,6 @@ body {
     transform: rotate(90deg);
 }
 
-/*---------------- Esqueci Senha ----------------*/
-
-#esqueci-senha {
-    background-color: var(--cinza);
-    padding: 2rem 5%;
-    font-size: 1.2rem;
-    overflow: hidden;
-    margin: 2.5rem 0;
-}
-
-/*---------------- Redefinição Senha ----------------*/
-
-#redefinicao-senha {
-    background-color: var(--cinza);
-    padding: 2rem 5%;
-    font-size: 1.2rem;
-    overflow: hidden;
-    margin: 2.5rem 0;
-}
-
-/*---------------- Formatação de Formulário ----------------*/
-
-
-.forms-container {
-    padding: 2rem 5%;
-    font-weight: 700;
-    font-size: 2rem;
-    align-items: center;
-    text-align: center;
-    border: 0.15rem solid var(--azul-principal);
-    background-color: var(--branco);
-    border-radius: 1.5rem;
-    width: 30%;
-    max-width: 30rem;
-    margin: 3.5rem auto;
-
-}
-
-.forms-container h2 {
-    font-family: 'Baloo Tammudu 2', system-ui;
-    font-size: 2vw;
-    padding-top: -8%;
-    font-weight: 800;
-    text-align: center;
-    padding-bottom: 1vh;
-}
-
-.forms-container p {
-    color: var(--cinza-escuro);
-    font-weight: 400;
-    font-size: 0.9375rem;
-}
-
-.forms-container form {
-    display: flex;
-    flex-direction: column;
-    margin-top: -1vh;
-}
-
-.forms-container input {
-    width: 100%;
-    height: 1.5rem;
-    padding: 1vh 1vw;
-    margin: 1vh 0;
-    border-radius: 0.8rem;
-    border: 0.15rem solid var(--azul-principal);
-    font-size: 1.5rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.forms-container button {
-    width: 8rem;
-    height: 3rem;
-    border-radius: 0.8rem;
-    border: 0.15rem solid var(--azul-principal);
-    background-color: var(--azul-principal);
-    color: var(--branco);
-    font-weight: 500;
-    transition: 0.2s;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    margin: 0 40% 0;
-
-
-}
-
-.forms-container button:hover {
-    background-color: var(--azul-logo);
-    cursor: pointer;
-}
-
-
 /*------------------------------------------------sobre--------------------------------------------------------*/
 .sobre, .bloco-impar, .bloco2 {
     padding: 2vh 5vw;
@@ -572,33 +480,6 @@ body {
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     font-size: 2vw;
-}
-
-/*----------------------------------------Login---------------------------------------------------------------*/
-.area-exclusiva, .tela-login, .main-login {
-    font-family: 'Poppins', sans-serif;
-}
-
-.tela-login, .main-login {
-    background-color: var(--cinza);
-}
-
-.tela-login {
-    padding: 0.5vh;
-}
-
-.tela-login, #botao-login {
-    margin-top: 5vh;
-}
-
-.main-login {
-    margin: 1vh 0;
-}
-
-.link-senha {
-    font-size: 0.9vw;
-    color: #0455BF;
-    margin-right: 24vw;
 }
 
 /* ---------------- horarios - Medico ----------------*/
@@ -866,63 +747,159 @@ body {
 
 .cadastro {
     background-color: #E9E9E9;
-
-
+    padding: 1vh 5vw;
+    margin: 6vh 0;
 }
 
+.forms-container input{
+    width: auto;
+}
 
 .areaExclusiva {
-    margin: 3% 0 -1%;
-    padding: 2%;
+    margin: 1em;
     color: var(--azul-logo);
     text-decoration: none;
-    font-size: 2vw;
+    font-size: 1.3em;
     font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+
+.dividir-caixa, .caixa-ddd, .caixa-telefone, .caixa-lougradouro, .caixa-numero, .caixa-estado, .caixa-cep {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.caixa-ddd, .caixa-numero, .caixa-estado {
+    flex: 1;
+}
+
+.caixa-telefone, .caixa-lougradouro, .caixa-cep {
+    flex: 2;
+}
+
+.caixa-lougradouro {
+    text-align: justify;
+}
+
+/*----------------------------------------Login---------------------------------------------------------------*/
+.area-exclusiva, .tela-login, .main-login {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cinza);
+}
+
+.main-login {
+    padding: 1vh 5vw;
+    margin: 6vh 0;
+}
+
+#botao-login {
+    margin-top: 3vh;
+    align-self: center;
+}
+
+.link-senha {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #0455BF;
+    margin-top: 3vh;
+    align-self: center;
+}
+
+/*---------------- Esqueci Senha ----------------*/
+#esqueci-senha {
+    background-color: var(--cinza);
+    padding: 2rem 5%;
+    font-size: 1.2rem;
+    overflow: hidden;
+    margin: 2.5rem 0;
+}
+
+.forms-container button{
+    display: inline-block;
+    align-self: center;
+    margin-top: 1vh;
+}
+
+.forms-container p{
+    display: inline-block;
+    align-self: center;
+    margin-bottom: 2vh;
+}
+
+/*---------------- Redefinição Senha ----------------*/
+#redefinicao-senha {
+    background-color: var(--cinza);
+    padding: 2rem 5%;
+    font-size: 1.2rem;
+    overflow: hidden;
+    margin: 2.5rem 0;
+}
+
+/*---------------- Formatação de Formulário ----------------*/
+.forms-container {
+    padding: 2rem 5%;
+    font-weight: 700;
+    font-size: 2rem;
+    align-items: center;
+    text-align: center;
+    border: 0.15rem solid var(--azul-principal);
+    background-color: var(--branco);
+    border-radius: 1.5rem;
+    width: 35%;
+    margin: 2rem auto;
+}
+
+.forms-container h2 {
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-size: 2vw;
     font-weight: 800;
     text-align: center;
     padding-bottom: 1vh;
 }
 
+.forms-container p {
+    color: var(--cinza-escuro);
+    font-weight: 400;
+    font-size: 0.9375rem;
+}
 
-.dividir-caixa {
+.forms-container form {
     display: flex;
-    gap: 50px;
-    /* Adicionando um espaçamento entre os elementos */
-
+    flex-direction: column;
+    align-items: stretch;
 }
 
-.caixa-ddd {
-    width: 20%;
-    /* Definindo a largura da caixa de DDD */
-    padding-right: 10px;
-    /* Adicionando um espaçamento à direita */
-
+.forms-container input {
+    align-self: center;
+    width: 94%;
+    height: 1.5rem;
+    padding: 1vh 1vw;
+    margin: 1vh 0;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--azul-principal);
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
 }
 
-.caixa-telefone {
-    width: 70%;
+.forms-container button {
+    align-self: center;
+    width: 30%;
+    height: 3rem;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--azul-principal);
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    font-weight: 500;
+    transition: 0.2s;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin: 4vh 4vh;
 }
 
-.caixa-lougradouro {
-    width: 70%;
-    /* Definindo a largura da caixa de DDD */
-    padding-right: 10px;
-    /* Adicionando um espaçamento à direita */
-    text-align: justify;
+.forms-container button:hover {
+    background-color: var(--azul-logo);
+    cursor: pointer;
 }
 
-.caixa-numero {
-    width: 20%;
-}
-
-.caixa-estado {
-    width: 20%;
-    /* Definindo a largura da caixa de DDD */
-    padding-right: 10px;
-    /* Adicionando um espaçamento à direita */
-
-}
-
-.caixa-cep {
-    width: 70%;
-}
