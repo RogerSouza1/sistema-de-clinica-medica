@@ -1,7 +1,7 @@
 package br.com.clinicamedica.model;
 
 public abstract class Usuario {
-    private Long idUsuario;
+    private Long id_usuario;
     private String nome;
     private Long cpf;
     private String email;
@@ -10,6 +10,14 @@ public abstract class Usuario {
     private Long telefone;
     private Endereco endereco;
     private boolean paciente;
+
+    public void setId_usuario(Long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public Long getId_usuario() {
+        return id_usuario;
+    }
 
     public String getNome() {
         return nome;
@@ -73,13 +81,5 @@ public abstract class Usuario {
 
     public void setPaciente(boolean paciente) {
         this.paciente = paciente;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
     }
 }

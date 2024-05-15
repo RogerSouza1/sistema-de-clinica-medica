@@ -2,7 +2,6 @@ package br.com.clinicamedica.dao;
 
 
 import br.com.clinicamedica.model.Endereco;
-import br.com.clinicamedica.model.Medico;
 import br.com.clinicamedica.model.Paciente;
 
 import java.sql.*;
@@ -23,7 +22,7 @@ public class PacienteDAO {
 
             if (rs.next()) {
                 Paciente paciente = new Paciente();
-                paciente.setIdUsuario(rs.getLong("id_usuario"));
+                paciente.setId_usuario(rs.getLong("id_usuario"));
                 paciente.setNome(rs.getString("nome"));
                 paciente.setCpf(rs.getLong("cpf"));
                 paciente.setSenha(rs.getString("senha"));
@@ -35,7 +34,7 @@ public class PacienteDAO {
 
                 // Se houver um ID de paciente, define-o
                 if (rs.getLong("id_paciente") != 0) {
-                    paciente.setIdUsuario(rs.getLong("id_paciente"));
+                    paciente.setId_usuario(rs.getLong("id_paciente"));
                 }
 
                 return paciente;
@@ -62,7 +61,7 @@ public class PacienteDAO {
             psEndereco.setString(4, paciente.getEndereco().getCidade());
             psEndereco.setString(5, paciente.getEndereco().getEstado());
             psEndereco.setString(6, paciente.getEndereco().getCep());
-            psEndereco.setLong(7, paciente.getEndereco().getId_endereco());
+            psEndereco.setLong(7, paciente.getEndereco().getId());
             psEndereco.executeUpdate();
             System.out.println("Endereço Atualizado");
 
@@ -70,7 +69,7 @@ public class PacienteDAO {
             ps.setString(1, paciente.getNome());
             ps.setString(2, paciente.getSenha());
             ps.setLong(3, paciente.getTelefone());
-            ps.setLong(4, paciente.getEndereco().getId_endereco());
+            ps.setLong(4, paciente.getEndereco().getId());
             ps.setLong(5, Long.parseLong(cpf));
             ps.executeUpdate();
             System.out.println("Paciente Atualizado");

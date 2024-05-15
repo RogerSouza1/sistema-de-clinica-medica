@@ -951,3 +951,118 @@
     .caixa-cep {
         width: 70%;
     }
+
+    /*-------------------- Tela Calendario do Medico --------------------*/
+    .calendario-container {
+        font-size: 1.5rem;
+        padding: 2% 5%;
+    }
+
+    .calendario-container h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .calendario-container-interno {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pacientes-dia-container {
+        background-color: var(--cinza);
+        border-radius: 15px;
+    }
+
+    .pacientes-cards {
+        width: 25vw;
+        height: 10vh;
+        margin: 2vh;
+        padding: 2vh;
+        background-color: var(--branco);
+        font-size: 1rem;
+        border-radius: 15px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: var(--azul-principal);
+        text-align: center;
+    }
+
+    .pacientes-cards h3 {
+        font-weight: 700;
+    }
+
+    .horario-agendamento {
+        display: flex;
+
+        justify-content: center;
+    }
+
+    .horario-agendamento p {
+        margin: 0.5vh;
+    }
+
+    .dados-paciente-escolhido {
+        display: flex;
+        font-size: 1.2rem;
+        color: black;
+        font-weight: 600;
+        background-color: var(--cinza);
+        margin-bottom: 30px;
+        border-radius: 15px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: var(--azul-principal);
+        justify-content: center;
+    }
+
+    .dados-paciente-escolhido h3 {
+        padding: 3vh;
+    }
+
+    .prontuario-paciente-escolhido h3{
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: black;
+    }
+
+    .prontuario-paciente-escolhido textarea {
+        background-color: var(--cinza);
+        padding: 1.5vh;
+        width: 55vw;
+        height: 55vh;
+        resize: none;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 15px;
+        border-color: var(--azul-principal);
+    }
+
+    .botoes-calendario-medico {
+        text-align: center;
+        padding: 2%;
+    }
+
+    #botao-cancelar-consulta-medico {
+        background-color: var(--vermelho);
+        font-size: 1rem;
+        color: var(--branco);
+        font-weight: 700;
+        padding: 1vh 2vw;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+        border-color: transparent;
+        margin-right: 2%;
+    }
+
+    #botao-salvar-medico{
+        background-color: var(--verde);
+        font-size: 1rem;
+        color: var(--branco);
+        font-weight: 700;
+        padding: 1vh 2vw;
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+        border-color: transparent;
+    }

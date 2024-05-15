@@ -58,6 +58,6 @@ public class DefinirHorarioServlet extends HttpServlet {
         }
 
         // Redirecionar para alguma página de confirmação
-        response.sendRedirect("/medico/calendario.html");
+        response.sendRedirect("/medico/calendario.jsp");
     }
 }
