@@ -21,9 +21,9 @@ public class UpdateSenha extends HttpServlet {
         boolean senhaRedefinida = new UsuarioDAO().redefinicaoSenha(cpf, novaSenha);
 
         if (senhaRedefinida) {
-            req.getRequestDispatcher("login.html").forward(req, resp);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("esqueciSenha.html").forward(req, resp);
+            req.getRequestDispatcher("esqueciSenha.jsp").forward(req, resp);
         }
     }
 }

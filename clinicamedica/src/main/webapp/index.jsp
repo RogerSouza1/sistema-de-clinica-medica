@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -15,19 +16,19 @@
 <header>
     <nav class="navbar">
         <div class="navbar-container">
-            <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
+            <h1 class="navbar-logo"><a href="index.jsp">MedEasy</a></h1>
             <ul class="navbar-links ms-auto">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="especialidade.html">Especialidades</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="login.html" id="login">Login</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li><a href="especialidade.jsp">Especialidades</a></li>
+                <li><a href="sobre.jsp">Sobre</a></li>
+                <li><a href="login.jsp" id="login">Login</a></li>
                 <li class="dropdown-cadastro">
                     <a href="#" id="cadastre-se">Cadastre-se <img src="img/setinha.svg" alt="seta"/></a>
                     <ul class="dropdown-content-cadastro" id="dropdown-content-cadastro">
                         <li>
-                            <a href="cadastroPaciente.html">Beneficiário do Plano</a>
+                            <a href="cadastroPaciente.jsp">Beneficiário do Plano</a>
                         </li>
-                        <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
+                        <li><a href="cadastroMedico.jsp">Credenciado Médico</a></li>
                     </ul>
                 </li>
             </ul>
@@ -47,7 +48,7 @@
                 Sua jornada para o bem-estar é única, estamos aqui para fazer parte
                 desse enredo extraordinário da sua vida saudável.
             </h3>
-            <a class="botao-saiba-mais" href="especialidade.html">Saiba mais!</a>
+            <a class="botao-saiba-mais" href="especialidade.jsp">Saiba mais!</a>
         </div>
     </section>
 
@@ -61,47 +62,47 @@
                     <div class="slide active">
                         <img src="img/cardiologia.png" alt="Cardiologia">
                         <h3>Cardiologia</h3>
-                        <a href="especialidade.html?open=cardiologia#cardiologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=cardiologia#cardiologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/dermatologia.png" alt="Dermatologia">
                         <h3>Dermatologia</h3>
-                        <a href="especialidade.html?open=dermatologia#dermatologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=dermatologia#dermatologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/endocrinologia.png" alt="Endocrinologia">
                         <h3>Endocrinologia</h3>
-                        <a href="especialidade.html?open=endocrinologia#endocrinologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=endocrinologia#endocrinologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/gastroenterologia.png" alt="Gastroenterologia">
                         <h3>Gastroenterologia</h3>
-                        <a href="especialidade.html?open=gastroenterologia#gastroenterologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=gastroenterologia#gastroenterologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/geriatria.png" alt="Geriatria">
                         <h3>Geriatria</h3>
-                        <a href="especialidade.html?open=geriatria#geriatria">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=geriatria#geriatria">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/ginecologia.png" alt="Ginecologia">
                         <h3>Ginecologia</h3>
-                        <a href="especialidade.html?open=ginecologia#ginecologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=ginecologia#ginecologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/mastologia.png" alt="Mastologia">
                         <h3>Mastologia</h3>
-                        <a href="especialidade.html?open=mastologia#mastologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=mastologia#mastologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/nefrologia.png" alt="Nefrologia">
                         <h3>Nefrologia</h3>
-                        <a href="especialidade.html?open=nefrologia#nefrologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=nefrologia#nefrologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/neurologia.png" alt="Neurologia">
                         <h3>Neurologia</h3>
-                        <a href="especialidade.html?open=neurologia#neurologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=neurologia#neurologia">Saiba mais!</a>
                     </div>
                 </div>
                 <button id="next" onclick="nextSlide()"><img src="img/seta-direita.svg" alt="Proximo"></button>
@@ -112,37 +113,37 @@
                     <div class="slide active">
                         <img src="img/oftalmologia.png" alt="Oftalmologia">
                         <h3>Oftalmologia</h3>
-                        <a href="especialidade.html?open=oftalmologia#oftalmologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=oftalmologia#oftalmologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/oncologia.png" alt="Oncologia">
                         <h3>Oncologia</h3>
-                        <a href="especialidade.html?open=oncologia#oncologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=oncologia#oncologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/ortopedia.png" alt="Ortopedia">
                         <h3>Ortopedia</h3>
-                        <a href="especialidade.html?open=ortopedia#ortopedia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=ortopedia#ortopedia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/otorrinolaringologia.png" alt="Otorrinolaringologia">
                         <h3>Otorrinolaringologia</h3>
-                        <a href="especialidade.html?open=otorrinolaringologia#otorrinolaringologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=otorrinolaringologia#otorrinolaringologia">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/pediatria.png" alt="Pediatria">
                         <h3>Pediatria</h3>
-                        <a href="especialidade.html?open=pediatria#pediatria">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=pediatria#pediatria">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/psiquiatria.png" alt="Psiquiatria">
                         <h3>Psiquiatria</h3>
-                        <a href="especialidade.html?open=psiquiatria#psiquiatria">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=psiquiatria#psiquiatria">Saiba mais!</a>
                     </div>
                     <div class="slide active">
                         <img src="img/urologia.png" alt="Urologia">
                         <h3>Urologia</h3>
-                        <a href="especialidade.html?open=urologia#urologia">Saiba mais!</a>
+                        <a href="especialidade.jsp?open=urologia#urologia">Saiba mais!</a>
                     </div>
                 </div>
                 <button id="next" onclick="nextSlide()"><img src="img/seta-direita.svg" alt="Proximo"></button>
@@ -158,8 +159,8 @@
         <div class="footer-container">
             <div class="navegacao">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="sobre.jsp">Sobre</a></li>
                 </ul>
             </div>
             <div class="contatos">

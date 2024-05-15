@@ -44,6 +44,6 @@ public class CreatePacienteServlet extends HttpServlet {
 
         new UsuarioDAO().cadastrarUsuario(paciente);
 
-        req.getRequestDispatcher("login.html").forward(req, resp);
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
     }
 }

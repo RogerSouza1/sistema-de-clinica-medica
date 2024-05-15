@@ -35,7 +35,8 @@ public class ValidarUsuarioLogin extends HttpServlet {
                 req.getRequestDispatcher("medico/horarios.html").forward(req, resp);
             }
         } else {
-            req.getRequestDispatcher("login.html").forward(req, resp);
+            req.setAttribute("loginFailed", true);
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
     }
 }

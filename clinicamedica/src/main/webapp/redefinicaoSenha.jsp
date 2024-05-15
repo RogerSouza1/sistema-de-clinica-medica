@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -15,35 +16,34 @@
   <header>
     <nav class="navbar">
       <div class="navbar-container">
-        <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
+        <h1 class="navbar-logo"><a href="index.jsp">MedEasy</a></h1>
         <ul class="navbar-links ms-auto">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="especialidade.html">Especialidades</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="login.html" id="login">Login</a></li>
+          <li><a href="index.jsp">Home</a></li>
+          <li><a href="especialidade.jsp">Especialidades</a></li>
+          <li><a href="sobre.jsp">Sobre</a></li>
+          <li><a href="login.jsp" id="login">Login</a></li>
           <li class="dropdown-cadastro">
             <a href="#" id="cadastre-se">Cadastre-se <img src="img/setinha.svg" alt="seta" /></a>
             <ul class="dropdown-content-cadastro" id="dropdown-content-cadastro">
               <li>
-                <a href="cadastroPaciente.html">Beneficiário do Plano</a>
+                <a href="cadastroPaciente.jsp">Beneficiário do Plano</a>
               </li>
-              <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
+              <li><a href="cadastroMedico.jsp">Credenciado Médico</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </nav>
   </header>
-</body>
 
-<main>
-  <section id="esqueci-senha">
-    <div class="forms-container" id="esqueci-senha-container">
+  <main>
+  <section id="redefinicao-senha">
+    <div class="forms-container" id="redefinicao-senha-container">
       <h2>Redefinição de Senha</h2>
-      <p>Para redefinir sua senha, informe seus dados para validação!</p>
-      <form class="form-redefinir-senha" action="/validar-redefinir-senha" method="post">
-        <input type="email" id="validacao-email" name="validacao-email" required placeholder="Email" />
-        <input type="text" id="validacao-cpf" name="validacao-cpf" required placeholder="CPF" />
+      <p>Cadastre sua nova senha</p>
+      <form id="password-form" action="/update-senha" method="post">
+        <input type="password" id="nova-senha" name="password" required placeholder="Nova senha" />
+        <input type="password" id="confirmar-senha" name="confirmar-senha" required placeholder="Confirme sua senha" />
         <button type="submit">Enviar</button>
       </form>
     </div>
@@ -51,14 +51,14 @@
 </main>
 
 <!--Footer-->
-<footer>
+  <footer>
   <div class="rodape">
     <h3 class="footer-logo">MedEasy</h3>
     <div class="footer-container">
       <div class="navegacao">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="index.jsp">Home</a></li>
+          <li><a href="sobre.jsp">Sobre</a></li>
         </ul>
       </div>
       <div class="contatos">
@@ -94,6 +94,10 @@
   </div>
 </footer>
 
+
+</body>
+
+<script src="js/validacao.js"></script>
 <script src="js/dropdown.js"></script>
 
 </html>

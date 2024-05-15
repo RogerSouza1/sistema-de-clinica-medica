@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -7,18 +8,26 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <title>MedEasy</title>
+    <script>
+      window.onload = function() {
+        const loginFailed = '<%=request.getAttribute("loginFailed")%>';
+        if (loginFailed === 'true') {
+          alert('Login ou senha incorretas!');
+        }
+      }
+    </script>
   </head>
   <body>
     <!--Navbar-->
     <header>
       <nav class="navbar">
         <div class="navbar-container">
-          <h1 class="navbar-logo"><a href="index.html">MedEasy</a></h1>
+          <h1 class="navbar-logo"><a href="index.jsp">MedEasy</a></h1>
           <ul class="navbar-links ms-auto">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="especialidade.html">Especialidades</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="login.html" id="login">Login</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="especialidade.jsp">Especialidades</a></li>
+            <li><a href="sobre.jsp">Sobre</a></li>
+            <li><a href="login.jsp" id="login">Login</a></li>
             <li class="dropdown-cadastro">
               <a href="#" id="cadastre-se"
                 >Cadastre-se <img src="img/setinha.svg" alt="seta"
@@ -28,9 +37,9 @@
                 id="dropdown-content-cadastro"
               >
                 <li>
-                  <a href="cadastroPaciente.html">Beneficiário do Plano</a>
+                  <a href="cadastroPaciente.jsp">Beneficiário do Plano</a>
                 </li>
-                <li><a href="cadastroMedico.html">Credenciado Médico</a></li>
+                <li><a href="cadastroMedico.jsp">Credenciado Médico</a></li>
               </ul>
             </li>
           </ul>
@@ -50,7 +59,7 @@
           <button id="botao-login" type="submit">Entrar</button>
         </form>
         <div class="links-login">
-        <p class="senha"><a class= "link-senha" href="esqueciSenha.html">Esqueceu a Senha?</a></p>
+        <p class="senha"><a class= "link-senha" href="esqueciSenha.jsp">Esqueceu a Senha?</a></p>
       </div>
       </div>
     </section>
@@ -63,8 +72,8 @@
       <div class="footer-container">
         <div class="navegacao">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="sobre.jsp">Sobre</a></li>
           </ul>
         </div>
         <div class="contatos">
