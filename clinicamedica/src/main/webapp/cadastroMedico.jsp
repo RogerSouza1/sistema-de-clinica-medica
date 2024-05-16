@@ -45,6 +45,7 @@
             <form id="medico-form" action="/cadastrar-medico" method="post">
                 <input type="text" id="medico-nome" name="medico-nome" required placeholder="Nome"/>
                 <input type="text" id="medico-cpf" name="medico-cpf" required placeholder="CPF"/>
+                <span id="cpfError" class="error-message"></span>
 
                 <input list="especialidade" id="medico-especialidade" name="medico-especialidade" required
                        placeholder="Especialidade"/>
@@ -82,13 +83,22 @@
                 </datalist>
 
                 <input type="text" id="medico-crm" name="medico-crm" required placeholder="CRM/SP"/>
+                <span id="crmError" class="error-message"></span>
+
                 <input type="email" id="medico-email" name="medico-email" required placeholder="Email"/>
                 <input type="email" id="medico-confirmar-email" name="medico-email" required
                        placeholder="Confirmar Email"/>
+                <span id="confirmarEmailError" class="error-message"></span>
+
                 <input type="password" id="medico-senha" name="medico-senha" required placeholder="Senha"/>
+                <span id="senhaError" class="error-message"></span>
+
                 <input type="password" id="medico-confirmar-senha" name="medico-senha" required
                        placeholder="Confirmar Senha"/>
+                <span id="confirmarSenhaError" class="error-message"></span>
+
                 <input type="date" id="medico-data-nascimento" name="medico-data-nascimento" required/>
+                <span id="dataNascimentoError" class="error-message"></span>
 
                 <div class="dividir-caixa">
                     <div class="caixa-ddd">
@@ -198,7 +208,7 @@
     </div>
 </footer>
 
-<script src="js/validacao.js"></script>
+<script src="js/cadastroMedicoValidacao.js"></script>
 <script src="js/dropdown.js"></script>
 </body>
 </html>

@@ -44,15 +44,25 @@
             <form id="paciente-form" action="/cadastrar-paciente" method="post">
                 <input type="text" id="paciente-nome" name="paciente-nome" required placeholder="Nome"/>
                 <input type="text" id="paciente-cpf" name="paciente-cpf" required placeholder="CPF"/>
+                <span id="cpfError" class="error-message"></span>
 
                 <input type="email" id="paciente-email" name="paciente-email" required placeholder="Email"/>
-                <input type="email" id="paciente-confirmar-email" name="paciente-email" required
+                <span id="emailError" class="error-message"></span>
+
+                <input type="email" id="paciente-confirmar-email" name="paciente-confirmar-email" required
                        placeholder="Confirmar Email"/>
+                <span id="confirmarEmailError" class="error-message"></span>
+
                 <input type="password" id="paciente-senha" name="paciente-senha" required placeholder="Senha"/>
-                <input type="password" id="paciente-confirmar-senha" name="paciente-senha" required
+                <span id="senhaError" class="error-message"></span>
+
+                <input type="password" id="paciente-confirmar-senha" name="paciente-confirmar-senha" required
                        placeholder="Confirmar Senha"/>
+                <span id="confirmarSenhaError" class="error-message"></span>
+
                 <input type="date" id="paciente-data-nascimento" name="paciente-data-nascimento" required
                        placeholder="Data de Nascimento"/>
+                <span id="dataNascimentoError" class="error-message"></span>
 
                 <input list="number" name="paciente-dependentes" id="dependentes" required
                        placeholder="Quantidade de Dependentes">
@@ -72,6 +82,7 @@
                         <input type="text" name="paciente-telefone" id="paciente-telefone
                 " required placeholder="Telefone">
                     </div>
+
                 </div>
 
                 <div class="dividir-caixa">
@@ -175,7 +186,7 @@
     </div>
 </footer>
 
-<script src="js/validacao.js"></script>
+<script src="js/cadastroPacienteValidacao.js"></script>
 <script src="js/dropdown.js"></script>
 </body>
 </html>

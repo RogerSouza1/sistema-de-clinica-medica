@@ -44,6 +44,7 @@
       <form id="password-form" action="/update-senha" method="post">
         <input type="password" id="nova-senha" name="password" required placeholder="Nova senha" />
         <input type="password" id="confirmar-senha" name="confirmar-senha" required placeholder="Confirme sua senha" />
+        <span id="senhaError" class="error-message"></span>
         <button type="submit">Enviar</button>
       </form>
     </div>
@@ -97,7 +98,7 @@
 
 </body>
 
-<script src="js/validacao.js"></script>
+<script src="js/redefinicaoValidacao.js"></script>
 <script src="js/dropdown.js"></script>
 
 </html>

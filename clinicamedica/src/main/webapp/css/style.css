@@ -903,3 +903,8 @@ body {
     cursor: pointer;
 }
 
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
