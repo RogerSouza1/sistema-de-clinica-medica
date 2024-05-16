@@ -1,15 +1,19 @@
 package br.com.clinicamedica.model;
 
-public class Paciente extends Usuario {
-    Long idUsuario;
-    int dependentes;
+import java.text.DateFormat;
+import java.util.Date;
 
-    public Long getIdUsuario() {
-        return idUsuario;
+public class Paciente extends Usuario {
+    private Long id;
+    private int dependentes;
+    private int idade;
+
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public Long getId() {
+        return id;
     }
 
     public int getDependentes() {
@@ -18,5 +22,13 @@ public class Paciente extends Usuario {
 
     public void setDependentes(int dependentes) {
         this.dependentes = dependentes;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 }

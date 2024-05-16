@@ -1,7 +1,6 @@
 package br.com.clinicamedica.dao;
 
 import br.com.clinicamedica.model.Especialidade;
-import br.com.clinicamedica.model.Clinica;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -32,8 +31,8 @@ public class EspecialidadeDAO {
 
             if (rs.next()) {
                 especialidade = new Especialidade();
-                especialidade.setIdEspecialidade(rs.getInt("id_especialidade"));
-                especialidade.setNomeEspecialidade(rs.getString("nome_especialidade"));
+                especialidade.setId(rs.getInt("id_especialidade"));
+                especialidade.setNome(rs.getString("nome_especialidade"));
             }
             rs.close();
             stmt.close();

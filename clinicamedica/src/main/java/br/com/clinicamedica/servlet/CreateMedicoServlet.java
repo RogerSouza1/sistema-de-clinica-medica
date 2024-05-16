@@ -1,12 +1,12 @@
 package br.com.clinicamedica.servlet;
 
-import br.com.clinicamedica.dao.UsuarioDAO;
-import br.com.clinicamedica.model.Endereco;
-import br.com.clinicamedica.model.Medico;
-import br.com.clinicamedica.dao.EspecialidadeDAO;
-import br.com.clinicamedica.model.Especialidade;
 import br.com.clinicamedica.dao.ClinicaDAO;
+import br.com.clinicamedica.dao.EspecialidadeDAO;
+import br.com.clinicamedica.dao.UsuarioDAO;
 import br.com.clinicamedica.model.Clinica;
+import br.com.clinicamedica.model.Endereco;
+import br.com.clinicamedica.model.Especialidade;
+import br.com.clinicamedica.model.Medico;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +37,8 @@ public class CreateMedicoServlet extends HttpServlet {
         medico.setEmail(req.getParameter("medico-email"));
         medico.setSenha(req.getParameter("medico-senha"));
         medico.setDataNascimento(req.getParameter("medico-data-nascimento"));
-        medico.setTelefone(Long.parseLong(req.getParameter("medico-telefone").replaceAll("[^0-9]", "")));
+        Long telefone = Long.parseLong(req.getParameter("medico-ddd")) + Long.parseLong(req.getParameter("medico-telefone").replaceAll("[^0-9]", ""));
+        medico.setTelefone(telefone);
 
         medico.setEndereco(endereco);
 

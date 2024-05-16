@@ -42,8 +42,7 @@ public class CriarAgendamentoServlet extends HttpServlet {
             // Se encontrou a disponibilidade, criar o agendamento
             Agendamento agendamento = new Agendamento();
 
-            agendamento.setPaciente(paciente.getIdUsuario());
-            agendamento.setDisponibilidade(idDisponibilidade);
+            agendamento.setPaciente(paciente);
             agendamento.setProntuario(""); // Preencher com o prontuário do paciente, se necessário
 
             AgendamentoDAO agendamentoDAO = new AgendamentoDAO();

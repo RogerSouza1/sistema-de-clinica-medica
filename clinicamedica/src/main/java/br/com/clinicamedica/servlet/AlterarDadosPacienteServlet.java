@@ -17,12 +17,12 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Paciente identificador = (Paciente) req.getSession().getAttribute("pacienteLogado");
         String cpf = identificador.getCpf().toString();
-        Endereco enderecoIdentificador = new EnderecoDAO().getEnderecoById(identificador.getEndereco().getId_endereco());
+        Endereco enderecoIdentificador = new EnderecoDAO().getEnderecoById(identificador.getEndereco().getId());
 
         Paciente paciente = new Paciente();
         Endereco endereco = new Endereco();
 
-        endereco.setId_endereco(enderecoIdentificador.getId_endereco());
+        endereco.setId(enderecoIdentificador.getId());
         endereco.setLogradouro(enderecoIdentificador.getLogradouro());
         endereco.setNumero(enderecoIdentificador.getNumero());
         endereco.setBairro(enderecoIdentificador.getBairro());
@@ -30,7 +30,7 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
         endereco.setEstado(enderecoIdentificador.getEstado());
         endereco.setCep(enderecoIdentificador.getCep());
 
-        paciente.setIdUsuario(identificador.getIdUsuario());
+        paciente.setId_usuario(identificador.getId_usuario());
         paciente.setNome(identificador.getNome());
         paciente.setSenha(identificador.getSenha());
         paciente.setTelefone(identificador.getTelefone());
