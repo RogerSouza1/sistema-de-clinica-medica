@@ -21,9 +21,10 @@ public class ValidarUsuarioRedefinir extends HttpServlet {
         if (usuarioValido) {
             // Armazenar o CPF na sessão
             req.getSession().setAttribute("cpf", cpf);
-            req.getRequestDispatcher("redefinicaoSenha.html").forward(req, resp);
+            req.getRequestDispatcher("redefinicaoSenha.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("esqueciSenha.html").forward(req, resp);
+            req.setAttribute("validacaoFalhou", true);
+            req.getRequestDispatcher("esqueciSenha.jsp").forward(req, resp);
         }
     }
 }

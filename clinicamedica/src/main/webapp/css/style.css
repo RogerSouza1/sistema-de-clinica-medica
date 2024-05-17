@@ -1,1068 +1,1063 @@
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-    /*Unidades de medidas
-    
-    1. Pixels (px): É uma unidade de medida fixa e absoluta. Um pixel é a menor unidade de medida de tela e é 
-    amplamente utilizada para definir tamanhos de fonte, espaçamentos e dimensões de elementos.
-    2. Porcentagem (%): Esta unidade é relativa ao tamanho do elemento pai. Por exemplo, definir a largura de um 
-    elemento como 50% fará com que ele ocupe metade da largura de seu elemento pai.
-    3. Em (em): Esta unidade é relativa ao tamanho da fonte do elemento pai. É útil para definir tamanhos de fonte 
-    e espaçamentos de forma relativa, mantendo proporções consistentes independentemente do tamanho da fonte do navegador.
-    4. Rem (rem): Semelhante ao 'em', mas é relativo ao tamanho da fonte do elemento raiz (normalmente o elemento HTML). 
-    Isso torna mais fácil controlar o dimensionamento relativo em relação a um ponto de referência consistente.
-    5. Viewport Width (vw) e Viewport Height (vh): Estas unidades são relativas ao tamanho da janela de visualização 
-    do navegador. Por exemplo, definir a largura de um elemento como 50vw fará com que ele ocupe metade da largura da 
-    janela do navegador.
-    6. Centímetros (cm), Milímetros (mm), Polegadas (in): Unidades de medida absolutas, geralmente usadas para 
-    impressão ou quando é necessário um controle muito preciso sobre as dimensões.
-    7. Pontos (pt) e Picas (pc): Unidades de medida usadas principalmente em impressão e design gráfico. 
-    Um ponto é equivalente a 1/72 de uma polegada, enquanto uma pica é equivalente a 12 pontos.
-    */
-
-    /*Para procurar alguma coisa no código: ctrl+f*/
-
-    /*Váriaveis de cores, como usa: var(azul-logo)*/
-    :root {
-        --azul-logo: #0455BF;
-        --azul-principal: #2A6BBF;
-        --azul-claro: #73B0FF;
-        --cinza: #E9E9E9;
-        --cinza-rodape: #CFCFCF;
-        --cinza-escuro: #656565;
-        --branco: #FFFFFF;
-        --vermelho: #BF2A2A;
-        --verde: #2ABF42;
-    }
-
-    /* Body */
-    body {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
-        font-size: 1.375rem;
-        line-height: 1.5;
-        color: var(--azul-principal);
-    }
-
-    /* ------ Navbar ------*/
-    .navbar {
-        padding: 2% 5%;
-        font-size: 1.2rem;
-        border-bottom: var(--cinza) 1px solid;
-        box-shadow: inset 0 -1px 0 var(--cinza);
-        overflow: hidden;
-    }
-
-    .navbar-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    /* Logo */
-    .navbar-logo {
-        display: flex;
-        align-items: center;
-        margin-bottom: -2vh;
-    }
-
-    .navbar-logo a {
-        color: var(--azul-logo);
-        text-decoration: none;
-        font-size: 2.5vw;
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-    }
-
-    /* Links na barra de navegação */
-    .navbar-links {
-        display: flex;
-        align-items: center;
-        list-style: none;
-    }
-
-    .navbar-links a {
-        text-decoration: none;
-        color: var(--azul-principal);
-        font-weight: 500;
-        margin: 0 2vh;
-        padding: 1vh 0.5vw;
-        border-radius: 1vw;
-        transition: 0.2s;
-    }
-
-    /* Botões de Login e Cadastre-se */
-    .navbar-links {
-        padding: 1vh 2vw;
-        border-radius: 1vw;
-    }
-
-    .navbar-links img {
-        width: 1.2em;
-        margin-left: 0.5em;
-    }
-
-    #login,
-    #cadastre-se {
-        text-decoration: none;
-        color: var(--branco);
-        font-weight: 500;
-        padding: 1vh 2vw;
-        border-radius: 0.5em;
-        background-color: var(--azul-principal);
-        transition: 0.2s;
-    }
-
-    #login:hover,
-    #cadastre-se:hover {
-        background-color: var(--azul-logo);
-    }
-
-    /* Dropdown */
-    .dropdown-content-cadastro {
-        display: none;
-        position: absolute;
-        background-color: var(--branco);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        z-index: 1;
-        font-size: 1.2rem;
-        margin-top: 0.5em;
-        width: auto;
-    }
-
-    .dropdown-content-cadastro.show {
-        display: block;
-    }
-
-    .dropdown-content-cadastro li a {
-        text-decoration: none;
-        display: block;
-        margin: 0;
-        padding: 0.5em 1em;
-        transition: all 0.3s ease;
-    }
-
-    .dropdown-content-cadastro li a:hover {
-        color: #ffffff;
-        background-color: var(--azul-principal);
-    }
-
-    /* ---------------- Index ----------------*/
-
-    /*Banner*/
-    #banner {
-        background-image: url(../img/banner.png);
-        background-size: cover;
-        background-position: center;
-        height: 60vh;
-    }
-
-    .banner-container {
-        justify-content: center;
-        align-items: center;
-        padding: 2% 5%;
-    }
-
-    .primeira-frase {
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--azul-claro);
-    }
-
-    .segunda-frase {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 3vh;
-    }
-
-    .terceira-frase {
-        font-size: 1.3rem;
-        font-weight: 600;
-        color: var(--cinza-escuro);
-        margin-right: 81vh;
-        margin-bottom: 10vh;
-    }
-
-    .botao-saiba-mais {
-        text-decoration: none;
-        color: var(--branco);
-        font-weight: 500;
-        padding: 2vh 3vw;
-        border-radius: 0.4em;
-        background-color: var(--azul-principal);
-        transition: 0.2s;
-    }
-
-    .botao-saiba-mais:hover {
-        background-color: var(--azul-logo);
-    }
-
-    /*Especialidades carrossel*/
-    .especialidades-index-container {
-        padding: 1vw 2vw;
-        font-weight: 700;
-        font-size: 2vw;
-    }
-
-    .especialidades-index-container h1 {
-        margin-left: 6vh;
-    }
-    
-    .carousel-container-1,
-    .carousel-container-2 {
-        display: flex;
-        align-items: center;
-        margin-top: 2vw;
-        margin-bottom: 3vw;
-    }
-    
-    #carousel {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 2vw;
-    }
-    
-    .slide {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--cinza);
-        border-radius: 1.5vw;
-    }
-    
-    .slide h3 {
-        font-size: 1.5vw;
-        margin-top: 1vw;
-    }
-    
-    .slide a {
-        text-decoration: none;
-        color: var(--branco);
-        font-weight: 500;
-        padding: 0.5vw 1vw;
-        margin: 1vw;
-        border-radius: 0.5vw;
-        background-color: var(--azul-principal);
-        font-size: 3vh;
-    }
-    
-    .slide a:hover {
-        background-color: var(--azul-logo);
-    }
-    
-    #prev,
-    #next {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--branco);
-        border: solid var(--branco);
-        cursor: pointer;
-    }
-    
-    #prev img,
-    #next img {
-        width: 2.5vw;
-        margin: 3vw
-    }
-    
-    .carousel-container-1 {
-        display: flex;
-        align-items: center;
-        margin-top: 2vw;
-    }
-    
-    .carousel-container-2 {
-        display: none;
-    }
-    
-
-    /* Footer */
-    .rodape {
-        background-color: var(--cinza);
-        padding: 2% 5%;
-        font-size: 1.2rem;
-        overflow: hidden;
-    }
-
-    .footer-logo {
-        color: var(--azul-logo);
-        text-decoration: none;
-        font-size: 2vw;
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        text-align: center;
-        border-bottom: 2px solid var(--azul-claro);
-        padding-bottom: 1vh;
-    }
-
-    .footer-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 2vh 5vw;
-    }
-
-    .navegacao a,
-    .contatos a {
-        text-decoration: none;
-        color: var(--azul-principal);
-        font-weight: 500;
-        font-size: 1rem;
-    }
-
-    .contatos img {
-        width: 1.5em;
-        margin-right: 0.5em;
-        vertical-align: middle;
-    }
-
-    .redes-sociais ul {
-        display: flex;
-        padding: 0;
-    }
-
-    .redes-sociais ul li {
-        list-style: none;
-        margin: 0 1vw;
-
-    }
-
-    .redes-sociais img {
-        width: 3em;
-    }
-
-    .rodape-frase {
-        text-align: center;
-        background-color: var(--cinza-rodape);
-        color: var(--cinza-escuro);
-        font-size: 1rem;
-        padding: 2vh 0;
-    }
-
-    /*---------------- Especialidades ----------------*/
-
-    /*Banner Especialidades*/
-    .banner-especialidades-contatiner {
-        background-image: url(../img/banner-especialidade.png);
-        background-size: cover;
-        background-position: center;
-        height: auto;
-    }
-
-    .banner-especialidades-contatiner {
-        padding: 4.5vw 5vw
-    }
-
-    .banner-especialidades-contatiner h3 {
-        font-size: 2rem;
-        color: var(--branco);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 600;
-        text-align: center;
-    }
-
-    /*Especialidades*/
-    .especialidades-container {
-        font-weight: 700;
-        font-size: 1.5rem;
-        padding: 2% 5%;
-    }
-
-    .especialidades-container h3 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 4vh;
-    }
-
-    .cards-dropdown {
-        margin-bottom: 2vh;
-    }
-
-    .cards-dropdown h4 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 2vh;
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-
-    .dropdown-title {
-        cursor: pointer;
-        background-color: var(--azul-principal);
-        color: var(--branco);
-        padding: 10px;
-        border-radius: 10px;
-        transition: background-color 0.2s;
-    }
-
-    .cards-dropdown img {
-        width: 0.7rem;
-        margin-left: auto;
-        margin-right: 2vh;
-        transition: transform 0.3s ease;
-    }
-
-    .dropdown-content {
-        background-color: var(--azul-principal);
-        font-size: 1rem;
-        font-weight: 400;
-        color: var(--branco);
-        display: none;
-        padding: 20px;
-        border-radius: 0 0 10px 10px;
-        text-align: justify;
-        margin-top: -4vh;
-    }
-
-    .dropdown-title:hover {
-        background-color: var(--azul-logo);
-    }
-
-    .cards-dropdown .dropdown-title.open img {
-        transform: rotate(90deg);
-    }
-
-
-    /*---------------- Esqueci Senha ----------------*/
-
-    #esqueci-senha {
-        background-color: var(--cinza);
-        padding: 2rem 5%;
-        font-size: 1.2rem;
-        overflow: hidden;
-        margin: 2.5rem 0;
-    }
-
-    /*---------------- Redefinição Senha ----------------*/
-
-    #redefinicao-senha {
-        background-color: var(--cinza);
-        padding: 2rem 5%;
-        font-size: 1.2rem;
-        overflow: hidden;
-        margin: 2.5rem 0;
-    }
-
-    /*---------------- Formatação de Formulário ----------------*/
-
-
-    .forms-container {
-        padding: 2rem 5%;
-        font-weight: 700;
-        font-size: 2rem;
-        align-items: center;
-        text-align: center;
-        border: 0.15rem solid var(--azul-principal);
-        background-color: var(--branco);
-        border-radius: 1.5rem;
-        width: 30%;
-        max-width: 30rem;
-        margin: 3.5rem auto;
-        
-    }
-
-    .forms-container h2 {
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-size: 2vw;
-        padding-top: -8%;
-        font-weight: 800;
-        text-align: center;
-        padding-bottom: 1vh;
-    }
-
-    .forms-container p {
-        color: var(--cinza-escuro);
-        font-weight: 400;
-        font-size: 0.9375rem;
-    }
-
-    .forms-container form {
-        display: flex;
-        flex-direction: column;
-        margin-top: -1vh;
-    }
-
-    .forms-container input {
-        width: 100%;
-        height: 1.5rem;
-        padding: 1vh 1vw;
-        margin: 1vh 0;
-        border-radius: 0.8rem;
-        border: 0.15rem solid var(--azul-principal);
-        font-size: 1.5rem;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .forms-container button {
-        width: 8rem;
-        height: 3rem;
-        border-radius: 0.8rem;
-        border: 0.15rem solid var(--azul-principal);
-        background-color: var(--azul-principal);
-        color: var(--branco);
-        font-weight: 500;
-        transition: 0.2s;
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.5rem;
-        margin: 0 40% 0;
-
-
-    }
-
-    .forms-container button:hover {
-        background-color: var(--azul-logo);
-        cursor: pointer;
-    }
-
-
-
-    /*------------------------------------------------sobre--------------------------------------------------------*/
-    .sobre {
-        align-items: center;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 400;
-        font-size: 1.375rem;
-        border-radius: 69px;
-        width: 59em;
-        margin-left: 5em;
-
-    }
-
-
-    .bloco-impar {
-        display: flex;
-        flex-direction: row;
-        background-color: var(--azul-claro);
-        border-radius: 69px;
-        margin-top: 2em;
-        margin-bottom: 1em;
-    }
-
-    .bloco2 {
-        display: flex;
-        flex-direction: row;
-        background-color: var(--azul-logo);
-        color: #FFFFFF;
-        border-radius: 69px;
-        margin-top: 2em;
-    }
-
-    .textos-sobre {
-        display: flex;
-        flex-direction: column;
-        margin-top: 1em;
-        margin-left: 3em;
-    }
-
-    .descricao-sobre {
-        color: #FFFFFF;
-        margin-top: 1em;
-    }
-
-    .img-sobre {
-        margin: 1em;
-    }
-
-    .img-direita {
-        margin-left: 5.5em;
-    }
-
-    .par-sobre {
-        font-weight: 700;
-        font-family: 'Poppins', sans-serif;
-        font-size: x-large;
-    }
-
-    .impar-sobre {
-        font-weight: 700;
-        font-family: 'Poppins', sans-serif;
-        font-size: x-large;
-    }
-
-
-
-    /*----------------------------------------Login---------------------------------------------------------------*/
-    .area-exclusiva {
-        font-weight: 700;
-        font-family: 'Poppins', sans-serif;
-        font-size: x-large;
-        margin-top: 2em;
-        margin-left: 43%;
-        padding-top: 1.5em;
-    }
-
-    .tela-login {
-        background-color: var(--cinza);
-        padding: 0.5em;
-        
-
-    }
-
-    .tela-login, #botao-login {
-        margin-top: 5%;
-    }
-
-    .main-login {
-        background-color: var(--cinza);
-        margin-bottom: 1em;
-        margin-top: 1em;
-    }
-
-    .senha-login {
-        font-family: 'Poppins', sans-serif;
-        margin-right: 13em;
-
-    }
-
-    .link-senha {
-        font-family: 'Poppins', sans-serif;
-        font-size: .9em;
-        color: #0455BF;
-        margin-right: 24em;
-    }
-
-    /* ---------------- horarios - Medico ----------------*/
-
-    #sair {
-        text-decoration: none;
-        color: var(--branco);
-        font-weight: 500;
-        padding: 1vh 2vw;
-        border-radius: 0.5em;
-        background-color: var(--azul-principal);
-        transition: 0.2s;
-    }
-
-    #sair:hover {
-        background-color: var(--azul-logo);
-    }
-
-    #sair img {
-        width: 0.9em;
-        margin-bottom: 0.1em;
-        vertical-align: middle;
-    }
-
-    .horarios-index h1 {
-        font-size: 2.0vw;
-        color: var(--azul-logo);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        text-align: center;
-        margin-top: 30px;
-    }
-
-    .horarios-index h2 {
-        font-size: 18px;
-        color: var(--azul-logo);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        margin-left: 285px;
-    }
-
-    .data-campo #data-horarios {
-        margin-left: 285px;
-        margin-bottom: 10px;
-        width: 25vw;
-        height: 5px;
-        background-color: var(--cinza);
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 750px;
-        border: 2px solid var(--azul-principal);
-        margin-bottom: 30px;
-    }
-
-    .horarios-campo {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        background-color: var(--cinza);
-        padding: 20px;
-        border-radius: 8px;
-        margin: 0 auto;
-        max-width: 750px;
-        border: 2px solid var(--azul-principal);
-    }
-
-    .horario-option {
-        font-size: 16px;
-    }
-
-    #botão-salvar {
-        display: block;
-        margin: 20px auto;
-        width: 10vw;
-        height: 7vh;
-        font-family: 'Baloo Tammudu 2', system-ui;
-        color: var(--branco);
-        font-weight: 700;
-        font-size: 20px;
-        text-align: center;
-        border-radius: 0.5em;
-        text-decoration: none;
-        background-color: var(--azul-principal);
-        border: 2px solid transparent;
-    }
-
-    #botão-salvar:hover {
-        background-color: var(--azul-logo);
-        cursor: pointer;
-    }
-
-    .footer-container-medico {
-        display: block;
-        justify-content: space-between;
-        margin: 2vh 5vw;
-    }
-
-    .contatos-aba-medico ul {
-        display: flex;
-        list-style-type: none;
-        padding: 0;
-        margin-left: 50px;
-    }
-
-    .contatos-aba-medico li {
-        margin: 0 auto;
-    }
-
-    .contatos-aba-medico a {
-        text-decoration: none;
-        color: var(--azul-principal);
-        font-weight: 500;
-        font-size: 1rem;
-        display: flex;
-    }
-
-    .contatos-aba-medico img {
-        width: 1.5em;
-        margin-right: 0.5em;
-    }
-
-    /* ---------------- Agendar Consulta - Paciente ----------------*/
-
-    .agendardar-consulta-main {
-        display: flex;
-        justify-content: center;
-    }
-
-    .agendardar-consulta-index h1 {
-        font-size: 2.0vw;
-        color: var(--azul-logo);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        text-align: center;
-        margin-top: 30px;
-        margin-bottom: 10px;
-    }
-
-    .agendardar-consulta-index h2 {
-        font-size: 18px;
-        color: var(--azul-logo);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        margin-left: 285px;
-    }
-
-    .campos-agendar-consulta #especialidade-agendamento,
-    #clinica-agendamento,
-    #horario-agendamento,
-    #medico-agendamento {
-        margin-left: 285px;
-        margin-bottom: 10px;
-        width: 25vw;
-        height: 5px;
-        background-color: var(--cinza);
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 750px;
-        border: 2px solid var(--azul-principal);
-        margin-bottom: 30px;
-    }
-
-    .campos-agendar-consulta select {
-        font-size: 18px;
-        color: var(--azul-logo);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        background-color: var(--cinza);
-        border: 2px solid var(--azul-principal);
-        cursor: pointer;
-    }
-
-    .campos-agendar-consulta select option {
-        background-color: var(--cinza);
-        color: var(--azul-principal);
-    }
-
-    .campos-esquerda-agendar-consulta {
-        flex: 1;
-        text-align: left;
-        margin-right: 20px;
-    }
-
-    .campos-direita-agendar-consulta {
-        flex: 1;
-        text-align: left;
-        margin-left: 20px;
-        display: flex;
-    }
-
-    .campos-direita-agendar-consulta h2 {
-        font-size: 18px;
-        color: var(--azul-logo);
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-weight: 800;
-        margin-left: 0;
-    }
-
-    .campos-agendar-consulta #data-agendamento {
-        margin-bottom: 10px;
-        width: 25vw;
-        height: 5px;
-        background-color: var(--cinza);
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 750px;
-        border: 2px solid var(--azul-principal);
-        margin-bottom: 30px;
-    }
-
-    .botoes-agendar-consulta {
-        text-align: center;
-    }
-
-    #botão-cancelar-agendamento {
-        display: inline-block;
-        margin: 20px 10px;
-        width: 10vw;
-        height: 7vh;
-        font-family: 'Baloo Tammudu 2', system-ui;
-        color: var(--branco);
-        font-weight: 700;
-        font-size: 20px;
-        text-align: center;
-        border-radius: 0.5em;
-        text-decoration: none;
-        background-color: var(--vermelho);
-        border: 2px solid transparent;
-    }
-
-    #botão-agendar {
-        display: inline-block;
-        margin: 20px 10px;
-        width: 10vw;
-        height: 7vh;
-        font-family: 'Baloo Tammudu 2', system-ui;
-        color: var(--branco);
-        font-weight: 700;
-        font-size: 20px;
-        text-align: center;
-        border-radius: 0.5em;
-        text-decoration: none;
-        background-color: var(--verde);
-        border: 2px solid transparent;
-    }
-
-    /*-----------------Consultas-----------------*/
-    .consultas-main {
-        display: flex;
-        justify-content: center;
-    }
-
-    .consultas-main h2{
-        font-family: 'Baloo Tammudu 2', system-ui;
-        font-size: 1.8vw;
-        padding-top: -8%;
-        font-weight: 800;
-        text-align: center;
-        padding-bottom: 1vh;
-        margin-top: 5%;
-
-    }
-
-    /* ---------------- Cadastro ----------------*/
-
-    .cadastro {
-        background-color: #E9E9E9;
-        
-
-    }
-
-
-    .areaExclusiva {
-        margin: 3% 0 -1%;
-        padding: 2%;
-        color: var(--azul-logo);
-        text-decoration: none;
-        font-size: 2vw;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 800;
-        text-align: center;
-        padding-bottom: 1vh;
-    }
-
-
-    .dividir-caixa {
-        display: flex;
-        gap: 50px;
-        /* Adicionando um espaçamento entre os elementos */
-
-    }
-
-    .caixa-ddd {
-        width: 20%;
-        /* Definindo a largura da caixa de DDD */
-        padding-right: 10px;
-        /* Adicionando um espaçamento à direita */
-
-    }
-
-    .caixa-telefone {
-        width: 70%;
-    }
-
-    .caixa-lougradouro {
-        width: 70%;
-        /* Definindo a largura da caixa de DDD */
-        padding-right: 10px;
-        /* Adicionando um espaçamento à direita */
-        text-align: justify;
-    }
-
-    .caixa-numero {
-        width: 20%;
-    }
-
-    .caixa-estado {
-        width: 20%;
-        /* Definindo a largura da caixa de DDD */
-        padding-right: 10px;
-        /* Adicionando um espaçamento à direita */
-
-    }
-
-    .caixa-cep {
-        width: 70%;
-    }
-
-    /*-------------------- Tela Calendario do Medico --------------------*/
-    .calendario-container {
-        font-size: 1.5rem;
-        padding: 2% 5%;
-    }
-
-    .calendario-container h1 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 25px;
-    }
-
-    .calendario-container-interno {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .pacientes-dia-container {
-        background-color: var(--cinza);
-        border-radius: 15px;
-    }
-
-    .pacientes-cards {
-        width: 25vw;
-        height: 10vh;
-        margin: 2vh;
-        padding: 2vh;
-        background-color: var(--branco);
-        font-size: 1rem;
-        border-radius: 15px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: var(--azul-principal);
-        text-align: center;
-    }
-
-    .pacientes-cards h3 {
-        font-weight: 700;
-    }
-
-    .horario-agendamento {
-        display: flex;
-
-        justify-content: center;
-    }
-
-    .horario-agendamento p {
-        margin: 0.5vh;
-    }
-
-    .dados-paciente-escolhido {
-        display: flex;
-        font-size: 1.2rem;
-        color: black;
-        font-weight: 600;
-        background-color: var(--cinza);
-        margin-bottom: 30px;
-        border-radius: 15px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: var(--azul-principal);
-        justify-content: center;
-    }
-
-    .dados-paciente-escolhido h3 {
-        padding: 3vh;
-    }
-
-    .prontuario-paciente-escolhido h3{
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: black;
-    }
-
-    .prontuario-paciente-escolhido textarea {
-        background-color: var(--cinza);
-        padding: 1.5vh;
-        width: 55vw;
-        height: 55vh;
-        resize: none;
-        border-style: solid;
-        border-width: 2px;
-        border-radius: 15px;
-        border-color: var(--azul-principal);
-    }
-
-    .botoes-calendario-medico {
-        text-align: center;
-        padding: 2%;
-    }
-
-    #botao-cancelar-consulta-medico {
-        background-color: var(--vermelho);
-        font-size: 1rem;
-        color: var(--branco);
-        font-weight: 700;
-        padding: 1vh 2vw;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 10px;
-        border-color: transparent;
-        margin-right: 2%;
-    }
-
-    #botao-salvar-medico{
-        background-color: var(--verde);
-        font-size: 1rem;
-        color: var(--branco);
-        font-weight: 700;
-        padding: 1vh 2vw;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 10px;
-        border-color: transparent;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*Unidades de medidas
+
+1. Pixels (px): É uma unidade de medida fixa e absoluta. Um pixel é a menor unidade de medida de tela e é
+amplamente utilizada para definir tamanhos de fonte, espaçamentos e dimensões de elementos.
+2. Porcentagem (%): Esta unidade é relativa ao tamanho do elemento pai. Por exemplo, definir a largura de um
+elemento como 50% fará com que ele ocupe metade da largura de seu elemento pai.
+3. Em (em): Esta unidade é relativa ao tamanho da fonte do elemento pai. É útil para definir tamanhos de fonte
+e espaçamentos de forma relativa, mantendo proporções consistentes independentemente do tamanho da fonte do navegador.
+4. Rem (rem): Semelhante ao 'em', mas é relativo ao tamanho da fonte do elemento raiz (normalmente o elemento HTML).
+Isso torna mais fácil controlar o dimensionamento relativo em relação a um ponto de referência consistente.
+5. Viewport Width (vw) e Viewport Height (vh): Estas unidades são relativas ao tamanho da janela de visualização
+do navegador. Por exemplo, definir a largura de um elemento como 50vw fará com que ele ocupe metade da largura da
+janela do navegador.
+6. Centímetros (cm), Milímetros (mm), Polegadas (in): Unidades de medida absolutas, geralmente usadas para
+impressão ou quando é necessário um controle muito preciso sobre as dimensões.
+7. Pontos (pt) e Picas (pc): Unidades de medida usadas principalmente em impressão e design gráfico.
+Um ponto é equivalente a 1/72 de uma polegada, enquanto uma pica é equivalente a 12 pontos.
+*/
+
+/*Para procurar alguma coisa no código: ctrl+f*/
+
+/*Váriaveis de cores, como usa: var(azul-logo)*/
+:root {
+    --azul-logo: #0455BF;
+    --azul-principal: #2A6BBF;
+    --azul-claro: #73B0FF;
+    --cinza: #E9E9E9;
+    --cinza-rodape: #CFCFCF;
+    --cinza-escuro: #656565;
+    --branco: #FFFFFF;
+    --vermelho: #BF2A2A;
+    --verde: #2ABF42;
+    --verde-escuro: #006400;
+    --vermelho-escuro: #8B0000;
+}
+
+/* Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.375rem;
+    line-height: 1.5;
+    color: var(--azul-principal);
+}
+
+/* ------ Navbar ------*/
+.navbar {
+    padding: 2vh 5vw;
+    font-size: 1.2rem;
+    background-color: var(--branco);
+    border-bottom: var(--cinza) 1px solid;
+    box-shadow: inset 0 -1px 0 var(--cinza);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: -2vh;
+}
+
+.navbar-logo a {
+    color: var(--azul-logo);
+    text-decoration: none;
+    font-size: 2.5vw;
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 800;
+}
+
+/* Links na barra de navegação */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: var(--azul-principal);
+    font-weight: 500;
+    margin: 0 2vh;
+    padding: 1vh 0.5vw;
+    border-radius: 1vw;
+    transition: 0.2s;
+}
+
+#botao-calendario {
+    background-color: transparent;
+    font-size: 1.2rem;
+    color: var(--azul-principal);
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+/* Botões de Login e Cadastre-se */
+.navbar-links {
+    padding: 1vh 2vw;
+    border-radius: 1vw;
+}
+
+.navbar-links img {
+    width: 1.2em;
+    margin-left: 0.5em;
+}
+
+#login,
+#cadastre-se {
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 500;
+    padding: 1vh 2vw;
+    border-radius: 0.5em;
+    background-color: var(--azul-principal);
+    transition: 0.2s;
+}
+
+#login:hover,
+#cadastre-se:hover {
+    background-color: var(--azul-logo);
+}
+
+/* Dropdown */
+.dropdown-content-cadastro {
+    display: none;
+    position: absolute;
+    background-color: var(--branco);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1vw;
+    z-index: 1;
+    font-size: 1.2rem;
+    margin-top: 0.5em;
+    width: auto;
+}
+
+.dropdown-content-cadastro.show {
+    display: block;
+}
+
+.dropdown-content-cadastro li a {
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content-cadastro li a:hover {
+    color: #ffffff;
+    background-color: var(--azul-principal);
+}
+
+/* ---------------- Index ----------------*/
+/*Banner*/
+#banner {
+    background-image: url(../img/banner.png);
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+}
+
+.banner-container {
+    justify-content: center;
+    align-items: center;
+    padding: 2vh 5vw;
+}
+
+.primeira-frase {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--azul-claro);
+    margin-top: 5vh;
+}
+
+.segunda-frase {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3vh;
+}
+
+.terceira-frase {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cinza-escuro);
+    margin-right: 30vw;
+    margin-bottom: 10vh;
+}
+
+.botao-saiba-mais {
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 500;
+    padding: 2vh 3vw;
+    border-radius: 0.4em;
+    background-color: var(--azul-principal);
+    transition: 0.2s;
+}
+
+.botao-saiba-mais:hover {
+    background-color: var(--azul-logo);
+}
+
+/*Especialidades carrossel*/
+.especialidades-index-container {
+    padding: 1vw 2vw;
+    font-weight: 700;
+    font-size: 2vw;
+}
+
+.especialidades-index-container h1 {
+    margin-left: 6vh;
+}
+
+.carousel-container-1,
+.carousel-container-2 {
+    display: flex;
+    align-items: center;
+    margin-top: 2vw;
+    margin-bottom: 3vw;
+}
+
+#carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2vw;
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cinza);
+    border-radius: 1.5vw;
+}
+
+.slide h3 {
+    font-size: 1.5vw;
+    margin-top: 1vw;
+}
+
+.slide a {
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 500;
+    padding: 0.5vw 1vw;
+    margin: 1vw;
+    border-radius: 0.5vw;
+    background-color: var(--azul-principal);
+    font-size: 3vh;
+}
+
+.slide a:hover {
+    background-color: var(--azul-logo);
+}
+
+#prev,
+#next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--branco);
+    border: solid var(--branco);
+    cursor: pointer;
+}
+
+#prev img,
+#next img {
+    width: 2vw;
+    margin: 3vw
+}
+
+.carousel-container-1 {
+    display: flex;
+    align-items: center;
+    margin-top: 2vw;
+}
+
+.carousel-container-2 {
+    display: none;
+}
+
+.carousel-container-1,
+.carousel-container-2 {
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw;
+    margin-bottom: 3vw;
+}
+
+/* Footer */
+.rodape {
+    background-color: var(--cinza);
+    padding: 2vh 5vw;
+    font-size: 1.2rem;
+    overflow: hidden;
+}
+
+.footer-logo {
+    color: var(--azul-logo);
+    text-decoration: none;
+    font-size: 2vw;
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 2px solid var(--azul-claro);
+    padding-bottom: 1vh;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2vh 5vw;
+}
+
+.navegacao a,
+.contatos a {
+    text-decoration: none;
+    color: var(--azul-principal);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.contatos img {
+    width: 1.5em;
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+.redes-sociais ul {
+    display: flex;
+    padding: 0;
+}
+
+.redes-sociais ul li {
+    list-style: none;
+    margin: 0 1vw;
+}
+
+.redes-sociais img {
+    width: 3em;
+}
+
+.rodape-frase {
+    text-align: center;
+    background-color: var(--cinza-rodape);
+    color: var(--cinza-escuro);
+    font-size: 1rem;
+    padding: 2vh 0;
+}
+
+/*---------------- Especialidades ----------------*/
+
+/*Banner Especialidades*/
+.banner-especialidades-contatiner {
+    background-image: url(../img/banner-especialidade.png);
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    padding: 4.5vw 5vw;
+}
+
+.banner-especialidades-contatiner h3 {
+    font-size: 2rem;
+    color: var(--branco);
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 600;
+    text-align: center;
+}
+
+.especialidades-container {
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 2vw 5vw;
+}
+
+.especialidades-container h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4vh;
+}
+
+.cards-dropdown {
+    margin-bottom: 2vh;
+}
+
+.cards-dropdown h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-title {
+    cursor: pointer;
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    padding: 1vw;
+    border-radius: 1vw;
+    transition: background-color 0.2s;
+}
+
+.cards-dropdown img {
+    width: 1vw;
+    margin-left: auto;
+    margin-right: 2vh;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-content {
+    background-color: var(--azul-principal);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--branco);
+    display: none;
+    padding: 2vw;
+    border-radius: 1vw;
+    text-align: justify;
+    margin-top: -5vh;
+}
+
+.dropdown-title:hover {
+    background-color: var(--azul-logo);
+}
+
+.cards-dropdown .dropdown-title.open img {
+    transform: rotate(90deg);
+}
+
+/*------------------------------------------------sobre--------------------------------------------------------*/
+.sobre, .bloco-impar, .bloco2 {
+    padding: 2vh 5vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 1.375rem;
+    width: 80vw;
+}
+
+.bloco-impar, .bloco2 {
+    display: flex;
+    flex-direction: row;
+    border-radius: 3vw;
+    margin-top: 2em;
+}
+
+.bloco-impar {
+    background-color: var(--azul-claro);
+    margin-bottom: 1em;
+}
+
+.bloco2 {
+    background-color: var(--azul-logo);
+    color: #FFFFFF;
+}
+
+.textos-sobre {
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    margin-left: 3vw;
+}
+
+.descricao-sobre, .img-sobre {
+    color: #FFFFFF;
+    margin-top: 1em;
+}
+
+.img-sobre {
+    margin: 1em;
+}
+
+.img-direita {
+    margin-left: 15vw;
+}
+
+.par-sobre, .impar-sobre {
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2vw;
+}
+
+/* ---------------- horarios - Medico ----------------*/
+#sair {
+    text-decoration: none;
+    color: var(--branco);
+    font-weight: 500;
+    padding: 1vh 2vw;
+    border-radius: 0.5em;
+    background-color: var(--azul-principal);
+    transition: 0.2s;
+}
+
+#sair:hover {
+    background-color: var(--azul-logo);
+}
+
+#sair img {
+    width: 0.9em;
+    margin-bottom: 0.1em;
+    vertical-align: middle;
+}
+
+.horarios-index h1 {
+    font-size: 2vw;
+    color: var(--azul-logo);
+    font-weight: 800;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.horarios-index h2 {
+    font-size: 1.8vw;
+    color: var(--azul-logo);
+    font-weight: 800;
+    margin-left: 15vw;
+}
+
+.data-campo #data-horarios {
+    margin-left: 15vw;
+    width: 25vw;
+    height: 5vh;
+    background-color: var(--cinza);
+    padding: 2vh;
+    border-radius: 0.8em;
+    border: 0.15em solid var(--azul-principal);
+    margin-bottom: 3vh;
+}
+
+.horarios-campo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1vw;
+    background-color: var(--cinza);
+    padding: 2vh;
+    border-radius: 0.8em;
+    margin: 0 auto;
+    max-width: 67vw;
+    border: 0.1em solid var(--azul-principal);
+}
+
+.horario-option {
+    font-size: 1.5vw;
+}
+
+#botão-salvar {
+    display: block;
+    margin: 3vh auto;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.5em;
+    text-decoration: none;
+    background-color: var(--azul-principal);
+    border: 0.2em solid transparent;
+}
+
+#botão-salvar:hover {
+    background-color: var(--azul-logo);
+    cursor: pointer;
+}
+
+.footer-container-medico {
+    display: block;
+    justify-content: space-between;
+    margin: 2vh 5vw;
+}
+
+.contatos-aba-medico ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin-left: 5vw;
+}
+
+.contatos-aba-medico li {
+    margin: 0 auto;
+}
+
+.contatos-aba-medico a {
+    text-decoration: none;
+    color: var(--azul-principal);
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+}
+
+.contatos-aba-medico img {
+    width: 1.5em;
+    margin-right: 0.5em;
+}
+
+/* ---------------- Agendar Consulta - Paciente ----------------*/
+.agendardar-consulta-main {
+    display: flex;
+    justify-content: center;
+}
+
+.agendardar-consulta-index h1 {
+    font-size: 2.0vw;
+    color: var(--azul-logo);
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.agendardar-consulta-index h2 {
+    font-size: 1.125rem;
+    color: var(--azul-logo);
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 800;
+    margin-left: 18rem;
+}
+
+.campos-agendar-consulta #especialidade-agendamento,
+#clinica-agendamento,
+#horario-agendamento,
+#medico-agendamento {
+    margin-left: 18rem;
+    width: 25vw;
+    height: 0.313rem;
+    background-color: var(--cinza);
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    max-width: 46.875rem;
+    border: 2px solid var(--azul-principal);
+    margin-bottom: 1.875rem;
+}
+
+.campos-agendar-consulta select {
+    font-size: 1.125rem;
+    color: var(--azul-logo);
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 800;
+    background-color: var(--cinza);
+    border: 2px solid var(--azul-principal);
+    cursor: pointer;
+}
+
+.campos-agendar-consulta select option {
+    background-color: var(--cinza);
+    color: var(--azul-principal);
+}
+
+.campos-esquerda-agendar-consulta {
+    flex: 1;
+    text-align: left;
+    margin-right: 1.25rem;
+}
+
+.campos-direita-agendar-consulta {
+    flex: 1;
+    text-align: left;
+    margin-left: 1.25rem;
+    display: flex;
+}
+
+.campos-direita-agendar-consulta h2 {
+    font-size: 1.125rem;
+    color: var(--azul-logo);
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-weight: 800;
+    margin-left: 0;
+}
+
+.campos-agendar-consulta #data-agendamento {
+    width: 25vw;
+    height: 0.313rem;
+    background-color: var(--cinza);
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    max-width: 46.875rem;
+    border: 2px solid var(--azul-principal);
+    margin-bottom: 1.875rem;
+}
+
+.botoes-agendar-consulta {
+    text-align: center;
+}
+
+#botão-cancelar-agendamento {
+    display: inline-block;
+    margin: 1.25rem 0.625rem;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    background-color: var(--vermelho);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botão-cancelar-agendamento:hover {
+    background-color: var(--vermelho-escuro);
+}
+
+#botão-agendar {
+    display: inline-block;
+    margin: 1.25rem 0.625rem;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    background-color: var(--verde);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botão-agendar:hover {
+    background-color: var(--verde-escuro);
+}
+
+/*-----------------Consultas-----------------*/
+.consultas-main {
+    display: flex;
+    justify-content: center;
+}
+
+.consultas-main h2 {
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-size: 1.8vw;
+    padding-top: -8%;
+    font-weight: 800;
+    text-align: center;
+    padding-bottom: 1vh;
+    margin-top: 5%;
+
+}
+
+/* ---------------- Cadastro ----------------*/
+
+.cadastro {
+    background-color: #E9E9E9;
+    padding: 1vh 5vw;
+    margin: 6vh 0;
+}
+
+.forms-container input {
+    width: auto;
+}
+
+.areaExclusiva {
+    margin: 1em;
+    color: var(--azul-logo);
+    text-decoration: none;
+    font-size: 1.3em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+
+.dividir-caixa, .caixa-ddd, .caixa-telefone, .caixa-lougradouro, .caixa-numero, .caixa-estado, .caixa-cep {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.caixa-ddd, .caixa-numero, .caixa-estado {
+    flex: 1;
+}
+
+.caixa-telefone, .caixa-lougradouro, .caixa-cep {
+    flex: 2;
+}
+
+.caixa-lougradouro {
+    text-align: justify;
+}
+
+/*----------------------------------------Login---------------------------------------------------------------*/
+.area-exclusiva, .tela-login, .main-login {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cinza);
+}
+
+.main-login {
+    padding: 1vh 5vw;
+    margin: 6vh 0;
+}
+
+#botao-login {
+    margin-top: 3vh;
+    align-self: center;
+}
+
+.link-senha {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #0455BF;
+    margin-top: 3vh;
+    align-self: center;
+}
+
+/*---------------- Esqueci Senha ----------------*/
+#esqueci-senha {
+    background-color: var(--cinza);
+    padding: 2rem 5%;
+    font-size: 1.2rem;
+    overflow: hidden;
+    margin: 2.5rem 0;
+}
+
+.forms-container button {
+    display: inline-block;
+    align-self: center;
+    margin-top: 1vh;
+}
+
+.forms-container p {
+    display: inline-block;
+    align-self: center;
+    margin-bottom: 2vh;
+}
+
+/*---------------- Redefinição Senha ----------------*/
+#redefinicao-senha {
+    background-color: var(--cinza);
+    padding: 2rem 5%;
+    font-size: 1.2rem;
+    overflow: hidden;
+    margin: 2.5rem 0;
+}
+
+/*---------------- Formatação de Formulário ----------------*/
+.forms-container {
+    padding: 2rem 5%;
+    font-weight: 700;
+    font-size: 2rem;
+    align-items: center;
+    text-align: center;
+    border: 0.15rem solid var(--azul-principal);
+    background-color: var(--branco);
+    border-radius: 1.5rem;
+    width: 35%;
+    margin: 2rem auto;
+}
+
+.forms-container h2 {
+    font-family: 'Baloo Tammudu 2', system-ui;
+    font-size: 2vw;
+    font-weight: 800;
+    text-align: center;
+    padding-bottom: 1vh;
+}
+
+.forms-container p {
+    color: var(--cinza-escuro);
+    font-weight: 400;
+    font-size: 0.9375rem;
+}
+
+.forms-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.forms-container input {
+    align-self: center;
+    width: 94%;
+    height: 1.5rem;
+    padding: 1vh 1vw;
+    margin: 1vh 0;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--azul-principal);
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.forms-container button {
+    align-self: center;
+    width: 30%;
+    height: 3rem;
+    border-radius: 0.8rem;
+    border: 0.15rem solid var(--azul-principal);
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    font-weight: 700;
+    transition: 0.2s;
+    font-size: 1.25rem;
+    margin: 4vh 4vh;
+}
+
+.forms-container button:hover {
+    background-color: var(--azul-logo);
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.caixa-cep {
+    width: 70%;
+}
+
+/*-------------------- Tela Calendario do Medico --------------------*/
+.calendario-container {
+    font-size: 1.5rem;
+    padding: 2% 5%;
+}
+
+.calendario-container h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--azul-logo);
+}
+
+.calendario-container-interno {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pacientes-dia-container {
+    background-color: var(--cinza);
+    border-radius: 1.5rem;
+}
+
+.pacientes-cards {
+    width: 25vw;
+    height: 10vh;
+    margin: 2vh;
+    padding: 2vh;
+    background-color: var(--branco);
+    font-size: 1rem;
+    border-radius: 1.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--azul-principal);
+    text-align: center;
+}
+
+.pacientes-cards h3 {
+    font-weight: 700;
+}
+
+.horario-agendamento {
+    display: flex;
+    justify-content: center;
+}
+
+.horario-agendamento p {
+    margin: 0.5vh;
+}
+
+.dados-paciente-escolhido {
+    display: flex;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 600;
+    background-color: var(--cinza);
+    margin-bottom: 3rem;
+    border-radius: 1.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--azul-principal);
+    justify-content: center;
+}
+
+.dados-paciente-escolhido h3 {
+    padding: 3vh;
+}
+
+.prontuario-paciente-escolhido h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.prontuario-paciente-escolhido textarea {
+    background-color: var(--cinza);
+    padding: 1.5vh;
+    width: 55vw;
+    height: 55vh;
+    resize: none;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 1.5rem;
+    border-color: var(--azul-principal);
+}
+
+.botoes-calendario-medico {
+    text-align: center;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+#botao-cancelar-consulta-medico {
+    display: inline-block;
+    margin: 1.25rem 0.625rem;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    background-color: var(--vermelho);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botao-cancelar-consulta-medico:hover {
+    background-color: var(--vermelho-escuro);
+}
+
+#botao-finalizar-consulta-medico {
+    display: inline-block;
+    margin: 1.25rem 0.625rem;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    background-color: var(--verde);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botao-finalizar-consulta-medico:hover {
+    background-color: var(--verde-escuro);
+}
+

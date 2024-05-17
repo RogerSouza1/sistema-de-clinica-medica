@@ -28,6 +28,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   var cardsTitles = document.querySelectorAll(".dropdown-title");
+  var urlParams = new URLSearchParams(window.location.search);
+  var open = urlParams.get('open');
+
+  // Se houver, encontre o dropdown correspondente e abra-o.
+  if (open) {
+    var dropdownTitle = document.getElementById(open);
+    if (dropdownTitle) {
+      var dropdownContent = dropdownTitle.nextElementSibling;
+      dropdownContent.style.display = "block";
+      dropdownTitle.classList.add("open");
+    }
+  }
 
   cardsTitles.forEach(function(cardsTitle) {
     cardsTitle.addEventListener("click", function () {

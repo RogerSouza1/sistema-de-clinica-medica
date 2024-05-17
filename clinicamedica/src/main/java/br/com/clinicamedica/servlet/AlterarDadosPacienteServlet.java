@@ -41,6 +41,11 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
             paciente.setNome(nomeStr);
         }
 
+        String emailStr = req.getParameter("paciente-email");
+        if (emailStr != null && !emailStr.isEmpty()) {
+            paciente.setEmail(emailStr);
+        }
+
         String senhaStr = req.getParameter("paciente-senha");
         if (senhaStr != null && !senhaStr.isEmpty()) {
             paciente.setSenha(senhaStr);
@@ -85,9 +90,9 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
 
         if (dadosAlterados) {
             req.getSession().setAttribute("pacienteLogado", new PacienteDAO().getPacienteByCPF(cpf));
-            req.getRequestDispatcher("paciente/agendarConsultas.html").forward(req, resp);
+            req.getRequestDispatcher("paciente/agendarConsultas.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("paciente/pacienteDados.html").forward(req, resp);
+            req.getRequestDispatcher("paciente/pacienteDados.jsp").forward(req, resp);
         }
     }
 }

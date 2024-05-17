@@ -16,16 +16,16 @@
     <!--Navbar-->
     <nav class="navbar">
         <div class="navbar-container">
-            <h1 class="navbar-logo"><a href="../index.html">MedEasy</a></h1>
+            <h1 class="navbar-logo"><a href="#">MedEasy</a></h1>
             <ul class="navbar-links ms-auto">
-                <li><a href="../medico/horarios.html">Horários</a></li>
+                <li><a href="../medico/horarios.jsp">Horários</a></li>
                 <li>
                     <form action="/listar-consultas" method="get">
-                        <button type="submit" id="botao-calendario">calendario</button>
+                        <button type="submit" id="botao-calendario">Calendário</button>
                     </form>
                 </li>
-                <li><a href="../medico/medicoDados.html">Alterar Dados</a></li>
-                <li><a href="../index.html" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
+                <li><a href="../medico/medicoDados.jsp">Alterar Dados</a></li>
+                <li><a href="../index.jsp" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
             </ul>
         </div>
     </nav>
