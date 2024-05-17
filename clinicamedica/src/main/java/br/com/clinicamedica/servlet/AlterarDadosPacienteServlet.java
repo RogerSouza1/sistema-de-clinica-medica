@@ -41,6 +41,11 @@ public class AlterarDadosPacienteServlet extends HttpServlet {
             paciente.setNome(nomeStr);
         }
 
+        String emailStr = req.getParameter("paciente-email");
+        if (emailStr != null && !emailStr.isEmpty()) {
+            paciente.setEmail(emailStr);
+        }
+
         String senhaStr = req.getParameter("paciente-senha");
         if (senhaStr != null && !senhaStr.isEmpty()) {
             paciente.setSenha(senhaStr);

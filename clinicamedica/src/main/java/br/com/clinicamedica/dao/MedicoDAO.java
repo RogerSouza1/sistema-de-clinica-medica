@@ -49,9 +49,8 @@ public class MedicoDAO {
     }
 
     public boolean atualizarMedico(Medico medico, String cpf) {
-        new MedicoDAO();
         final String sqlUpdateEndereco = "UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id_endereco = ?";
-        final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
+        final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             System.out.println("Sucesso ao conectar ao banco de dados");
@@ -69,10 +68,11 @@ public class MedicoDAO {
 
             PreparedStatement ps = connection.prepareStatement(sqlUpdateUsuario);
             ps.setString(1, medico.getNome());
-            ps.setString(2, medico.getSenha());
-            ps.setLong(3, medico.getTelefone());
-            ps.setLong(4, medico.getEndereco().getId());
-            ps.setLong(5, Long.parseLong(cpf));
+            ps.setString(2, medico.getEmail());
+            ps.setString(3, medico.getSenha());
+            ps.setLong(4, medico.getTelefone());
+            ps.setLong(5, medico.getEndereco().getId());
+            ps.setLong(6, Long.parseLong(cpf));
             ps.executeUpdate();
             System.out.println("Médico Atualizado");
 

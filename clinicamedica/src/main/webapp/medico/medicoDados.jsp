@@ -43,14 +43,14 @@
                 <input type="email" id="alterar-email-medico" name="medico-email" placeholder="Email"/>
                 <input type="email" id="medico-confirmar-email" name="medico-confirmar-email" required
                        placeholder="Confirmar Email"/>
-                <span id="confirmarEmailError" class="error-message">${confirmarEmailError}</span>
+                <span id="confirmarEmailError" class="error-message"></span>
 
                 <input type="password" id="alterar-senha-medico" name="medico-senha" placeholder="Senha"/>
                 <span id="senhaError" class="error-message"></span>
 
                 <input type="password" id="medico-confirmar-senha" name="medico-confirmar-senha" required
                        placeholder="Confirmar Senha"/>
-                <span id="confirmarSenhaError" class="error-message">${confirmarSenhaError}</span>
+                <span id="confirmarSenhaError" class="error-message"></span>
 
                 <div class="dividir-caixa">
                     <div class="caixa-ddd">

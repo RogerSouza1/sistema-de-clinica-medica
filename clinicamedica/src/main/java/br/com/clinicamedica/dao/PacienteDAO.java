@@ -48,8 +48,7 @@ public class PacienteDAO {
     }
 
     public boolean atualizarPaciente(Paciente paciente, String cpf) {
-        new PacienteDAO();
-        final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
+        final String sqlUpdateUsuario = "UPDATE usuario SET nome = ?, email = ?, senha = ?, telefone = ?, id_endereco = ? WHERE cpf = ?";
         final String sqlUpdateEndereco = "UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE id_endereco = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
@@ -67,10 +66,11 @@ public class PacienteDAO {
 
             PreparedStatement ps = connection.prepareStatement(sqlUpdateUsuario);
             ps.setString(1, paciente.getNome());
-            ps.setString(2, paciente.getSenha());
-            ps.setLong(3, paciente.getTelefone());
-            ps.setLong(4, paciente.getEndereco().getId());
-            ps.setLong(5, Long.parseLong(cpf));
+            ps.setString(2, paciente.getEmail()); // Adicionado o campo de e-mail
+            ps.setString(3, paciente.getSenha());
+            ps.setLong(4, paciente.getTelefone());
+            ps.setLong(5, paciente.getEndereco().getId());
+            ps.setLong(6, Long.parseLong(cpf));
             ps.executeUpdate();
             System.out.println("Paciente Atualizado");
 

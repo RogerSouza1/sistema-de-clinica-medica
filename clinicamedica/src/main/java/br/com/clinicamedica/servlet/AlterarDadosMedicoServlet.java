@@ -1,6 +1,5 @@
 package br.com.clinicamedica.servlet;
 
-
 import br.com.clinicamedica.dao.EnderecoDAO;
 import br.com.clinicamedica.dao.MedicoDAO;
 import br.com.clinicamedica.model.Endereco;
@@ -22,7 +21,6 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
         Endereco endereco = new Endereco();
         Medico medico = new Medico();
 
-
         endereco.setId(enderecoIdentificador.getId());
         endereco.setLogradouro(enderecoIdentificador.getLogradouro());
         endereco.setNumero(enderecoIdentificador.getNumero());
@@ -33,6 +31,7 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
 
         medico.setId_usuario(identificador.getId_usuario());
         medico.setNome(identificador.getNome());
+        medico.setEmail(identificador.getEmail());
         medico.setSenha(identificador.getSenha());
         medico.setTelefone(identificador.getTelefone());
         medico.setEndereco(enderecoIdentificador);
@@ -91,7 +90,7 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
 
         if (dadosAlterados) {
             req.getSession().setAttribute("medicoLogado", new MedicoDAO().getMedicoByCPF(cpf));
-            req.getRequestDispatcher("medico/calendario.html").forward(req, resp);
+            req.getRequestDispatcher("medico/calendario.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("medico/medicoDados.jsp").forward(req, resp);
         }
