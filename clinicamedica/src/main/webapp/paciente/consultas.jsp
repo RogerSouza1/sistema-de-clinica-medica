@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <title>MedEasy</title>
 </head>
 
@@ -13,11 +15,11 @@
     <!--Navbar-->
     <nav class="navbar">
         <div class="navbar-container">
-            <h1 class="navbar-logo"><a href="../index.jsp">MedEasy</a></h1>
+            <h1 class="navbar-logo"><a href="#">MedEasy</a></h1>
             <ul class="navbar-links ms-auto">
-                <li><a href="../paciente/agendarConsultas.html">Agendar Consulta</a></li>
-                <li><a href="../paciente/consultas.html">Minhas Consultas</a></li>
-                <li><a href="../paciente/pacienteDados.html">Alterar Dados</a></li>
+                <li><a href="../paciente/agendarConsultas.jsp">Agendar Consulta</a></li>
+                <li><a href="../paciente/consultas.jsp">Minhas Consultas</a></li>
+                <li><a href="../paciente/pacienteDados.jsp">Alterar Dados</a></li>
                 <li><a href="../index.jsp" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
             </ul>
         </div>

@@ -33,6 +33,8 @@ Um ponto é equivalente a 1/72 de uma polegada, enquanto uma pica é equivalente
     --branco: #FFFFFF;
     --vermelho: #BF2A2A;
     --verde: #2ABF42;
+    --verde-escuro: #006400;
+    --vermelho-escuro: #8B0000;
 }
 
 /* Body */
@@ -89,6 +91,16 @@ body {
     padding: 1vh 0.5vw;
     border-radius: 1vw;
     transition: 0.2s;
+}
+
+#botao-calendario {
+    background-color: transparent;
+    font-size: 1.2rem;
+    color: var(--azul-principal);
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    border-color: transparent;
+    cursor: pointer;
 }
 
 /* Botões de Login e Cadastre-se */
@@ -483,7 +495,6 @@ body {
 }
 
 /* ---------------- horarios - Medico ----------------*/
-
 #sair {
     text-decoration: none;
     color: var(--branco);
@@ -505,65 +516,60 @@ body {
 }
 
 .horarios-index h1 {
-    font-size: 2.0vw;
+    font-size: 2vw;
     color: var(--azul-logo);
-    font-family: 'Baloo Tammudu 2', system-ui;
     font-weight: 800;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 3vh;
 }
 
 .horarios-index h2 {
-    font-size: 18px;
+    font-size: 1.8vw;
     color: var(--azul-logo);
-    font-family: 'Baloo Tammudu 2', system-ui;
     font-weight: 800;
-    margin-left: 285px;
+    margin-left: 15vw;
 }
 
 .data-campo #data-horarios {
-    margin-left: 285px;
-    margin-bottom: 10px;
+    margin-left: 15vw;
     width: 25vw;
-    height: 5px;
+    height: 5vh;
     background-color: var(--cinza);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 750px;
-    border: 2px solid var(--azul-principal);
-    margin-bottom: 30px;
+    padding: 2vh;
+    border-radius: 0.8em;
+    border: 0.15em solid var(--azul-principal);
+    margin-bottom: 3vh;
 }
 
 .horarios-campo {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 1vw;
     background-color: var(--cinza);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 2vh;
+    border-radius: 0.8em;
     margin: 0 auto;
-    max-width: 750px;
-    border: 2px solid var(--azul-principal);
+    max-width: 67vw;
+    border: 0.1em solid var(--azul-principal);
 }
 
 .horario-option {
-    font-size: 16px;
+    font-size: 1.5vw;
 }
 
 #botão-salvar {
     display: block;
-    margin: 20px auto;
+    margin: 3vh auto;
     width: 10vw;
     height: 7vh;
-    font-family: 'Baloo Tammudu 2', system-ui;
     color: var(--branco);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     border-radius: 0.5em;
     text-decoration: none;
     background-color: var(--azul-principal);
-    border: 2px solid transparent;
+    border: 0.2em solid transparent;
 }
 
 #botão-salvar:hover {
@@ -581,7 +587,7 @@ body {
     display: flex;
     list-style-type: none;
     padding: 0;
-    margin-left: 50px;
+    margin-left: 5vw;
 }
 
 .contatos-aba-medico li {
@@ -602,7 +608,6 @@ body {
 }
 
 /* ---------------- Agendar Consulta - Paciente ----------------*/
-
 .agendardar-consulta-main {
     display: flex;
     justify-content: center;
@@ -614,36 +619,35 @@ body {
     font-family: 'Baloo Tammudu 2', system-ui;
     font-weight: 800;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .agendardar-consulta-index h2 {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: var(--azul-logo);
     font-family: 'Baloo Tammudu 2', system-ui;
     font-weight: 800;
-    margin-left: 285px;
+    margin-left: 18rem;
 }
 
 .campos-agendar-consulta #especialidade-agendamento,
 #clinica-agendamento,
 #horario-agendamento,
 #medico-agendamento {
-    margin-left: 285px;
-    margin-bottom: 10px;
+    margin-left: 18rem;
     width: 25vw;
-    height: 5px;
+    height: 0.313rem;
     background-color: var(--cinza);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 750px;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    max-width: 46.875rem;
     border: 2px solid var(--azul-principal);
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .campos-agendar-consulta select {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: var(--azul-logo);
     font-family: 'Baloo Tammudu 2', system-ui;
     font-weight: 800;
@@ -660,18 +664,18 @@ body {
 .campos-esquerda-agendar-consulta {
     flex: 1;
     text-align: left;
-    margin-right: 20px;
+    margin-right: 1.25rem;
 }
 
 .campos-direita-agendar-consulta {
     flex: 1;
     text-align: left;
-    margin-left: 20px;
+    margin-left: 1.25rem;
     display: flex;
 }
 
 .campos-direita-agendar-consulta h2 {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: var(--azul-logo);
     font-family: 'Baloo Tammudu 2', system-ui;
     font-weight: 800;
@@ -679,15 +683,14 @@ body {
 }
 
 .campos-agendar-consulta #data-agendamento {
-    margin-bottom: 10px;
     width: 25vw;
-    height: 5px;
+    height: 0.313rem;
     background-color: var(--cinza);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 750px;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    max-width: 46.875rem;
     border: 2px solid var(--azul-principal);
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .botoes-agendar-consulta {
@@ -696,34 +699,44 @@ body {
 
 #botão-cancelar-agendamento {
     display: inline-block;
-    margin: 20px 10px;
+    margin: 1.25rem 0.625rem;
     width: 10vw;
     height: 7vh;
-    font-family: 'Baloo Tammudu 2', system-ui;
     color: var(--branco);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
-    border-radius: 0.5em;
+    border-radius: 0.7rem;
     text-decoration: none;
     background-color: var(--vermelho);
     border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botão-cancelar-agendamento:hover {
+    background-color: var(--vermelho-escuro);
 }
 
 #botão-agendar {
     display: inline-block;
-    margin: 20px 10px;
+    margin: 1.25rem 0.625rem;
     width: 10vw;
     height: 7vh;
-    font-family: 'Baloo Tammudu 2', system-ui;
     color: var(--branco);
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
-    border-radius: 0.5em;
+    border-radius: 0.7rem;
     text-decoration: none;
     background-color: var(--verde);
     border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botão-agendar:hover {
+    background-color: var(--verde-escuro);
 }
 
 /*-----------------Consultas-----------------*/
@@ -751,7 +764,7 @@ body {
     margin: 6vh 0;
 }
 
-.forms-container input{
+.forms-container input {
     width: auto;
 }
 
@@ -816,13 +829,13 @@ body {
     margin: 2.5rem 0;
 }
 
-.forms-container button{
+.forms-container button {
     display: inline-block;
     align-self: center;
     margin-top: 1vh;
 }
 
-.forms-container p{
+.forms-container p {
     display: inline-block;
     align-self: center;
     margin-bottom: 2vh;
@@ -891,10 +904,9 @@ body {
     border: 0.15rem solid var(--azul-principal);
     background-color: var(--azul-principal);
     color: var(--branco);
-    font-weight: 500;
+    font-weight: 700;
     transition: 0.2s;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 4vh 4vh;
 }
 
@@ -908,121 +920,144 @@ body {
     font-weight: bold;
     font-size: 0.8rem;
 }
-    .caixa-cep {
-        width: 70%;
-    }
 
-    /*-------------------- Tela Calendario do Medico --------------------*/
-    .calendario-container {
-        font-size: 1.5rem;
-        padding: 2% 5%;
-    }
+.caixa-cep {
+    width: 70%;
+}
 
-    .calendario-container h1 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 25px;
-    }
+/*-------------------- Tela Calendario do Medico --------------------*/
+.calendario-container {
+    font-size: 1.5rem;
+    padding: 2% 5%;
+}
 
-    .calendario-container-interno {
-        display: flex;
-        justify-content: space-between;
-    }
+.calendario-container h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--azul-logo);
+}
 
-    .pacientes-dia-container {
-        background-color: var(--cinza);
-        border-radius: 15px;
-    }
+.calendario-container-interno {
+    display: flex;
+    justify-content: space-between;
+}
 
-    .pacientes-cards {
-        width: 25vw;
-        height: 10vh;
-        margin: 2vh;
-        padding: 2vh;
-        background-color: var(--branco);
-        font-size: 1rem;
-        border-radius: 15px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: var(--azul-principal);
-        text-align: center;
-    }
+.pacientes-dia-container {
+    background-color: var(--cinza);
+    border-radius: 1.5rem;
+}
 
-    .pacientes-cards h3 {
-        font-weight: 700;
-    }
+.pacientes-cards {
+    width: 25vw;
+    height: 10vh;
+    margin: 2vh;
+    padding: 2vh;
+    background-color: var(--branco);
+    font-size: 1rem;
+    border-radius: 1.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--azul-principal);
+    text-align: center;
+}
 
-    .horario-agendamento {
-        display: flex;
+.pacientes-cards h3 {
+    font-weight: 700;
+}
 
-        justify-content: center;
-    }
+.horario-agendamento {
+    display: flex;
+    justify-content: center;
+}
 
-    .horario-agendamento p {
-        margin: 0.5vh;
-    }
+.horario-agendamento p {
+    margin: 0.5vh;
+}
 
-    .dados-paciente-escolhido {
-        display: flex;
-        font-size: 1.2rem;
-        color: black;
-        font-weight: 600;
-        background-color: var(--cinza);
-        margin-bottom: 30px;
-        border-radius: 15px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: var(--azul-principal);
-        justify-content: center;
-    }
+.dados-paciente-escolhido {
+    display: flex;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 600;
+    background-color: var(--cinza);
+    margin-bottom: 3rem;
+    border-radius: 1.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--azul-principal);
+    justify-content: center;
+}
 
-    .dados-paciente-escolhido h3 {
-        padding: 3vh;
-    }
+.dados-paciente-escolhido h3 {
+    padding: 3vh;
+}
 
-    .prontuario-paciente-escolhido h3{
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: black;
-    }
+.prontuario-paciente-escolhido h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: black;
+}
 
-    .prontuario-paciente-escolhido textarea {
-        background-color: var(--cinza);
-        padding: 1.5vh;
-        width: 55vw;
-        height: 55vh;
-        resize: none;
-        border-style: solid;
-        border-width: 2px;
-        border-radius: 15px;
-        border-color: var(--azul-principal);
-    }
+.prontuario-paciente-escolhido textarea {
+    background-color: var(--cinza);
+    padding: 1.5vh;
+    width: 55vw;
+    height: 55vh;
+    resize: none;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 1.5rem;
+    border-color: var(--azul-principal);
+}
 
-    .botoes-calendario-medico {
-        text-align: center;
-        padding: 2%;
-    }
+.botoes-calendario-medico {
+    text-align: center;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+}
 
-    #botao-cancelar-consulta-medico {
-        background-color: var(--vermelho);
-        font-size: 1rem;
-        color: var(--branco);
-        font-weight: 700;
-        padding: 1vh 2vw;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 10px;
-        border-color: transparent;
-        margin-right: 2%;
-    }
+#botao-cancelar-consulta-medico {
+    display: inline-block;
+    margin: 1.25rem 0.625rem;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    background-color: var(--vermelho);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
 
-    #botao-salvar-medico{
-        background-color: var(--verde);
-        font-size: 1rem;
-        color: var(--branco);
-        font-weight: 700;
-        padding: 1vh 2vw;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 10px;
-        border-color: transparent;
-    }
+#botao-cancelar-consulta-medico:hover {
+    background-color: var(--vermelho-escuro);
+}
+
+#botao-finalizar-consulta-medico {
+    display: inline-block;
+    margin: 1.25rem 0.625rem;
+    width: 10vw;
+    height: 7vh;
+    color: var(--branco);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    background-color: var(--verde);
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#botao-finalizar-consulta-medico:hover {
+    background-color: var(--verde-escuro);
+}
+

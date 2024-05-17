@@ -49,7 +49,7 @@ public class CriarAgendamentoServlet extends HttpServlet {
             agendamentoDAO.cadastrarAgendamento(agendamento, paciente, idDisponibilidade);
 
             // Redirecionar para alguma página de sucesso
-            response.sendRedirect("/paciente/consultas.html");
+            response.sendRedirect("/paciente/consultas.jsp");
 
         } else {
             System.out.println("Nenhum horário selecionado.");

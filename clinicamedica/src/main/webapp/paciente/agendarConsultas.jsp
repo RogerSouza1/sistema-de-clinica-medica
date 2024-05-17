@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <title>MedEasy</title>
 </head>
 
@@ -13,11 +15,11 @@
     <!--Navbar-->
     <nav class="navbar">
         <div class="navbar-container">
-            <h1 class="navbar-logo"><a href="../index.jsp">MedEasy</a></h1>
+            <h1 class="navbar-logo"><a href="#">MedEasy</a></h1>
             <ul class="navbar-links ms-auto">
-                <li><a href="../paciente/agendarConsultas.html">Agendar Consulta</a></li>
-                <li><a href="../paciente/consultas.html">Minhas Consultas</a></li>
-                <li><a href="../paciente/pacienteDados.html">Alterar Dados</a></li>
+                <li><a href="../paciente/agendarConsultas.jsp">Agendar Consulta</a></li>
+                <li><a href="../paciente/consultas.jsp">Minhas Consultas</a></li>
+                <li><a href="../paciente/pacienteDados.jsp">Alterar Dados</a></li>
                 <li><a href="../index.jsp" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
             </ul>
         </div>
@@ -32,7 +34,7 @@
             <div class="campos-esquerda-agendar-consulta">
                 <div class="campos-agendar-consulta">
                     <h2>Especialidades:</h2>
-                    <input list="especialidade-agendamento-list" name="especialidade" id="especialidade-agendamento" required placeholder="Especialidade" />
+                    <input list="especialidade-agendamento-list" name="especialidade" id="especialidade-agendamento" required placeholder="Especialidade" autocomplete="off"/>
                     <datalist id="especialidade-agendamento-list">
                         <option value="Cardiologia">
                         <option value="Dermatologia">
@@ -55,7 +57,7 @@
 
                 <div class="campos-agendar-consulta">
                     <h2>Clínica:</h2>
-                    <input list="clinica-agendamento-list" name="clinica" id="clinica-agendamento" required placeholder="Clínica" />
+                    <input list="clinica-agendamento-list" name="clinica" id="clinica-agendamento" required placeholder="Clínica" autocomplete="off"/>
                     <datalist id="clinica-agendamento-list">
                         <!-- Options will be filled dynamically by JavaScript -->
                     </datalist>
@@ -63,7 +65,7 @@
 
                 <div class="campos-agendar-consulta">
                     <h2>Médico:</h2>
-                    <input list="medico-agendamento-list" name="medico" id="medico-agendamento" required placeholder="Médico" />
+                    <input list="medico-agendamento-list" name="medico" id="medico-agendamento" required placeholder="Médico" autocomplete="off"/>
                     <datalist id="medico-agendamento-list">
                         <!-- Options will be filled dynamically by JavaScript -->
                     </datalist>
@@ -71,7 +73,7 @@
 
                 <div class="campos-agendar-consulta">
                     <h2>Horários Disponíveis:</h2>
-                    <input list="horario-agendamento-list" name="horario" id="horario-agendamento" required placeholder="Horário" />
+                    <input list="horario-agendamento-list" name="horario" id="horario-agendamento" required placeholder="Horário" autocomplete="off"/>
                     <datalist id="horario-agendamento-list">
                         <!-- Options will be filled dynamically by JavaScript -->
                     </datalist>
@@ -81,7 +83,7 @@
             <div class="campos-direita-agendar-consulta">
                 <div class="campos-agendar-consulta">
                     <h2>Data:</h2>
-                    <input list="data-agendamento-list" name="data" id="data-agendamento" required placeholder="Data">
+                    <input list="data-agendamento-list" name="data" id="data-agendamento" required placeholder="Data" autocomplete="off">
                     <datalist id="data-agendamento-list">
                         <!-- Options will be filled dynamically by JavaScript -->
                      </datalist>
