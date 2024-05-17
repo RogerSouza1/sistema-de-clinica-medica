@@ -35,8 +35,19 @@
             <h2>Dados Cadastrais</h2>
             <form id="forms-alterar-dados-paciente" action="/alterar-dados-paciente" method="post">
                 <input type="text" id="alterar-nome-paciente" name="paciente-nome" placeholder="Nome"/>
+
                 <input type="email" id="alterar-email-paciente" name="paciente-email" placeholder="Email"/>
+                <input type="email" id="paciente-confirmar-email" name="paciente-confirmar-email" required
+                       placeholder="Confirmar Email"/>
+                <span id="confirmarEmailError" class="error-message"></span>
+
                 <input type="password" id="alterar-senha-paciente" name="paciente-senha" placeholder="Senha"/>
+                <span id="senhaError" class="error-message"></span>
+
+                <input type="password" id="paciente-confirmar-senha" name="paciente-confirmar-senha" required
+                       placeholder="Confirmar Senha"/>
+                <span id="confirmarSenhaError" class="error-message"></span>
+
 
                 <div class="dividir-caixa">
                     <div class="caixa-ddd">
@@ -137,5 +148,6 @@
     </div>
 </footer>
 
+<script src="../js/alterarDadosValidacaoPaciente.js"></script>
 </body>
 </html>

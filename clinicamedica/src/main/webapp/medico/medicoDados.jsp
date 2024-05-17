@@ -41,7 +41,17 @@
             <form id="forms-alterar-dados-medico" action="/alterar-dados-medico" method="post">
                 <input type="text" id="alterar-nome-medico" name="medico-nome" placeholder="Nome"/>
                 <input type="email" id="alterar-email-medico" name="medico-email" placeholder="Email"/>
+                <input type="email" id="medico-confirmar-email" name="medico-confirmar-email" required
+                       placeholder="Confirmar Email"/>
+                <span id="confirmarEmailError" class="error-message">${confirmarEmailError}</span>
+
                 <input type="password" id="alterar-senha-medico" name="medico-senha" placeholder="Senha"/>
+                <span id="senhaError" class="error-message"></span>
+
+                <input type="password" id="medico-confirmar-senha" name="medico-confirmar-senha" required
+                       placeholder="Confirmar Senha"/>
+                <span id="confirmarSenhaError" class="error-message">${confirmarSenhaError}</span>
+
                 <div class="dividir-caixa">
                     <div class="caixa-ddd">
                         <input type="number" name="medico-ddd" id="alterar-ddd-medico" placeholder="DDD">
@@ -138,5 +148,6 @@
         <h3>MedEasy - Projeto Integrador - 3ª Semestre</h3>
     </div>
 </footer>
+<script src="../js/alterarDadosValidacaoMedico.js"></script>
 </body>
 </html>

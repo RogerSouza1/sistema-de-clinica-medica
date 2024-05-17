@@ -73,7 +73,7 @@
                     <option value="Clinica Rosa">
                     <option value="Clinica Azul">
                     <option value="Clinica Verde">
-                    <option value="Clinica Lilás">
+                    <option value="Clinica Lilas">
                     <option value="Clinica Prata">
                     <option value="Clinica Laranja">
                     <option value="Clinica Vermelha">

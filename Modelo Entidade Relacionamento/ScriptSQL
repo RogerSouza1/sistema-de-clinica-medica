@@ -72,7 +72,7 @@ INSERT INTO Clinica (nome_clinica) VALUES
 ('Clinica Rosa'),
 ('Clinica Azul'),
 ('Clinica Verde'),
-('Clinica Lilás'),
+('Clinica Lilas'),
 ('Clinica Prata'),
 ('Clinica Laranja'),
 ('Clinica Vermelha'),
