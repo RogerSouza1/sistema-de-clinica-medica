@@ -42,6 +42,11 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
             medico.setNome(nomeStr);
         }
 
+        String emailStr = req.getParameter("medico-email");
+        if (emailStr != null && !emailStr.isEmpty()) {
+            medico.setEmail(emailStr);
+        }
+
         String senhaStr = req.getParameter("medico-senha");
         if (senhaStr != null && !senhaStr.isEmpty()) {
             medico.setSenha(senhaStr);
@@ -88,7 +93,7 @@ public class AlterarDadosMedicoServlet extends HttpServlet {
             req.getSession().setAttribute("medicoLogado", new MedicoDAO().getMedicoByCPF(cpf));
             req.getRequestDispatcher("medico/calendario.html").forward(req, resp);
         } else {
-            req.getRequestDispatcher("medico/medicoDados.html").forward(req, resp);
+            req.getRequestDispatcher("medico/medicoDados.jsp").forward(req, resp);
         }
     }
 }
