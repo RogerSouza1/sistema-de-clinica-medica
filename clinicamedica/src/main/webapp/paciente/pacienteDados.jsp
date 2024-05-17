@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="../css/reset.css"/>
     <link rel="stylesheet" href="../css/style.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
     <title>MedEasy</title>
 </head>
 
@@ -22,7 +22,6 @@
                 <li><a href="../paciente/consultas.jsp">Minhas Consultas</a></li>
                 <li><a href="../paciente/pacienteDados.jsp">Alterar Dados</a></li>
                 <li><a href="../index.jsp" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
-                <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
             </ul>
         </div>
     </nav>
