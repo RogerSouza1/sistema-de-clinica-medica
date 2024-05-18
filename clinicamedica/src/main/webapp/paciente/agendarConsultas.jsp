@@ -73,14 +73,6 @@
                         <!-- Options will be filled dynamically by JavaScript -->
                     </datalist>
                 </div>
-
-                <div class="campos-agendar-consulta">
-                    <h2>Horários Disponíveis:</h2>
-                    <input list="horario-agendamento-list" name="horario" id="horario-agendamento" required placeholder="Horário" autocomplete="off"/>
-                    <datalist id="horario-agendamento-list">
-                        <!-- Options will be filled dynamically by JavaScript -->
-                    </datalist>
-                </div>
             </div>
 
             <div class="campos-direita-agendar-consulta">
@@ -90,6 +82,13 @@
                     <datalist id="data-agendamento-list">
                         <!-- Options will be filled dynamically by JavaScript -->
                      </datalist>
+                </div>
+                <div class="campos-agendar-consulta">
+                    <h2>Horários Disponíveis:</h2>
+                    <input list="horario-agendamento-list" name="horario" id="horario-agendamento" required placeholder="Horário" autocomplete="off"/>
+                    <datalist id="horario-agendamento-list">
+                        <!-- Options will be filled dynamically by JavaScript -->
+                    </datalist>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@
                         </form>
                     </li>
                     <li><a href="../paciente/pacienteDados.jsp">Alterar Dados</a></li>
-                    <li><a href="../index.html" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
+                    <li><a href="../index.jsp" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
                 </ul>
             </div>
         </nav>
