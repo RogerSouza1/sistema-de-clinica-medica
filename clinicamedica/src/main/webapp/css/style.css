@@ -1061,3 +1061,256 @@ body {
     background-color: var(--verde-escuro);
 }
 
+ /* ---------------- Cadastro ----------------*/
+
+    .cadastro {
+        background-color: #E9E9E9;
+
+
+    }
+
+
+    .areaExclusiva {
+        margin: 3% 0 -1%;
+        padding: 2%;
+        color: var(--azul-logo);
+        text-decoration: none;
+        font-size: 2vw;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 800;
+        text-align: center;
+        padding-bottom: 1vh;
+    }
+
+
+    .dividir-caixa {
+        display: flex;
+        gap: 50px;
+        /* Adicionando um espaçamento entre os elementos */
+
+    }
+
+    .caixa-ddd {
+        width: 20%;
+        /* Definindo a largura da caixa de DDD */
+        padding-right: 10px;
+        /* Adicionando um espaçamento à direita */
+
+    }
+
+    .caixa-telefone {
+        width: 70%;
+    }
+
+    .caixa-lougradouro {
+        width: 70%;
+        /* Definindo a largura da caixa de DDD */
+        padding-right: 10px;
+        /* Adicionando um espaçamento à direita */
+        text-align: justify;
+    }
+
+    .caixa-numero {
+        width: 20%;
+    }
+
+    .caixa-estado {
+        width: 20%;
+        /* Definindo a largura da caixa de DDD */
+        padding-right: 10px;
+        /* Adicionando um espaçamento à direita */
+
+    }
+
+    .caixa-cep {
+        width: 70%;
+    }
+
+    /*--------------- Confirmar Consulta ---------------*/
+    .consultas-main{
+        background-color: var(--cinza);
+        padding: 2rem 5%;
+        font-size: 1.2rem;
+        overflow: hidden;
+        margin: 2.5rem 0;
+        color: var(--azul-logo);
+        font-weight: 600;
+        margin-top: 5px;
+    }
+
+    .confirmar-Consulta{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        background-color: var(--cinza);
+
+        padding-top: 70px;
+        padding-right:55%;
+        border-radius: 20px;
+        margin: 0 auto;
+        max-width: 1000px;
+        border: 2px solid var(--azul-principal);
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .dados-Consulta {
+        font-display: flex;
+
+    }
+
+    .consulta-info{
+        display: flex;
+        text-align: center;
+        margin-left: 200%;
+
+
+    }
+
+
+    .btn-confirmar{
+        background: #2ABF42;
+
+    }
+
+    .btn-cancelar{
+        background: #BF2A2A;
+    }
+
+    /*-----------------Confirmar Consultas-----------------*/
+
+
+
+    #botao-consulta {
+          display: inline-block;
+          font-size: 1.2vw;
+          text-align: right;
+          color: var(--azul-logo);
+          text-decoration: none;
+          background-color: var(--branco);
+          width: 100%;
+          right: 30%;
+          margin-left: -2%;
+
+          font-family: 'Poppins', sans-serif;
+          font-weight: 400;
+          border: none;
+          border-radius: 8px;
+          transition: background-color 0.3s ease;
+
+       }
+
+
+
+
+    .grid-Confirmar-Consultas{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1px;
+        background-color: var(--cinza);
+        padding: 0.5rem;
+        border-radius: 8px;
+        margin: 1%;
+        left: 3%;
+        text-align: center;
+        max-width: 90%;
+        font-size: 1.0rem;
+        position: relative;
+        border: 2px solid var(--azul-principal);
+        margin: 2% 0% 2.8%;
+    }
+
+    .zero-Consultas{
+            margin: 5% 0% 10%;
+    }
+
+    .info-consulta{
+        margin-top: 0%;
+        margin-left: 0%;
+        padding: 0.5rem;
+        color: var(--azul-logo);
+        text-decoration: none;
+        font-size: 1.0vw;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        text-align: left;
+        padding-bottom: 1vh;
+
+    }
+
+    .info-consulta p{
+        margin-bottom: 5px;
+        margin-top: 1.2%;
+    }
+
+
+    .info-detalhes{
+        margin: -5% 0 0%;
+        margin-top: -10%;
+        padding: 1%;
+        color: var(--azul-logo);
+        text-decoration: none;
+        font-size: 1.0vw;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        max-width: 90%;
+        text-align: center;
+        padding-bottom: 1vh;
+
+    }
+
+    .info-detalhes p{
+        margin-top: 1.8%;
+        margin-bottom: 20px;
+        padding-left: -30%;
+
+    }
+
+
+    .botao-consulta{
+        position: relative;
+        margin-bottom: 10px;
+        top: -55px;
+        left: -5%;
+        text-align: right;
+        align-self: flex-start;
+        margin-top: -30px;
+
+    }
+
+    button{
+        width: 120px;
+        height: 35px;
+        margin: 3.5px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1.1vw;
+
+    }
+
+    #botao-cancelar-consulta{
+        background-color: #BF2A2A;
+        color: #FFFFFF;
+    }
+
+    #botao-confirmar-consulta{
+        background-color: #2ABF42;
+        color: #FFFFFF;
+    }
+
+      .botao-consulta {
+        text-align: right;
+      }
+
+      .minhas-consultas{
+          font-family: 'Baloo Tammudu 2', system-ui;
+          font-size: 1.8vw;
+          padding-top: -8%;
+          font-weight: 800;
+          text-align: center;
+          padding-bottom: 1vh;
+          margin-top: 3%;
+      }
+
+

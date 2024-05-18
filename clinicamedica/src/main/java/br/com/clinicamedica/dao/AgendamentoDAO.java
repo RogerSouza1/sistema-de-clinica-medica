@@ -58,8 +58,20 @@ public class AgendamentoDAO {
     }
 
     public void confirmarAgendamento(Agendamento agendamento) {
+        String SQL = "UPDATE Agendamento SET confirmada = true WHERE id_agendamento = ?";
 
+        try(Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, agendamento.getId());
+            preparedStatement.execute();
+            System.out.println("success in update confirmar");
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao confirmar agendamento: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
     public void cancelarAgendamento(Agendamento agendamento) {
         final String SQLCancelar = "UPDATE Agendamento SET cancelada = TRUE WHERE id_agendamento = ?";
@@ -68,7 +80,8 @@ public class AgendamentoDAO {
             PreparedStatement ps = connection.prepareStatement(SQLCancelar);
             ps.setLong(1, agendamento.getId());
             ps.executeUpdate();
-            System.out.println("Consulta cancelada com sucesso");
+            System.out.println("success in update cancelar");
+
         } catch (SQLException e) {
             System.out.println("Erro ao cancelar a consulta: " + e.getMessage());
             e.printStackTrace();
@@ -90,8 +103,61 @@ public class AgendamentoDAO {
         }
     }
 
-    public List<Agendamento> buscarAgendamentos(Usuario usuario) {
-        return Collections.emptyList();
+    public List<Agendamento> buscarAgendamentos(Paciente paciente) {
+
+        List<Agendamento> minhasConsultas = new ArrayList<>();
+
+        String SQL = "SELECT a.*, e.nome_especialidade, c.nome_clinica, d.data, h.horario, u.nome AS medico " +
+                "FROM Agendamento a " +
+                "JOIN Disponibilidade d ON a.id_disponibilidade = d.id_disponibilidade " +
+                "JOIN Medico m ON d.id_medico = m.id_medico " +
+                "JOIN Usuario u ON m.id_usuario = u.id_usuario " +
+                "JOIN Especialidade e ON m.id_especialidade = e.id_especialidade " +
+                "JOIN Clinica c ON m.id_clinica = c.id_clinica " +
+                "JOIN Horarios h ON d.id_horarios = h.id_horarios " +
+                "WHERE a.id_paciente = ? AND a.cancelada = false AND a.confirmada = false";
+
+        try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setLong(1, paciente.getId_usuario());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Especialidade especialidade = new Especialidade();
+                especialidade.setNome(resultSet.getString("nome_especialidade"));
+                Clinica clinica = new Clinica();
+                clinica.setNome(resultSet.getString("nome_clinica"));
+                Medico medico = new Medico();
+                medico.setNome(resultSet.getString("medico"));
+                medico.setEspecialidade(especialidade);
+                medico.setClinica(clinica);
+
+                Horario horario = new Horario();
+                horario.setHorarioSelecionado(resultSet.getString("horario"));
+
+                Disponibilidade disponibilidade = new Disponibilidade();
+                disponibilidade.setHorario(horario);
+                disponibilidade.setData(resultSet.getString("data"));
+                disponibilidade.setMedico(medico);
+                disponibilidade.setId(resultSet.getLong("id_disponibilidade"));
+                Agendamento agendamento = new Agendamento();
+                agendamento.setPaciente(paciente);
+                agendamento.setDisponibilidade(disponibilidade);
+                agendamento.setProntuario(resultSet.getString("prontuario"));
+                agendamento.setFinalizado(resultSet.getBoolean("finalizada"));
+                agendamento.setCancelado(resultSet.getBoolean("cancelada"));
+                agendamento.setConfirmado(resultSet.getBoolean("confirmada"));
+                agendamento.setId(resultSet.getLong("id_agendamento"));
+
+                minhasConsultas.add(agendamento);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar agendamentos: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return minhasConsultas;
     }
 
     public List<Agendamento> buscarConsultasDoDia(Long id_medico) {

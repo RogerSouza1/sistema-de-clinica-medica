@@ -18,7 +18,10 @@
             <h1 class="navbar-logo"><a href="#">MedEasy</a></h1>
             <ul class="navbar-links ms-auto">
                 <li><a href="../paciente/agendarConsultas.jsp">Agendar Consulta</a></li>
-                <li><a href="../paciente/consultas.jsp">Minhas Consultas</a></li>
+                <li><form action="/consultas" method="get">
+                <button type="submit" id="botao-consulta">Minhas Consultas</button>
+                </form>
+                </li>
                 <li><a href="../paciente/pacienteDados.jsp">Alterar Dados</a></li>
                 <li><a href="../index.jsp" id="sair">Sair<img src="../img/sair.svg" alt="Seta"></a></li>
             </ul>

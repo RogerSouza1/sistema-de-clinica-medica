@@ -1,6 +1,7 @@
 package br.com.clinicamedica.model;
 
-public class Agendamento {
+public class
+Agendamento {
     private Long id;
     private Paciente paciente;
     private Disponibilidade disponibilidade;
