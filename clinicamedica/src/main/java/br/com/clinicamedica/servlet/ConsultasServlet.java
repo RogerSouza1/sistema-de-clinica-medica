@@ -21,14 +21,6 @@ public class ConsultasServlet extends HttpServlet {
         Paciente paciente = (Paciente) request.getSession().getAttribute("pacienteLogado");
         AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
         List<Agendamento> minhasConsultas = agendamentoDAO.buscarAgendamentos(paciente);
-        for(Agendamento agendamento: minhasConsultas){
-            System.out.println(agendamento.getDisponibilidade().getMedico().getNome());
-            System.out.println(agendamento.getDisponibilidade().getMedico().getEspecialidade().getNome());
-            System.out.println(agendamento.getDisponibilidade().getMedico().getClinica().getNome());
-            System.out.println(agendamento.getDisponibilidade().getData());
-            System.out.println(agendamento.getDisponibilidade().getHorario().getHorarioSelecionado());
-        }
-
         request.setAttribute("minhasConsultas", minhasConsultas);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente/consultas.jsp");
         dispatcher.forward(request, response);

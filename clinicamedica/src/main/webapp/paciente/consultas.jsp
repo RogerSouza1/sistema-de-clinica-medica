@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,32 +35,33 @@
             <h2 class="minhas-consultas">Minhas Consultas</h2>
         </div>
         <c:choose>
-        <c:when test="${empty minhasConsultas}">
-            <div class="zero-Consultas">
+            <c:when test="${empty minhasConsultas}">
                 <div class="grid-Confirmar-Consultas">
-                    <p>Não há consultas agendadas no momento.</p>
+                    <div class="info-consulta">
+                        <p>Você não possui consultas agendadas.</p>
+                    </div>
                 </div>
-            </div>
-        </c:when>
+            </c:when>
         <c:otherwise>
         <table>
             <c:forEach var="agendamento" items="${minhasConsultas}">
-                <div class="grid-Confirmar-Consultas">
-                    <div class="info-consulta">
-    <p>Especialidade: <span style="font-weight: 400">${agendamento.disponibilidade.medico.especialidade}</span></p>
-    <p>Medico(a): <span style="font-weight: 400">${agendamento.disponibilidade.medico.nome}</span></p>
-</div>
-<div class="info-detalhes">
-    <p>Data: <span style="font-weight: 400">${agendamento.disponibilidade.data}</span></p>
-    <p>Horário: <span style="font-weight: 400">${agendamento.disponibilidade.horario.horarioSelecionado}</span></p>
-</div>
-                    <div class="botao-consulta">
+                        <div class="grid-Confirmar-Consultas">
+                        <div class="info-consulta">
+                        <p>Especialidade: <span style="font-weight: 400">${agendamento.disponibilidade.medico.especialidade.nome}</span></p>
+                        <p>Medico(a): <span style="font-weight: 400">${agendamento.disponibilidade.medico.nome}</span></p>
+                        <p>Clinica: <span style="font-weight: 400">${agendamento.disponibilidade.medico.clinica.nome}</span></p>
+                </div>
+                <div class="info-detalhes">
+                        <p>Data: <span style="font-weight: 400">${agendamento.disponibilidade.data}</span></p>
+                        <p>Horário: <span style="font-weight: 400">${agendamento.disponibilidade.horario.horarioSelecionado}</span></p>
+                </div>
+                <div class="botao-consulta">
                         <form action="/cancelar-consulta-paciente" method="post">
-                            <input type="hidden" name="id_agendamento" value="${agendamento.id_agendamento}">
+                            <input type="hidden" name="id_agendamento" value="${agendamento.id}">
                             <button  type="submit" id="botao-cancelar-consulta">Cancelar</button>
                         </form>
-                        <form action="/confirmar-consulta" method="post">
-                            <input type="hidden" name="id_agendamento" value="${agendamento.id_agendamento}">
+                        <form action="/confirmar-consulta-paciente" method="post">
+                            <input type="hidden" name="id_agendamento" value="${agendamento.id}">
                             <button type="submit" id="botao-confirmar-consulta">Confirmar</button>
                         </form>
                     </div>

@@ -95,7 +95,7 @@
         </div>
         <div class="botoes-agendar-consulta">
             <button type="button" id="botão-cancelar-agendamento">Cancelar</button>
-            <button type="submit" id="botão-agendar">Agendar</button>
+            <form action="/consultas" method="get"><button type="submit" id="botão-agendar">Agendar</button></form>
         </div>
     </section>
     </form>

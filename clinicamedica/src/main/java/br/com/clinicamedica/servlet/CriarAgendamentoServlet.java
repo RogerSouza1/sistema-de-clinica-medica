@@ -7,12 +7,14 @@ import br.com.clinicamedica.model.Agendamento;
 import br.com.clinicamedica.model.Medico;
 import br.com.clinicamedica.model.Paciente;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/cadastrar-agendamento")
 public class CriarAgendamentoServlet extends HttpServlet {
@@ -48,8 +50,10 @@ public class CriarAgendamentoServlet extends HttpServlet {
             AgendamentoDAO agendamentoDAO = new AgendamentoDAO();
             agendamentoDAO.cadastrarAgendamento(agendamento, paciente, idDisponibilidade);
 
-            // Redirecionar para alguma página de sucesso
-            response.sendRedirect("/paciente/consultas.jsp");
+            List<Agendamento> minhasConsultas = agendamentoDAO.buscarAgendamentos(paciente);
+            request.setAttribute("minhasConsultas", minhasConsultas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente/consultas.jsp");
+            dispatcher.forward(request, response);
 
         } else {
             System.out.println("Nenhum horário selecionado.");

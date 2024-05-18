@@ -57,7 +57,7 @@
                 <input type="text" id="login-cpf" name="login-cpf" required placeholder="CPF"/>
                 <input type="password" id="login-senha" name="login-senha" required placeholder="Senha"/>
                 <span id="loginError" class="error-message"></span>
-                <button id="botao-login" type="submit">Entrar</button>
+                <form action="/consultas" method="get"><button id="botao-login" type="submit">Entrar</button></form>
             </form>
             <div class="links-login">
                 <p class="senha"><a class="link-senha" href="esqueciSenha.jsp">Esqueceu a Senha?</a></p>
