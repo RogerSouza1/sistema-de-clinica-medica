@@ -36,7 +36,7 @@ public class CreatePacienteServlet extends HttpServlet {
         paciente.setEmail(req.getParameter("paciente-email"));
         paciente.setSenha(req.getParameter("paciente-senha"));
         paciente.setDataNascimento(req.getParameter("paciente-data-nascimento"));
-        Long telefone = Long.parseLong(req.getParameter("paciente-ddd")) + Long.parseLong(req.getParameter("paciente-telefone").replaceAll("[^0-9]", ""));
+        Long telefone = Long.parseLong(req.getParameter("paciente-ddd") + req.getParameter("paciente-telefone").replaceAll("[^0-9]", ""));
         paciente.setTelefone(telefone);
 
         paciente.setEndereco(endereco);

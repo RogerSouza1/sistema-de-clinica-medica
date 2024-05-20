@@ -37,7 +37,7 @@ public class CreateMedicoServlet extends HttpServlet {
         medico.setEmail(req.getParameter("medico-email"));
         medico.setSenha(req.getParameter("medico-senha"));
         medico.setDataNascimento(req.getParameter("medico-data-nascimento"));
-        Long telefone = Long.parseLong(req.getParameter("medico-ddd")) + Long.parseLong(req.getParameter("medico-telefone").replaceAll("[^0-9]", ""));
+        Long telefone = Long.parseLong(req.getParameter("medico-ddd") + req.getParameter("medico-telefone").replaceAll("[^0-9]", ""));
         medico.setTelefone(telefone);
 
         medico.setEndereco(endereco);
