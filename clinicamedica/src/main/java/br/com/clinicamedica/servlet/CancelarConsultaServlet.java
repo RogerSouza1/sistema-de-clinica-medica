@@ -20,6 +20,7 @@ public class CancelarConsultaServlet extends HttpServlet {
         if (dadoIdStr != null && !dadoIdStr.isEmpty()) {
             long consultaId = Long.parseLong(dadoIdStr);
             agendamento.setId(consultaId);
+            agendamento.setProntuario("Consulta Cancelada");
             new AgendamentoDAO().cancelarAgendamento(agendamento);
             System.out.println("Consulta cancelada com sucesso");
         } else {

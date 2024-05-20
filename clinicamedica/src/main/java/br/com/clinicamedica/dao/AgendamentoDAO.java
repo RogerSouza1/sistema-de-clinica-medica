@@ -74,13 +74,14 @@ public class AgendamentoDAO {
 
 
     public void cancelarAgendamento(Agendamento agendamento) {
-        final String SQLCancelar = "UPDATE Agendamento SET cancelada = TRUE WHERE id_agendamento = ?";
+        final String SQLCancelar = "UPDATE Agendamento SET cancelada = TRUE, prontuario = ? WHERE id_agendamento = ?";
         final String SQLDisponibilidade = "SELECT id_disponibilidade FROM Agendamento WHERE id_agendamento = ?";
         final String SQLUpdateDisponibilidade = "UPDATE disponibilidade SET disponivel = TRUE WHERE id_disponibilidade = ?";
 
         try (Connection connection = DriverManager.getConnection(url, usuario, senha)) {
             PreparedStatement ps = connection.prepareStatement(SQLCancelar);
-            ps.setLong(1, agendamento.getId());
+            ps.setString(1, agendamento.getProntuario());
+            ps.setLong(2, agendamento.getId());
             ps.executeUpdate();
             System.out.println("Suceso ao cancelar consulta");
 
