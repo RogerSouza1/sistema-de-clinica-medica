@@ -25,6 +25,7 @@ public class CancelarConsultaPacienteServlet extends HttpServlet {
         if (agendamentoId != null) {
             Agendamento agendamento = new Agendamento();
             agendamento.setId(Long.parseLong(agendamentoId));
+            agendamento.setProntuario("");
             agendamento.setCancelado(true);
 
             new AgendamentoDAO().cancelarAgendamento(agendamento);
