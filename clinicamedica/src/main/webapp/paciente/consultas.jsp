@@ -36,7 +36,7 @@
     <c:choose>
     <c:when test="${empty minhasConsultas}">
         <div class="grid-Confirmar-Consultas">
-            <div class="info-consulta">
+            <div class="info-consulta-nao-agendadas">
                 <p>Você não possui consultas agendadas.</p>
             </div>
         </div>
