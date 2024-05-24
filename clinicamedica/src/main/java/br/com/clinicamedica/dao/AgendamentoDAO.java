@@ -74,7 +74,7 @@ public class AgendamentoDAO {
 
 
     public void cancelarAgendamento(Agendamento agendamento) {
-        final String SQLCancelar = "UPDATE Agendamento SET cancelada = TRUE, prontuario = ? WHERE id_agendamento = ?";
+        final String SQLCancelar = "UPDATE Agendamento SET cancelada = true, prontuario = ? WHERE id_agendamento = ?";
         final String SQLDisponibilidade = "SELECT id_disponibilidade FROM Agendamento WHERE id_agendamento = ?";
         final String SQLUpdateDisponibilidade = "UPDATE disponibilidade SET disponivel = TRUE WHERE id_disponibilidade = ?";
 

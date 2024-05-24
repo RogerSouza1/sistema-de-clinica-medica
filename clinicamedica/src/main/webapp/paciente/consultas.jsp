@@ -44,7 +44,7 @@
     <c:otherwise>
     <div>
         <c:forEach var="agendamento" items="${minhasConsultas}">
-            <div class="grid-Confirmar-Consultas">
+            <div class="grid-Confirmar-Consultasdois">
                 <div class="info-consulta">
                     <p>Especialidade: <span
                             style="font-weight: 400">${agendamento.disponibilidade.medico.especialidade.nome}</span></p>

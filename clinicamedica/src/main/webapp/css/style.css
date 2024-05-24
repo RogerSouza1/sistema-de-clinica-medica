@@ -1180,7 +1180,6 @@ body {
     width: 100%;
 }
 
-
 .grid-Confirmar-Consultas {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -1198,6 +1197,22 @@ body {
     margin: 2% 0% 20%;
 }
 
+.grid-Confirmar-Consultasdois {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1px;
+    background-color: var(--cinza);
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin: 1%;
+    left: 3%;
+    text-align: center;
+    max-width: 90%;
+    font-size: 1.0rem;
+    position: relative;
+    border: 2px solid var(--azul-principal);
+    margin: 2% 0% 2.8%;
+}
 
 .info-consulta {
     margin-top: 0%;
@@ -1218,11 +1233,12 @@ body {
     margin-top: 1.2%;
 }
 
+
+
 .info-consulta-nao-agendadas p{
     text-align: center;
     margin-bottom: 5px;
-    margin-top: 1.2%;
-    margin: 5% 10% 50%;
+
 }
 
 
