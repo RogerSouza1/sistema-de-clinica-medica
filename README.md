@@ -5,36 +5,41 @@
 
 ## 🔧Lista de Funcionalidades
 #### Requisitos Funcionais
-- [ ] O usuário deve conseguir se cadastrar como Paciente ou Médico
-- [ ] O usuário deve conseguir consultar e alterar suas informações cadastrais necessárias
-- [ ] O usuário deve conseguir fazer login em sua Área Credenciada específica
-- [ ] O usuário deve conseguir alterar a sua senha, fornecendo o CPF e Email
-- [ ] O paciente deve conseguir agendar suas consultas, selecionando a especialidade, data e horário disponíveis
-- [ ] O paciente deve conseguir acessar seu painel de consultas agendadas e ter a opção de confirmá-las ou cancelá-las
-- [ ] O médico deve conseguir definir e alterar seus horários disponíveis individualmente por data e horário
-- [ ] O médico deve ter acesso às consultas confirmadas que terá no dia e consultar os respectivos prontuários
-- [ ] O médico deve conseguir cancelar suas consultas individualmente
+- [x] O usuário deve conseguir se cadastrar como Paciente ou Médico
+- [x] O usuário deve conseguir consultar e alterar suas informações cadastrais necessárias
+- [x] O usuário deve conseguir fazer login em sua Área Credenciada específica
+- [x] O usuário deve conseguir alterar a sua senha, fornecendo o CPF e Email
+- [x] O paciente deve conseguir agendar suas consultas, selecionando a especialidade, data e horário disponíveis
+- [x] O paciente deve conseguir acessar seu painel de consultas agendadas e ter a opção de confirmá-las ou cancelá-las
+- [x] O médico deve conseguir definir e alterar seus horários disponíveis individualmente por data e horário
+- [x] O médico deve ter acesso às consultas confirmadas que terá no dia e consultar os respectivos prontuários
+- [x] O médico deve conseguir cancelar suas consultas individualmente
 
 #### Requisitos Não-Funcionais
-- [ ] O site deve conter uma página principal que mostre as especialidades atendidas
-- [ ] O site deve conter um sobre referente ao plano
-- [ ] O site deve conter uma descrição de cada especialidade
+- [x] O site deve conter uma página principal que mostre as especialidades atendidas
+- [x] O site deve conter um sobre referente ao plano
+- [x] O site deve conter uma descrição de cada especialidade
 
 #### Regras de Negócio
-- [ ] O usuário só deve conseguir se cadastrar se tiver mais de 18 anos no dia do cadastro
-- [ ] A senha do usuário deve conter no mínimo 8 caracteres, sendo uma letra maiúscula e um número
-- [ ] O usuário só pode adicionar no máximo 3 dependentes por CPF
-- [ ] No cadastro, a finalização só pode ser completa se todos os dados solicitados forem inseridos e validados
-- [ ] A consulta deve ser confirmada pelo Paciente até um dia antes do atendimento; caso contrário, será automaticamente cancelada
+- [x] O usuário só deve conseguir se cadastrar se tiver mais de 18 anos no dia do cadastro
+- [x] A senha do usuário deve conter no mínimo 8 caracteres, sendo uma letra maiúscula e um número
+- [x] O usuário só pode adicionar no máximo 3 dependentes por CPF
+- [x] No cadastro, a finalização só pode ser completa se todos os dados solicitados forem inseridos e validados
 
 ## 🩹Versionamento das entregas
 #### Marco 1:
 - Construção dos protótipos de alta fidelidade;
 - Construção do MER (Modelo Entidade Relacionamento);
 - Construção dos casos de uso com UML;
-
+- Criar o repositório oficial do projeto;
+- Enviar o readme.md com a lista de funcionalidades + versão 1 dos protótipos + v1 do MER;
+#### Marco 2:
+- Entrega da primeira funcionalidade;
+#### Marco 3:
+- Entrega de todas as funcionalidades propostas em aula;
 ## 🦿Caso de Uso (UML)
-![casodeuso](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/6ea9d20f-a943-44ac-b4c2-f12df062af61)
+![useCase](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/f28b0bcc-9b6c-40de-87cd-0a9e0664fe72)
+
 
 
 ## 🖌Prototipação
@@ -83,97 +88,85 @@
 ![tela-calendario](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/6f96144f-a2b4-49aa-883b-0522023d2945)
 
 ## 🎲MER
-![MER](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/c91afa8e-2a1d-45b2-8565-4ef03aaa0632)
-
-### Usuário
-| nomeAtributo | tipo | descrição|
-| --- | --- | --- |
-| id_usuario | int | chave primária |
-| nome | varchar | atributo | 
-| cpf | long | atributo |
-| email | varchar | atributo |
-| senha | varchar | atributo |
-| data_nascimento | date | atributo |
-| telefone | long | atributo |
-| paciente | boolean | atributo |
-| id_endereco | int | chave estrangeira |
+![MER](https://github.com/RogerSouza1/sistema-de-clinica-medica/assets/136206263/c2011416-0d13-4eee-8f2f-bc8fc0641d17)
 
 ### Endereço
-| nomeAtributo | tipo | descrição|
+| nomeAtributo | tipo | descrição |
 | --- | --- | --- |
-| id_endereco | int | chave primária |
-| logradouro | varchar | atributo | 
-| numero | int | atributo |
-| bairro | varchar | atributo |
-| cidade | varchar | atributo |
-| estado | varchar | atributo |
-| cep | int | atributo |
-
-### Paciente
-| nomeAtributo | tipo | descrição|
-| --- | --- | --- |
-| id_paciente | int | chave primária |
-| dependentes | int | atributo | 
-| id_usuario | int | chave estrangeira |
-
-### Médico
-| nomeAtributo | tipo | descrição|
-| --- | --- | --- |
-| id_medico | int | chave primária |
-| especialidade | varchar | atributo | 
-| crm | varchar | atributo |
-| clinica | varchar | atributo |
-| id_usuario | int | chave estrangeira |
-
-### Agendamento
-| nomeAtributo | tipo | descrição|
-| --- | --- | --- |
-| id_agendamento | int | chave primária |
-| prontuario | varchar | atributo |
-| confirmada | boolean | atributo |
-| finalizada | boolean | atributo |
-| cancelada | boolean | atributo |
-| id_Paciente | int | chave estrangeira | 
-| id_disponibilidade | int | chave estrangeira |
-
-### Disponibilidade
-| nomeAtributo | tipo | descrição|
-| --- | --- | --- |
-| id_disponibilidade | int | chave primária |
-| data | date | atributo |
-| id_Horario | int | chave estrangeira | 
-| id_Medico | int | chave estrangeira |
+| id_endereco | SERIAL | chave primária |
+| logradouro | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| numero | INT | atributo, não nulo |
+| bairro | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| cidade | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| estado | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| cep | BIGINT | atributo, não nulo, valor padrão 0 |
 
 ### Horários
-| nomeAtributo | tipo | descrição|
+| nomeAtributo | tipo | descrição |
 | --- | --- | --- |
-| id_horario | int | chave primária |
-| h0600_0630 | boolean | atributo |
-| h0630_0700 | boolean | atributo |
-| h0700_0730 | boolean | atributo |
-| h0730_0800 | boolean | atributo |
-| h0800_0830 | boolean | atributo |
-| h0830_0900 | boolean | atributo |
-| h0900_0930 | boolean | atributo |
-| h0930_1000 | boolean | atributo |
-| h1000_1030 | boolean | atributo |
-| h1030_1100 | boolean | atributo |
-| h1100_1130 | boolean | atributo |
-| h1130_1200 | boolean | atributo |
-| h1200_1230 | boolean | atributo |
-| h1230_1300 | boolean | atributo |
-| h1300_1330 | boolean | atributo |
-| h1330_1400 | boolean | atributo |
-| h1400_1430 | boolean | atributo |
-| h1430_1500 | boolean | atributo |
-| h1500_1530 | boolean | atributo |
-| h1530_1600 | boolean | atributo |
-| h1600_1630 | boolean | atributo |
-| h1630_1700 | boolean | atributo |
-| h1700_1730 | boolean | atributo |
-| h1730_1800 | boolean | atributo |
-| h1800_1830 | boolean | atributo |
-| h1830_1900 | boolean | atributo |
+| id_horarios | SERIAL | chave primária |
+| horario | VARCHAR(255) | atributo, não nulo |
+
+### Especialidade
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_especialidade | SERIAL | chave primária |
+| nome_especialidade | VARCHAR(255) | atributo, não nulo |
+
+### Clínica
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_clinica | SERIAL | chave primária |
+| nome_clinica | VARCHAR(255) | atributo, não nulo |
+
+### Usuário
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_usuario | SERIAL | chave primária |
+| id_endereco | INTEGER | chave estrangeira, não nulo, referência a Endereço(id_endereco) |
+| nome | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| cpf | BIGINT | atributo, não nulo |
+| email | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| senha | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| data_nascimento | DATE | atributo, não nulo |
+| telefone | BIGINT | atributo, não nulo |
+| is_paciente | BOOLEAN | atributo |
+
+### Paciente
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_paciente | SERIAL | chave primária |
+| id_usuario | INTEGER | chave estrangeira, não nulo, referência a Usuario(id_usuario) |
+| dependentes | INT | atributo, não nulo |
+
+### Médico
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_medico | SERIAL | chave primária |
+| id_usuario | INTEGER | chave estrangeira, não nulo, referência a Usuario(id_usuario) |
+| id_especialidade | INTEGER | chave estrangeira, não nulo, referência a Especialidade(id_especialidade) |
+| id_clinica | INTEGER | chave estrangeira, não nulo, referência a Clinica(id_clinica) |
+| crm | VARCHAR(255) | atributo, não nulo |
+
+### Disponibilidade
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_disponibilidade | SERIAL | chave primária |
+| id_horarios | INTEGER | chave estrangeira, não nulo, referência a Horários(id_horarios) |
+| id_medico | INTEGER | chave estrangeira, não nulo, referência a Medico(id_medico) |
+| data | DATE | atributo, não nulo |
+| disponivel | BOOLEAN | atributo, valor padrão TRUE |
+
+### Agendamento
+| nomeAtributo | tipo | descrição |
+| --- | --- | --- |
+| id_agendamento | SERIAL | chave primária |
+| id_paciente | INTEGER | chave estrangeira, não nulo, referência a Paciente(id_paciente) |
+| id_disponibilidade | INTEGER | chave estrangeira, não nulo, referência a Disponibilidade(id_disponibilidade) |
+| prontuario | VARCHAR(255) | atributo, não nulo, valor padrão '' |
+| confirmada | BOOLEAN | atributo, valor padrão FALSE |
+| finalizada | BOOLEAN | atributo, valor padrão FALSE |
+| cancelada | BOOLEAN | atributo, valor padrão FALSE |
 
 ## 👨‍💻Autores do projeto
 [**Carla Brito**](https://github.com/carladfb)
